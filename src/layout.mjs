@@ -1,6 +1,6 @@
 // The page shell: skip link, header with navigation and theme toggle, main, footer with the Verne endorsement.
 import { esc } from '../lib/html.mjs'
-import { icon, lockup, verneMark } from './art/index.mjs'
+import { icon, lockup, verneLogo } from './art/index.mjs'
 
 export function layout(page, body, ctx) {
   const { cfg } = ctx
@@ -43,8 +43,8 @@ ${body}
       ${cols}
     </div>
     <div class="endorse">
-      <a class="endorse-verne" href="${cfg.org.url}" aria-label="${esc(cfg.name)} is a product of ${esc(cfg.org.legalName)}">${verneMark()}<span>A Verne product</span></a>
       <p class="legal-line">© ${year} ${esc(cfg.org.legalName)}, ${esc(cfg.org.address.city)}, ${esc(cfg.org.address.countryName)}. ${esc(cfg.name)} and the ${esc(cfg.name)} logo are trademarks of ${esc(cfg.org.legalName)}. Software licensed under Apache-2.0.</p>
+      <a class="made-by" href="${cfg.org.url}" aria-label="Designed and built by Verne Ltd. (vernesystems.com)"><span class="made-by-label">Designed and built by</span>${verneLogo('vl')}<span class="made-by-name">Verne Ltd.</span></a>
     </div>
   </div>
 </footer>

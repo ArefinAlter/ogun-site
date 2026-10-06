@@ -15,6 +15,11 @@ export const wordmark = (cls = 'logo-word') => svg(`${WORDMARK.x} ${WORDMARK.y} 
 export const lockup = (id = 'hd') => `<span class="lockup">${mark(id)}${wordmark()}</span>`
 export const verneMark = (cls = 'verne-mark') => svg('0 0 34 40', '<path d="M2 3 L17 37 L32 3" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>', ` class="${cls}"`)
 
+/** The Verne mark (the loop "V"), in its teal-to-blue gradient. Traced from Verne's logo; stroke widened for small sizes. */
+const VERNE_PATH = 'M 62 517 C 34 470 20 418 20 360 C 20 175 165 20 350 20 C 478 20 562 78 622 152 C 676 220 700 268 742 296 C 790 328 852 340 920 340 C 990 340 1056 320 1104 286 C 1146 256 1170 214 1212 166 C 1290 70 1370 20 1492 20 C 1676 20 1830 172 1830 356 C 1830 548 1680 690 1492 690 C 1384 690 1288 640 1228 556 C 1176 484 1114 442 1035 442 C 938 442 886 510 886 580 C 886 606 893 630 905 652 C 1010 846 1118 1030 1222 1222 C 1248 1270 1260 1324 1260 1378 C 1260 1566 1104 1710 890 1710 C 784 1710 690 1632 632 1530 C 444 1192 254 856 62 517 Z'
+export const verneLogo = (id = 'vl', cls = 'verne-logo', sw = 96) =>
+  svg('-60 -60 1972 1852', `<defs><linearGradient id="${id}-g" x1="0" y1="0" x2="1852" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00F5C8"/><stop offset=".5" stop-color="#00B4DC"/><stop offset="1" stop-color="#005BFF"/></linearGradient></defs><path d="${VERNE_PATH}" fill="none" stroke="url(#${id}-g)" stroke-width="${sw}" stroke-linejoin="round"/>`, ` class="${cls}"`)
+
 // ---------------------------------------------------------------- icons (24 px, 1.5 stroke, technical caps)
 const ICONS = {
   anvil: '<path d="M2.5 7.5h4.2l1.3-1h13.5v2.6l-2.8.6c-1.6.4-2.4 1.6-2.4 2.8 0 1 .6 1.8 1.6 2.2l.6.8H8.2l.6-.8c1-.4 1.6-1.2 1.6-2.2 0-1.4-1.1-2.6-2.8-3.1-2-.6-3.8-1.4-5.1-1.9z"/><path d="M6 19.5h12"/>',

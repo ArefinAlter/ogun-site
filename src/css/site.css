@@ -516,10 +516,13 @@ td .icon { width: 16px; height: 16px; }
 .sibling a { font-weight: 500; color: var(--brass-text); display: inline-flex; gap: .4rem; align-items: center; }
 .sibling .icon { width: 16px; height: 16px; }
 .endorse { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4); margin-top: var(--space-8); padding-top: var(--space-5); border-top: 1px solid var(--line); }
-.endorse-verne { display: inline-flex; align-items: center; gap: .6rem; font: 500 .76rem/1 var(--font-mono); letter-spacing: .2em; text-transform: uppercase; color: var(--text) !important; text-decoration: none !important; }
-.verne-mark { width: 15px; height: 18px; color: #93E6D4; transition: transform var(--dur-3) var(--ease-out); }
-.endorse-verne:hover .verne-mark { transform: translateY(2px); }
 .legal-line { font: 400 .76rem/1.5 var(--font-mono); color: var(--text-3); margin: 0; max-width: 80ch; }
+.made-by { display: inline-flex; align-items: center; gap: .65rem; margin-left: auto; color: var(--text) !important; text-decoration: none !important; white-space: nowrap; }
+.made-by-label { font: 500 .7rem/1 var(--font-mono); letter-spacing: .18em; text-transform: uppercase; color: var(--text-2); }
+.made-by-name { font: 600 1.08rem/1 var(--font-display); color: var(--text); letter-spacing: .01em; }
+.verne-logo { width: 22px; height: 21px; flex: none; overflow: visible; transition: transform var(--dur-3) var(--ease-out), filter var(--dur-2); }
+.made-by:hover .verne-logo { transform: translateY(-1px) rotate(-6deg); filter: drop-shadow(0 0 6px rgba(0, 180, 220, .5)); }
+.made-by:hover .made-by-name { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 
 /* ------------------------------------------------------------------ brand page */
 .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }

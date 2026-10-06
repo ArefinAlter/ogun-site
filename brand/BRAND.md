@@ -15,7 +15,7 @@ Ogun is the developer product in a two-product family. Its sibling, Zeus, has it
 | Product | **Ogun** | Developer platform for data mining, data engineering and agent benchmarks | Forge, iron, vellum, ink: the Renaissance workshop treatise |
 | Engine | `zeus-core` | Shared library; not a consumer brand | Never marketed on its own; written in code style |
 
-**Endorsement.** Each product is *endorsed* by Verne, not merged into it. Every product surface carries **"A Verne product"** with Verne's V chevron, monochrome, in the product's colours. Verne's gradient belongs to Verne's own properties.
+**Endorsement.** Each product is *endorsed* by Verne, not merged into it. The footer of every product surface ends with the credit **"DESIGNED AND BUILT BY"**, then Verne's mark (the loop V, in Verne's teal-to-blue gradient #00F5C8 → #005BFF), then **"Verne Ltd."**, all linking to https://vernesystems.com and set on the right of the footer's bottom row, with the copyright line on the left. The label uses the product's label style (small caps, wide tracking); "Verne Ltd." uses the product's display serif. The mark keeps its gradient on every background; it is the only place Verne's colours appear on a product surface. At footer size (about 22 px) the mark's stroke is drawn heavier than in Verne's master artwork so it stays visible.
 
 **Shared DNA.** Classical craft: engraved line art, a serif display face with a sans for reading, Roman numerals, honest status labels, art generated from code. Zeus is luminous and reassuring; Ogun is exact, dark and documentary.
 
