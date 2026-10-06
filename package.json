@@ -1,0 +1,14 @@
+{
+  "name": "ogun-site",
+  "private": true,
+  "description": "Ogun marketing site, by Verne. Static, dependency-free.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "node build.mjs",
+    "brand": "node build.mjs --brand",
+    "serve": "node serve.mjs 4322",
+    "pngs": "bash tools/render-pngs.sh"
+  }
+}
