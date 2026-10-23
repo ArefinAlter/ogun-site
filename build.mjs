@@ -87,7 +87,7 @@ writeFileSync(
 const AI_AGENTS = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-User', 'Claude-SearchBot', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Applebot-Extended', 'CCBot', 'Bingbot', 'DuckAssistBot', 'MistralAI-User', 'cohere-ai']
 writeFileSync(
   join(DIST, 'robots.txt'),
-  `# ${cfg.name} by ${cfg.org.legalName}. Everything here is public; search and answer engines are welcome.\n` +
+  `# ${cfg.name} by ${cfg.org.legalName} Everything here is public; search and answer engines are welcome.\n` +
     `User-agent: *\nAllow: /\nDisallow: /_render/\n\n` +
     AI_AGENTS.map((a) => `User-agent: ${a}\nAllow: /\nDisallow: /_render/`).join('\n\n') +
     `\n\nSitemap: ${abs(cfg, '/sitemap.xml')}\n`,

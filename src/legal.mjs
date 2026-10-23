@@ -129,7 +129,7 @@ export function legalPages(cfg, product) {
       { id: 'ok', title: 'You may, without asking', body: `<ul><li>Refer to ${P} by name to say what something is, works with or is based on, accurately (for example, “a plugin for ${P}” or “compatible with ${P}”).</li><li>Use the unmodified logo from our <a href="/brand/">press kit</a> to link to ${P} or in articles, talks and tutorials about it.</li><li>Use the name in discussions, reviews and comparisons, including critical ones.</li></ul>` },
       { id: 'ask', title: 'Please ask first', body: `<ul><li>Using the name or logo on merchandise, in event names or in advertising.</li><li>Distributing an unmodified official build under the ${P} name from your own channel.</li></ul>` },
       { id: 'not', title: 'You may not', body: `<ul><li>Use ${P}, or a confusingly similar name or logo, as the name of your product, service, company, domain or social account.</li><li>Distribute a modified version (a fork) under the ${P} name or logo. Forks are welcome, with a different name and without our logos.</li><li>Suggest that Verne sponsors, endorses or certifies your product when it does not.</li><li>Alter, recolour, animate or combine the logo with other marks.</li></ul>` },
-      { id: 'art', title: 'Artwork', body: `<p>The illustrations on this site (such as the ${esc(product.artNames)}) are © ${esc(o.legalName)}. You may use them when writing about ${P}. Please do not use them to brand other products.</p>` },
+      { id: 'art', title: 'Artwork', body: `<p>The illustrations on this site (such as the ${esc(product.artNames)}) are © ${esc(o.legalName)} You may use them when writing about ${P}. Please do not use them to brand other products.</p>` },
       { id: 'note', title: 'A note on the name', body: `<p>${esc(product.nameNote)}</p>` },
       { id: 'contact', title: 'Questions and permissions', body: `<p>${mail(cfg.contacts.legal)}.</p>` },
     ],
@@ -188,10 +188,10 @@ export function legalPages(cfg, product) {
   const company = legalPage(cfg, {
     slug: 'company',
     nav: 'Company details',
-    title: `Company details: ${cfg.name} is a product of Verne Systems`,
+    title: `Company details: ${cfg.name} is a product of Verne Ltd.`,
     h1: 'Company details',
-    description: `${cfg.name} is published by Verne Systems, Dhaka, Bangladesh. Legal entity, registered address, registration identifiers and contact details.`,
-    lede: `${P} is a product of ${esc(o.legalName)}. This page lists the legal entity behind it.`,
+    description: `${cfg.name} is published by Verne Ltd., Dhaka, Bangladesh. Legal entity, registered address, registration identifiers and contact details.`,
+    lede: `${P} is a product of ${esc(o.legalName)} This page lists the legal entity behind it.`,
     sections: [
       { id: 'entity', title: 'Publisher', body: `<dl class="kv"><dt>Legal name</dt><dd>${esc(o.legalName)}</dd><dt>Trading as</dt><dd>${esc(o.name)}</dd><dt>Address</dt><dd>${esc(o.address.street)}, ${esc(o.address.neighborhood)}, ${esc(o.address.city)}-${esc(o.address.postalCode)}, ${esc(o.address.countryName)}</dd><dt>Email</dt><dd>${mail(o.email)}</dd><dt>Phone</dt><dd>${esc(o.phone)}</dd><dt>Website</dt><dd><a href="${o.url}">${esc(o.url.replace('https://', ''))}</a></dd><dt>Founded</dt><dd>${esc(o.founded)}</dd></dl>` },
       { id: 'registration', title: 'Registration', body: `<dl class="kv"><dt>Company registration</dt><dd>${esc(o.registration.companyRegistration)}</dd><dt>Trade licence</dt><dd>${esc(o.registration.tradeLicense)}</dd><dt>TIN</dt><dd>${esc(o.registration.tin)}</dd><dt>D-U-N-S</dt><dd>${esc(o.registration.duns)}</dd></dl><p class="small muted">The same identifiers are published at <a href="${o.url}/legal/company">${esc(o.url.replace('https://', ''))}/legal/company</a>.</p>` },

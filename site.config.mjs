@@ -3,7 +3,7 @@
 
 const verne = {
   name: 'Verne',
-  legalName: 'Verne Systems',
+  legalName: 'Verne Ltd.',
   url: 'https://vernesystems.com',
   email: 'info@vernesystems.com',
   phone: '+880 1870 034384',
@@ -82,9 +82,9 @@ export default {
   ],
   llms: {
     summary:
-      'Ogun is a local-first developer platform for data acquisition, data engineering and AI-agent benchmarks, made by Verne Systems (Dhaka, Bangladesh) and built on the Zeus download engine (zeus-core, Rust). Workflows are data (a hashed JSON IR authored in YAML, Python or natural language), runs are durable and resumable, operators such as DuckDB, dbt and OCR run sandboxed, every artifact is content-addressed with lineage, and a benchmark profile runs Spider 2.0-DBT, ADE-bench and Harbor-format tasks in isolation. Apache-2.0, no telemetry. Status: contracts phase (October 2026).',
+      'Ogun is a local-first developer platform for data acquisition, data engineering and AI-agent benchmarks, made by Verne Ltd. (Dhaka, Bangladesh) and built on the Zeus download engine (zeus-core, Rust). Workflows are data (a hashed JSON IR authored in YAML, Python or natural language), runs are durable and resumable, operators such as DuckDB, dbt and OCR run sandboxed, every artifact is content-addressed with lineage, and a benchmark profile runs Spider 2.0-DBT, ADE-bench and Harbor-format tasks in isolation. Apache-2.0, no telemetry. Status: contracts phase (October 2026).',
     facts: [
-      'Maker: Verne Systems, https://vernesystems.com',
+      'Maker: Verne Ltd., https://vernesystems.com',
       'License: Apache-2.0; no telemetry; local-first',
       'Engine: embeds zeus-core (Rust) for resumable, verified transfers; browser-session sources only through the Zeus daemon as a service client',
       'Workflow IR: JSON, no floating point, JCS + BLAKE3 workflow hash, closed template and predicate sets; never prompt-to-shell',

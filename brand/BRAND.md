@@ -1,6 +1,6 @@
 # Ogun brand guidelines
 
-Version 1.0, 2026-10-06. Owner: Verne Systems. Applies to the Ogun website, the Ogun runtime surfaces (CLI and TUI, MCP descriptions, Ogun Studio), documentation, social and press material.
+Version 1.0, 2026-10-06. Owner: Verne Ltd. Applies to the Ogun website, the Ogun runtime surfaces (CLI and TUI, MCP descriptions, Ogun Studio), documentation, social and press material.
 
 Ogun is the developer product in a two-product family. Its sibling, Zeus, has its own guidelines in the `zeus-site` repository. Section 1 is shared by both documents.
 
@@ -10,7 +10,7 @@ Ogun is the developer product in a two-product family. Its sibling, Zeus, has it
 
 | Level | Brand | Role | Visual world |
 |---|---|---|---|
-| Parent | **Verne** (Verne Systems, Dhaka) | Maker, publisher, legal entity | Dark teal, aurora gradient, Kanit; see vernesystems.com |
+| Parent | **Verne** (Verne Ltd., Dhaka) | Maker, publisher, legal entity | Dark teal, aurora gradient, Kanit; see vernesystems.com |
 | Product | **Zeus** | Agentic download and file manager for AI tinkerers and enthusiasts | Sky, marble, gold leaf, ultramarine: the Olympian temple |
 | Product | **Ogun** | Developer platform for data mining, data engineering and agent benchmarks | Forge, iron, vellum, ink: the Renaissance workshop treatise |
 | Engine | `zeus-core` | Shared library; not a consumer brand | Never marketed on its own; written in code style |

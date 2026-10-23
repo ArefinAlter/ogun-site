@@ -49,4 +49,4 @@ Checks: exactly one h1 per page, unique titles and ids, no broken internal links
 
 ## License
 
-Code: Apache-2.0 (`LICENSE`). Text, logos and artwork: © Verne Systems (see `/legal/trademark/`). Fonts: SIL OFL 1.1.
+Code: Apache-2.0 (`LICENSE`). Text, logos and artwork: © Verne Ltd. (see `/legal/trademark/`). Fonts: SIL OFL 1.1.

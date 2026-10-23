@@ -139,7 +139,7 @@ export default {
       title: 'What is Ogun?',
       text: 'Ogun is a developer platform that turns authenticated, messy web and filesystem sources into verified, reproducible datasets on a schedule, and runs benchmark tasks for data and terminal agents in isolation. Workflows are a hashed JSON IR; operators like DuckDB, dbt and OCR run sandboxed; every output is a content-addressed artifact with full lineage. Made by Verne, built on the Zeus engine, Apache-2.0.',
       facts: [
-        ['Made by', `<a href="${cfg.org.url}">Verne Systems</a>, Dhaka`],
+        ['Made by', `<a href="${cfg.org.url}">Verne Ltd.</a>, Dhaka`],
         ['Engine', 'zeus-core (Rust), embedded'],
         ['Interfaces', 'CLI, MCP, Studio (later), A2A (later)'],
         ['License', 'Apache-2.0, no telemetry'],
