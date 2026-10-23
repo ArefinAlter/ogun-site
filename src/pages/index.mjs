@@ -126,8 +126,8 @@ export default {
       <h1 id="hero-title"><span class="line">Forge raw sources into</span><span class="line line--2"><em>reproducible datasets.</em></span></h1>
       <p class="lede">Ogun is a local-first runtime for acquiring and transforming data on a schedule, and for running agent benchmarks. It is built on the Zeus download engine. Workflows are versioned JSON documents, runs resume after a crash, and every output records where it came from.</p>
       <div class="btn-row"><a class="btn btn--ember" href="/architecture/">Read the architecture ${icon('arrow', 'icon icon--arrow')}</a><a class="btn btn--ghost" href="/get-started/">Get early access</a></div>
-      <div class="cmd" aria-label="Planned command"><span class="prompt" aria-hidden="true">$</span><code id="hero-cmd">ogun backfill noaa-daily --from 2020-01 --to 2026-10</code><button class="copy-btn" type="button" data-copy="hero-cmd">${icon('copy')}<span class="copy-label">copy</span></button></div>
-      <p class="small muted">Planned command. There is no runtime yet: the specifications come first.</p>
+      <div class="cmd" aria-label="Development build command"><span class="prompt" aria-hidden="true">$</span><code id="hero-cmd">ogun backfill noaa-daily --from 2020-01-01 --to 2026-10-22 --yes</code><button class="copy-btn" type="button" data-copy="hero-cmd">${icon('copy')}<span class="copy-label">copy</span></button></div>
+      <p class="small muted">A command of the development build, which runs on Linux. There is no release yet.</p>
     </div>
     <div class="hero-figure" data-spinup>
       <div class="plate-wrap">${heroPlate()}<canvas class="sparks" aria-hidden="true"></canvas><button class="hero-strike-btn" type="button" aria-label="Strike the anvil: plays a short animation"></button></div>
@@ -165,7 +165,7 @@ ${section({
 ${section({
   id: 'run',
   title: 'What a run looks like',
-  lede: 'A mock-up of Ogun Studio, planned for phase O4. The run retries a mirror that returned 503, resumes a file part-way through, and stops at a budget gate until a person approves.',
+  lede: 'A mock-up of Ogun Studio, which is built but not yet released. The run retries a mirror that returned 503, resumes a file part-way through, and stops at a budget gate until a person approves.',
   body: `<div class="studio" data-studio data-reveal>
   <div class="studio-bar"><strong>climate-papers</strong><span>run #184 · workflow v17</span><span class="run-state" data-state="running">running</span><button class="studio-replay" type="button">replay</button></div>
   <div class="dag">${[['crawl@1', 'Discover'], ['acquire@1', 'Acquire'], ['pdf.extract@2', 'Extract'], ['llm.extract@1', 'Classify'], ['duckdb@1', 'Publish']]
@@ -203,7 +203,7 @@ ${section({
   id: 'bench',
   title: 'Benchmark runs',
   lede: 'A benchmark is a controlled set of runs, each with a workflow, environment, agent, policy, inputs and evaluator. Ogun reads existing task formats and records cost, efficiency and recovery alongside the official score.',
-  body: `<p class="wrap--narrow" data-reveal>The first adapters are planned for Spider 2.0-DBT, ADE-bench and Terminal-Bench 2.0 tasks in the Harbor format, with agents such as Claude Code, Codex and OpenCode behind one adapter interface. There are no results yet; the benchmark profile is phase O3.</p>
+  body: `<p class="wrap--narrow" data-reveal>Adapters for Spider 2.0-DBT, ADE-bench and Terminal-Bench 2.0 tasks in the Harbor format are written, with agents such as Claude Code, Codex and OpenCode behind one adapter interface. Their task formats are still being checked against the official releases, so there are no results yet.</p>
 <div class="metrics" data-reveal>${METRICS.slice(0, 3)
     .concat(METRICS.slice(5, 6))
     .map(([n, f, d]) => `<div class="metric"><h3>${n}</h3><p class="formula">${f}</p><p>${d}</p></div>`)

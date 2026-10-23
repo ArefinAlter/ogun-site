@@ -71,7 +71,7 @@ ${section({
   title: 'Technology',
   body: `<div class="split split--top"><div data-reveal>${checklist(['Rust, edition 2024; unsafe code only in isolated, reviewed platform modules', 'tokio and rustls; HTTP/1.1 and HTTP/2', 'redb for the transfer journal', 'BLAKE3 and SHA-256; JCS (RFC 8785) for canonical hashing', 'JSON-RPC 2.0 over a local socket or named pipe as the single daemon contract', 'MCP via rmcp, targeting the stateless 2026-07-28 revision'])}</div><div data-reveal data-delay="120">${note('<p>Specifications come before code. Ogun’s contracts (O-00 to O-08) build on the Zeus specifications for conventions, the daemon API, approvals and the artifact store, so both products share one vocabulary.</p>', 'book')}</div></div>`,
 })}
-${ctaForge(ctx.cfg, { title: 'Disagree with a decision?', text: 'Write to info@vernesystems.com. The proposed records can still change, and the specifications that depend on them are not written yet.', primary: ['Ask for early access', '/get-started/'] })}`,
+${ctaForge(ctx.cfg, { title: 'Disagree with a decision?', text: 'Write to info@vernesystems.com. The records are accepted, and the specifications are a first draft that feedback can still change.', primary: ['Ask for early access', '/get-started/'] })}`,
 }
 
 // ---------------------------------------------------------------- workflows
@@ -248,7 +248,7 @@ ${section({
   id: 'research',
   cls: 'section--band',
   title: 'Research questions',
-  body: `<div class="wrap--narrow" data-reveal><p class="lede">Hold the model fixed and vary the harness: shell only, shell plus structured database tools, MCP data tools, Ogun’s workflow and artifact tools. Harness gain averages the difference across models. Tool ablation removes one affordance at a time. Both need exactly what Ogun records anyway: controlled environments, trajectories and costs.</p>${note('<p>No results yet. Ogun is in its contracts phase; the benchmark profile is phase O3. We will publish methods before numbers.</p>', 'hourglass')}</div>`,
+  body: `<div class="wrap--narrow" data-reveal><p class="lede">Hold the model fixed and vary the harness: shell only, shell plus structured database tools, MCP data tools, Ogun’s workflow and artifact tools. Harness gain averages the difference across models. Tool ablation removes one affordance at a time. Both need exactly what Ogun records anyway: controlled environments, trajectories and costs.</p>${note('<p>No results yet. The benchmark profile is built and its adapters are being checked against the official task formats. We will publish methods before numbers.</p>', 'hourglass')}</div>`,
 })}
 ${section({
   id: 'prior',

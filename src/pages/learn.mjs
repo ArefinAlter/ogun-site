@@ -77,10 +77,10 @@ const roadmap = {
   changefreq: 'weekly',
   updated: UPDATED,
   title: 'Ogun roadmap: contracts, runtime, operators, benchmarks, Studio',
-  description: 'Ogun’s phases from contracts (now) to the runtime MVP, data and model operators, the benchmark profile and Studio, with each phase’s exit test.',
+  description: 'Ogun’s phases from the contracts (done) and the runtime MVP (now) to data and model operators, the benchmark profile and Studio, with each phase’s exit test.',
   crumbs: [{ name: 'Roadmap', path: '/roadmap/' }],
   body: (ctx) => `
-${pageHead({ crumbs: [{ name: 'Roadmap', path: '/roadmap/' }], title: 'Roadmap', lede: 'Targets, not promises. The runtime starts when the shared engine’s crash-and-resume testing is complete, and each phase ends with an exit test.' })}
+${pageHead({ crumbs: [{ name: 'Roadmap', path: '/roadmap/' }], title: 'Roadmap', lede: 'Targets, not promises. Each phase ends with an exit test; built is not the same as released.' })}
 ${section({ id: 'phases', body: `<div class="wrap--narrow"><ol class="timeline">${ROADMAP.map((r) => `<li class="${r.state}" data-reveal><span class="when">${r.when}</span><h3>${r.title}</h3><p>${r.text}</p></li>`).join('')}</ol></div>` })}
 ${section({ id: 'not', cls: 'section--band', title: 'Out of scope', body: `<div class="wrap--narrow" data-reveal>${checklist(NOT_BUILT, true)}</div>` })}
 ${ctaForge(ctx.cfg)}`,
@@ -95,19 +95,19 @@ const getStarted = {
   changefreq: 'weekly',
   updated: UPDATED,
   title: 'Get started with Ogun: early access and the design documents',
-  description: 'Ogun is in its contracts phase. How to get early access, what to read first, what you will need, and how to give feedback on the specifications.',
+  description: 'Ogun is pre-alpha with no release yet. How to get early access, what to read first, what you will need, and how to give feedback on the specifications.',
   crumbs: [{ name: 'Get started', path: '/get-started/' }],
   body: (ctx) => `
-${pageHead({ crumbs: [{ name: 'Get started', path: '/get-started/' }], title: 'Get started', lede: 'There is nothing to install yet. You can read the design and send feedback while the specifications are being written.' })}
+${pageHead({ crumbs: [{ name: 'Get started', path: '/get-started/' }], title: 'Get started', lede: 'There is nothing to install yet: the runtime runs in development and has no release. You can read the design and send feedback while the specifications are a first draft.' })}
 <div class="wrap wrap--narrow">${statusNote(ctx.cfg)}</div>
-${section({ id: 'access', title: 'Early access', body: `<div class="split"><div data-reveal><p class="lede">Tell us what you build, which sources you fight with and which benchmarks you run. We will write when the runtime can run your first workflow.</p><div class="btn-row"><a class="btn btn--ember" href="mailto:${ctx.cfg.contacts.general}?subject=Ogun%20early%20access&amp;body=I%20build%3A%0AMy%20sources%3A%0ABenchmarks%20I%20care%20about%3A%0A">${icon('mail')} Email for early access</a><a class="btn btn--ghost" href="${ctx.cfg.org.social.linkedin}" rel="me">Follow Verne</a></div></div><div class="center" data-reveal data-delay="120"><span class="lost-gear">${mark('gs')}</span></div></div>` })}
+${section({ id: 'access', title: 'Early access', body: `<div class="split"><div data-reveal><p class="lede">Tell us what you build, which sources you fight with and which benchmarks you run. We will write when a build can run your first workflow.</p><div class="btn-row"><a class="btn btn--ember" href="mailto:${ctx.cfg.contacts.general}?subject=Ogun%20early%20access&amp;body=I%20build%3A%0AMy%20sources%3A%0ABenchmarks%20I%20care%20about%3A%0A">${icon('mail')} Email for early access</a><a class="btn btn--ghost" href="${ctx.cfg.org.social.linkedin}" rel="me">Follow Verne</a></div></div><div class="center" data-reveal data-delay="120"><span class="lost-gear">${mark('gs')}</span></div></div>` })}
 ${section({ id: 'read', cls: 'section--band', title: 'What to read first', body: cards([
   { icon: 'book', title: 'Architecture', text: 'The parts, the trust boundaries and the decision records.', link: ['Read', '/architecture/'] },
   { icon: 'ledger', title: 'Workflows', text: 'The IR, authoring, the run state machine, triggers and backfills.', link: ['Read', '/workflows/'] },
   { icon: 'cube', title: 'Lineage', text: 'Artifacts, the content-addressed store and exports.', link: ['Read', '/lineage/'] },
   { icon: 'matrix', title: 'Benchmarks', text: 'The profile, isolation, trajectories and metrics.', link: ['Read', '/benchmarks/'] },
 ]) })}
-${section({ id: 'need', title: 'Requirements, once the runtime exists', body: `<div class="wrap--narrow" data-reveal>${checklist(['Windows, macOS or Linux', 'The tools your operators wrap (DuckDB, dbt, Python and so on), or an environment image that provides them', 'Docker or WSL 2 for the benchmark profile', 'Optionally, the Zeus app, for sources behind a browser login', 'Optionally, a model provider of your choice, for LLM operators'])}</div>` })}
+${section({ id: 'need', title: 'Requirements for the first release', body: `<div class="wrap--narrow" data-reveal>${checklist(['Windows, macOS or Linux', 'The tools your operators wrap (DuckDB, dbt, Python and so on), or an environment image that provides them', 'Docker or WSL 2 for the benchmark profile', 'Optionally, the Zeus app, for sources behind a browser login', 'Optionally, a model provider of your choice, for LLM operators'])}</div>` })}
 ${ctaForge(ctx.cfg, { title: 'Send feedback on the design', primary: ['Read the architecture', '/architecture/'], secondary: ['See the roadmap', '/roadmap/'] })}`,
 }
 

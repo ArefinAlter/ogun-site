@@ -35,8 +35,8 @@ export default {
   description:
     'Ogun is a local-first developer platform for data acquisition, data engineering and AI-agent benchmarks, built on the Zeus engine. Workflows are data; every artifact has a lineage.',
   ogAlt: 'Ogun: an engraved plate of an anvil, a hammer and meshing gears, titled "The forge for reproducible data".',
-  status: 'Contracts phase',
-  statusNote: 'Ogun is in its contracts phase: the architecture is decided and the specifications are being written. The runtime starts once the Zeus engine’s crash-and-resume testing is complete: a first kill-and-restart test passed in October 2026, and fault injection at every crash point is still in progress.',
+  status: 'Runtime in development',
+  statusNote: 'There is no release yet. The decisions are accepted and the specifications are in their first draft. In October 2026 the runtime passed its first exit test on Linux: a partitioned backfill and a stream window both survive kill -9 of the daemon and resume only the unfinished work. The operators, the server, Studio and the integrations are built but have not all run against real sources, devices and mobile platforms yet.',
   sourcePublic: false,
   repo: 'https://github.com/ArefinAlter/ogun',
   sibling: { name: 'Zeus', url: 'https://zeus.vernesystems.com', line: 'Need everyday downloads for your AI assistant, not pipelines? Zeus is the consumer app built on the same engine.' },
@@ -50,7 +50,7 @@ export default {
     category: 'DeveloperApplication',
     subCategory: 'Data pipeline and agent benchmark runtime',
     os: 'Windows, macOS, Linux',
-    version: 'pre-alpha (contracts phase)',
+    version: 'pre-alpha (runtime in development, no release)',
     features: [
       'Durable workflows defined as data: a JSON intermediate representation hashed with JCS and BLAKE3',
       'Authoring in YAML, a Python SDK or natural language, always compiled to the same validated IR',
@@ -82,7 +82,7 @@ export default {
   ],
   llms: {
     summary:
-      'Ogun is a local-first developer platform for data acquisition, data engineering and AI-agent benchmarks, made by Verne Ltd. (Dhaka, Bangladesh) and built on the Zeus download engine (zeus-core, Rust). Workflows are data (a hashed JSON IR authored in YAML, Python or natural language), runs are durable and resumable, operators such as DuckDB, dbt and OCR run sandboxed, every artifact is content-addressed with lineage, and a benchmark profile runs Spider 2.0-DBT, ADE-bench and Harbor-format tasks in isolation. Apache-2.0, no telemetry. Status: contracts phase (October 2026).',
+      'Ogun is a local-first developer platform for data acquisition, data engineering and AI-agent benchmarks, made by Verne Ltd. (Dhaka, Bangladesh) and built on the Zeus download engine (zeus-core, Rust). Workflows are data (a hashed JSON IR authored in YAML, Python or natural language), runs are durable and resumable, operators such as DuckDB, dbt and OCR run sandboxed, every artifact is content-addressed with lineage, and a benchmark profile runs Spider 2.0-DBT, ADE-bench and Harbor-format tasks in isolation. Apache-2.0, no telemetry. Status: pre-alpha, runtime in development, no release (October 2026).',
     facts: [
       'Maker: Verne Ltd., https://vernesystems.com',
       'License: Apache-2.0; no telemetry; local-first',
@@ -90,7 +90,7 @@ export default {
       'Workflow IR: JSON, no floating point, JCS + BLAKE3 workflow hash, closed template and predicate sets; never prompt-to-shell',
       'Run states: pending, ready, running, waiting, waiting_for_user, waiting_for_session, retry_scheduled, succeeded, failed, cancelled, skipped',
       'Benchmarks: Spider 2.0-DBT (68 tasks), ADE-bench (dbt Labs), Terminal-Bench 2.0 via the Harbor task format; official evaluators unmodified',
-      'Status: contracts phase (specs O-00 to O-08); runtime after the Zeus engine completes crash-and-resume testing (first kill-and-restart test passed October 2026)',
+      'Status: pre-alpha, no release. Specs O-00 to O-15 are Draft 1. The runtime passed its phase O1 exit test on Linux in October 2026 (a partitioned backfill and a stream window survive kill -9 and resume only unfinished work).',
       'Sibling product: Zeus, the session-aware download and file layer for AI agents (https://zeus.vernesystems.com)',
     ],
     groups: ['Platform', 'Learn', 'Company', 'Legal'],

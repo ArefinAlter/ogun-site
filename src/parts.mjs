@@ -54,7 +54,7 @@ export const part = (t) => `<span class="part">${icon('minus')}${t}</span>`
 
 /** Closing call to action, with the small gear train. */
 export function ctaForge(cfg, { title = 'Read the design', text, primary = ['Read the architecture', '/architecture/'], secondary = ['See the roadmap', '/roadmap/'] } = {}) {
-  return `<section class="cta" aria-labelledby="cta-title" data-spinup><div class="wrap" data-reveal><h2 id="cta-title">${title}</h2><p class="lede">${text || 'Decisions come first, then normative specifications, then code. Feedback is most useful now, before the contracts are frozen.'}</p><div class="btn-row"><a class="btn btn--ember" href="${primary[1]}">${primary[0]} ${icon('arrow', 'icon icon--arrow')}</a><a class="btn btn--ghost" href="${secondary[1]}">${secondary[0]}</a></div></div>${ctaGears()}</section>`
+  return `<section class="cta" aria-labelledby="cta-title" data-spinup><div class="wrap" data-reveal><h2 id="cta-title">${title}</h2><p class="lede">${text || 'The decisions and first-draft specifications are public, and the runtime is being tested. Feedback is most useful now, before the contracts are frozen.'}</p><div class="btn-row"><a class="btn btn--ember" href="${primary[1]}">${primary[0]} ${icon('arrow', 'icon icon--arrow')}</a><a class="btn btn--ghost" href="${secondary[1]}">${secondary[0]}</a></div></div>${ctaGears()}</section>`
 }
 
 export function docPage({ sections, aside = '' }) {
