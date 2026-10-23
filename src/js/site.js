@@ -175,7 +175,7 @@
       idx = i
       stations.forEach((s, j) => s.classList.toggle('is-active', j === i))
       const [, name, , text] = data[i]
-      panel.innerHTML = `<span class="stage-num" aria-hidden="true">${['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'][i]}</span><div><h3>${name}</h3><p>${text}</p></div>`
+      panel.innerHTML = `<div><h3>${name}</h3><p>${text}</p></div>`
     }
     stations.forEach((s, i) => {
       const pick = () => { auto = false; show(i) }

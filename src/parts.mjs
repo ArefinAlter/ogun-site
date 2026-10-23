@@ -2,20 +2,19 @@
 import { esc, join, slug } from '../lib/html.mjs'
 import { ctaGears, icon } from './art/index.mjs'
 
-export function pageHead({ crumbs = [], eyebrow, title, lede, meta }) {
+export function pageHead({ crumbs = [], title, lede, meta }) {
   const trail = [{ name: 'Home', path: '/' }, ...crumbs]
   return `<header class="page-head"><div class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><ol>${trail.map((c, i) => `<li>${i === trail.length - 1 ? `<span aria-current="page">${esc(c.name)}</span>` : `<a href="${c.path}">${esc(c.name)}</a>`}</li>`).join('')}</ol></nav>
-${eyebrow ? `<p class="eyebrow">${eyebrow}</p>` : ''}
 <h1>${title}</h1>
 ${lede ? `<p class="lede">${lede}</p>` : ''}
 ${meta ? `<div class="doc-meta">${meta}</div>` : ''}
 </div></header>`
 }
 
-export function section({ id, eyebrow, title, lede, body, cls = '', center = false }) {
+export function section({ id, title, lede, body, cls = '', center = false }) {
   const head = title
-    ? `<div class="section-head${center ? ' center' : ''}" data-reveal>${eyebrow ? `<p class="eyebrow">${eyebrow}</p>` : ''}<h2${id ? ` id="${id}-title"` : ''}>${title}</h2>${lede ? `<p class="lede">${lede}</p>` : ''}</div>`
+    ? `<div class="section-head${center ? ' center' : ''}" data-reveal><h2${id ? ` id="${id}-title"` : ''}>${title}</h2>${lede ? `<p class="lede">${lede}</p>` : ''}</div>`
     : ''
   return `<section class="section ${cls}"${id ? ` id="${id}"` : ''}${id && title ? ` aria-labelledby="${id}-title"` : ''}><div class="wrap">${head}${body}</div></section>`
 }
@@ -28,7 +27,7 @@ export function cards(items, { cls = '' } = {}) {
   if (items.length === 4 && !cls) cls = 'cards--4'
   return `<div class="cards ${cls}" data-reveal>${items
     .map(
-      (c, i) => `<article class="card" data-glow>${c.num !== false ? `<span class="card-num" aria-hidden="true">${['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x', 'xi', 'xii'][i]}</span>` : ''}${c.icon ? `<div class="card-icon">${icon(c.icon)}</div>` : ''}<h3${c.id ? ` id="${c.id}"` : ''}>${c.title}</h3><p>${c.text}</p>${c.link ? `<a class="card-link" href="${c.link[1]}">${c.link[0]} ${icon('arrow')}</a>` : ''}</article>`,
+      (c) => `<article class="card" data-glow>${c.icon ? `<div class="card-icon">${icon(c.icon)}</div>` : ''}<h3${c.id ? ` id="${c.id}"` : ''}>${c.title}</h3><p>${c.text}</p>${c.link ? `<a class="card-link" href="${c.link[1]}">${c.link[0]} ${icon('arrow')}</a>` : ''}</article>`,
     )
     .join('')}</div>`
 }
@@ -53,9 +52,9 @@ export const yes = (t = 'Yes') => `<span class="yes">${icon('check')}${t}</span>
 export const no = (t = 'No') => `<span class="no">${icon('x')}${t}</span>`
 export const part = (t) => `<span class="part">${icon('minus')}${t}</span>`
 
-/** Closing call to action: the small gear train turns under the motto. */
-export function ctaForge(cfg, { title = 'Start at the <em>contracts</em>.', text, primary = ['Read the architecture', '/architecture/'], secondary = ['See the roadmap', '/roadmap/'] } = {}) {
-  return `<section class="cta" aria-labelledby="cta-title" data-spinup><div class="wrap" data-reveal><p class="eyebrow">${esc(cfg.status)} · Apache-2.0 · local-first</p><h2 id="cta-title">${title}</h2><p class="lede">${text || 'Ogun is designed in the open: decisions first, then normative specifications, then code. Read them, argue with them, and ask for early access to the runtime.'}</p><div class="btn-row"><a class="btn btn--ember" href="${primary[1]}">${primary[0]} ${icon('arrow', 'icon icon--arrow')}</a><a class="btn btn--ghost" href="${secondary[1]}">${secondary[0]}</a></div><p><span class="motto" tabindex="0" aria-label="Mensura et memoria: measure and memory"><span class="la" aria-hidden="true">MENSVRA ET MEMORIA</span><span class="tr" aria-hidden="true">measure, and memory</span></span></p></div>${ctaGears()}</section>`
+/** Closing call to action, with the small gear train. */
+export function ctaForge(cfg, { title = 'Read the design', text, primary = ['Read the architecture', '/architecture/'], secondary = ['See the roadmap', '/roadmap/'] } = {}) {
+  return `<section class="cta" aria-labelledby="cta-title" data-spinup><div class="wrap" data-reveal><h2 id="cta-title">${title}</h2><p class="lede">${text || 'Decisions come first, then normative specifications, then code. Feedback is most useful now, before the contracts are frozen.'}</p><div class="btn-row"><a class="btn btn--ember" href="${primary[1]}">${primary[0]} ${icon('arrow', 'icon icon--arrow')}</a><a class="btn btn--ghost" href="${secondary[1]}">${secondary[0]}</a></div></div>${ctaGears()}</section>`
 }
 
 export function docPage({ sections, aside = '' }) {

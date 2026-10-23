@@ -1,7 +1,7 @@
 import { esc } from '../../lib/html.mjs'
 import { acquirePlate, heroPlate, icon, lineagePlate, pipelinePlate, STAGES } from '../art/index.mjs'
 import { FAQ, METRICS, PRINCIPLES } from '../content.mjs'
-import { answer, cards, codeTabs, ctaForge, faqList, figure, hl, section, table } from '../parts.mjs'
+import { answer, cards, codeTabs, ctaForge, faqList, figure, hl, section } from '../parts.mjs'
 
 export const SAMPLES = [
   {
@@ -123,16 +123,14 @@ export default {
 <section class="hero" aria-labelledby="hero-title">
   <div class="wrap hero-grid">
     <div>
-      <p class="eyebrow">For AI, LLM and data engineers</p>
       <h1 id="hero-title"><span class="line">Forge raw sources into</span><span class="line line--2"><em>reproducible datasets.</em></span></h1>
-      <p class="lede">Ogun is a local-first runtime for data acquisition, transformation and agent benchmarks, built on the Zeus engine. Workflows are data. Runs survive crashes. Every artifact carries its lineage.</p>
+      <p class="lede">Ogun is a local-first runtime for acquiring and transforming data on a schedule, and for running agent benchmarks. It is built on the Zeus download engine. Workflows are versioned JSON documents, runs resume after a crash, and every output records where it came from.</p>
       <div class="btn-row"><a class="btn btn--ember" href="/architecture/">Read the architecture ${icon('arrow', 'icon icon--arrow')}</a><a class="btn btn--ghost" href="/get-started/">Get early access</a></div>
       <div class="cmd" aria-label="Planned command"><span class="prompt" aria-hidden="true">$</span><code id="hero-cmd">ogun backfill noaa-daily --from 2020-01 --to 2026-10</code><button class="copy-btn" type="button" data-copy="hero-cmd">${icon('copy')}<span class="copy-label">copy</span></button></div>
-      <p class="small muted">Planned CLI. Contracts phase: specs first, runtime next.</p>
+      <p class="small muted">Planned command. There is no runtime yet: the specifications come first.</p>
     </div>
     <div class="hero-figure" data-spinup>
       <div class="plate-wrap">${heroPlate()}<canvas class="sparks" aria-hidden="true"></canvas><button class="hero-strike-btn" type="button" aria-label="Strike the anvil: plays a short animation"></button></div>
-      <span class="plate-hint" aria-hidden="true">click to strike · hover to spin up</span>
     </div>
   </div>
 </section>
@@ -151,26 +149,23 @@ export default {
 
 ${section({
   id: 'lifecycle',
-  eyebrow: 'The lifecycle',
-  title: 'Acquire to publish, <em>durable at every step</em>',
-  lede: 'Eight stages, one run, one lineage graph. Hover a station, or let the line run.',
+  title: 'From acquisition to publication',
+  lede: 'A workflow moves data through eight stages. Each stage is journaled, and all of them write to the same lineage graph.',
   body: `<div class="pipeline" data-pipeline data-reveal>${pipelinePlate()}<div class="stage-panel" aria-live="polite"></div><script type="application/json">${JSON.stringify(STAGES)}</script></div>`,
 })}
 
 ${section({
   id: 'ir',
   cls: 'section--band',
-  eyebrow: 'Workflows are data',
-  title: 'Write it four ways. <em>Run one IR.</em>',
-  lede: 'YAML, a Python SDK, or a prompt drafted by your agent: everything compiles to the same JSON intermediate representation, which is validated, hashed, diffed and approved before it runs.',
+  title: 'Workflows are data, not code',
+  lede: 'YAML, a Python SDK or a draft from your agent all compile to the same JSON intermediate representation, which is validated, hashed, diffed and approved before it runs.',
   body: `<div class="split split--top"><div>${codeTabs('ir', SAMPLES)}<p class="small muted">Illustrative. The IR specification (O-02) is being written; syntax will change.</p></div><div data-reveal data-delay="120"><h3>Why data, not code</h3><ul class="checklist"><li>${icon('check')}<span>No floating-point numbers, so the JCS + BLAKE3 hash is stable and can bind an approval.</span></li><li>${icon('check')}<span>Expressions are a closed template and predicate set: no loops, calls or I/O in the IR.</span></li><li>${icon('check')}<span>Code lives in operators, pinned by content hash; adding or changing one needs your approval.</span></li><li>${icon('check')}<span>Prompt to IR to validator to plan diff to approval to runtime. Never prompt to shell.</span></li></ul><a class="btn btn--ghost" href="/workflows/">How workflows work ${icon('arrow', 'icon icon--arrow')}</a></div></div>`,
 })}
 
 ${section({
   id: 'run',
-  eyebrow: 'A run, live',
-  title: 'Every node has a state. <em>Every state is honest.</em>',
-  lede: 'A preview of Ogun Studio. The run retries a flaky mirror, resumes mid-file, and stops at a budget gate until a person decides.',
+  title: 'What a run looks like',
+  lede: 'A mock-up of Ogun Studio, planned for phase O4. The run retries a mirror that returned 503, resumes a file part-way through, and stops at a budget gate until a person approves.',
   body: `<div class="studio" data-studio data-reveal>
   <div class="studio-bar"><strong>climate-papers</strong><span>run #184 · workflow v17</span><span class="run-state" data-state="running">running</span><button class="studio-replay" type="button">replay</button></div>
   <div class="dag">${[['crawl@1', 'Discover'], ['acquire@1', 'Acquire'], ['pdf.extract@2', 'Extract'], ['llm.extract@1', 'Classify'], ['duckdb@1', 'Publish']]
@@ -183,52 +178,47 @@ ${section({
 ${section({
   id: 'durable',
   cls: 'section--band',
-  eyebrow: 'Durability',
-  title: 'kill -9 is <em>a pause</em>, not a restart',
-  lede: 'Partitions commit independently to a journal. Kill the daemon mid-backfill and it resumes only what was unfinished: nothing is fetched twice.',
+  title: 'Runs resume after a crash',
+  lede: 'Partitions commit independently to a journal. If the daemon is killed during a backfill, it resumes only the partitions that had not finished.',
   body: `<div class="split split--top"><div class="backfill" data-backfill data-reveal><div class="backfill-head"><code>noaa-daily</code><span>monthly partitions · 2020-01 → 2026-10</span></div><div class="grid-cells" role="img" aria-label="Partition status grid">${'<i></i>'.repeat(82)}</div><div class="backfill-legend"><span class="l-ok">succeeded</span><span class="l-run">running</span><span class="l-retry">retrying</span><span class="l-fail">failed</span><span>pending</span></div><p class="backfill-status" aria-live="polite"></p><div class="backfill-actions"><button class="btn btn--small btn--ghost bf-start" type="button">Run again</button><button class="btn btn--small btn--ember bf-kill" type="button">kill -9 ogund</button></div></div>
-<div data-reveal data-delay="120"><h3>What makes it hold</h3><ul class="checklist"><li>${icon('check')}<span>Transfers resume from the Zeus engine’s journal, byte-exact, after checking validators.</span></li><li>${icon('check')}<span>Node instances checkpoint; artifact edges are committed before a node is marked succeeded.</span></li><li>${icon('check')}<span>Each partition is its own unit of success, failure and retry.</span></li><li>${icon('check')}<span>The phase O1 exit test is exactly this: a partitioned backfill surviving kill -9.</span></li></ul></div></div>`,
+<div data-reveal data-delay="120"><h3>How resumption works</h3><ul class="checklist"><li>${icon('check')}<span>Transfers resume from the Zeus engine’s journal, byte-exact, after checking validators.</span></li><li>${icon('check')}<span>Node instances checkpoint; artifact edges are committed before a node is marked succeeded.</span></li><li>${icon('check')}<span>Each partition is its own unit of success, failure and retry.</span></li><li>${icon('check')}<span>The phase O1 exit test is exactly this: a partitioned backfill surviving kill -9.</span></li></ul></div></div>`,
 })}
 
 ${section({
   id: 'acquire',
-  eyebrow: 'Acquisition',
-  title: 'The engine underneath is <em>Zeus</em>',
+  title: 'Acquisition runs on the Zeus engine',
   body: `<div class="split">${figure(acquirePlate(), 'II', 'The windlass raises ore from the shaft. Ogun embeds the zeus-core engine for the same job.')}<div data-reveal data-delay="120"><p class="lede">Ogun embeds zeus-core, the Rust engine behind the Zeus app: segmented transfers, a crash-safe journal, validator checks before every resume, SHA-256 and BLAKE3 verification, and polite defaults.</p><p class="muted">Sources behind your browser login are the one exception: Ogun never holds cookies. It asks the Zeus daemon, as a service client, to acquire them, and imports the result with its provenance.</p><a class="btn btn--ghost" href="/architecture/">See the architecture ${icon('arrow', 'icon icon--arrow')}</a></div></div>`,
 })}
 
 ${section({
   id: 'lineage',
   cls: 'section--band',
-  eyebrow: 'Lineage',
-  title: 'Which model wrote <em>this row</em>?',
-  lede: 'Every artifact is content-addressed and knows its parents. Hover a node to trace where it came from and what it became.',
+  title: 'Lineage for every artifact',
+  lede: 'Every artifact is content-addressed and records its parents, the operator that produced it and the run it belongs to.',
   body: `${figure(lineagePlate(), 'IV', 'Two PDFs, one scanned, become one versioned corpus. Every edge names the operator that made it.', 'figure--wide')}
 <div class="split split--top section-split"><div class="code-block" data-reveal><button class="copy-btn" type="button" data-copy="prov">${icon('copy')}<span class="copy-label">copy</span></button><pre id="prov">${hl('json', PROV)}</pre></div><div data-reveal data-delay="120"><h3>Questions it answers</h3><ul class="checklist"><li>${icon('check')}<span>Which raw file, site and run produced this record?</span></li><li>${icon('check')}<span>Which model and prompt hash generated this field?</span></li><li>${icon('check')}<span>What was fetched with authenticated access?</span></li><li>${icon('check')}<span>Has the upstream source changed since?</span></li><li>${icon('check')}<span>Can dataset version v18 be reproduced, exactly?</span></li></ul><a class="btn btn--ghost" href="/lineage/">Artifacts and lineage ${icon('arrow', 'icon icon--arrow')}</a></div></div>`,
 })}
 
 ${section({
   id: 'bench',
-  eyebrow: 'Benchmarks',
-  title: 'Measure the agent, <em>not the harness</em>',
-  lede: 'A benchmark is a controlled set of runs: workflow, environment, agent, policy, inputs, evaluator. Ogun reads existing task formats and adds what leaderboards leave out.',
-  body: `${table({ caption: 'Planned first matrix (no results yet)', head: ['Benchmark', 'Claude Code', 'Codex', 'OpenCode', 'Your agent'], rows: [['Spider 2.0-DBT', 'planned', 'planned', 'planned', 'planned'], ['ADE-bench', 'planned', 'planned', 'planned', 'planned'], ['Terminal-Bench 2.0 (Harbor)', 'planned', 'planned', 'planned', 'planned'], ['Your private tasks', 'planned', 'planned', 'planned', 'planned']].map((r) => r.map((c, i) => (i ? `<span class="mono">${c}</span>` : c))), cls: 'matrix' })}
+  title: 'Benchmark runs',
+  lede: 'A benchmark is a controlled set of runs, each with a workflow, environment, agent, policy, inputs and evaluator. Ogun reads existing task formats and records cost, efficiency and recovery alongside the official score.',
+  body: `<p class="wrap--narrow" data-reveal>The first adapters are planned for Spider 2.0-DBT, ADE-bench and Terminal-Bench 2.0 tasks in the Harbor format, with agents such as Claude Code, Codex and OpenCode behind one adapter interface. There are no results yet; the benchmark profile is phase O3.</p>
 <div class="metrics" data-reveal>${METRICS.slice(0, 3)
     .concat(METRICS.slice(5, 6))
     .map(([n, f, d]) => `<div class="metric"><h3>${n}</h3><p class="formula">${f}</p><p>${d}</p></div>`)
     .join('')}</div><p class="center"><a class="btn btn--ghost" href="/benchmarks/">The benchmark profile ${icon('arrow', 'icon icon--arrow')}</a></p>`,
 })}
 
-${section({ id: 'principles', cls: 'section--band', eyebrow: 'Principles', title: 'Six <em>decisions</em>, written down', lede: 'Each is an architecture decision record, so it can be read, challenged and held to.', body: cards(PRINCIPLES) })}
+${section({ id: 'principles', cls: 'section--band', title: 'Design principles', lede: 'Each traces to an architecture decision record. ADR 0002 is accepted; ADRs 0003 to 0005 are proposed and may change.', body: cards(PRINCIPLES) })}
 
 ${section({
   id: 'integrations',
-  eyebrow: 'Integrate, do not replace',
-  title: 'Your tools, as <em>operators</em>',
+  title: 'Existing tools run as operators',
   body: `<div class="wrap--narrow" data-reveal><p class="lede">Ogun orchestrates the tools you already trust, in sandboxed processes with pinned versions, and plugs into the orchestrators you already run.</p><ul class="chips">${['DuckDB', 'dbt', 'Polars', 'Python', 'SQL', 'ffmpeg', 'pandoc', 'Tesseract', 'PaddleOCR', 'yt-dlp', 'rclone', 'git', 'Hugging Face', 'S3', 'Parquet', 'OpenLineage', 'MCP', 'A2A', 'Prefect', 'Dagster', 'Airflow', 'Kestra', 'Temporal', 'GitHub Actions'].map((t) => `<li>${t}</li>`).join('')}</ul><p class="small muted">Names belong to their owners and indicate planned compatibility, not endorsement.</p></div>`,
 })}
 
-${section({ id: 'faq', cls: 'section--band', eyebrow: 'Questions', title: 'Asked <em>first</em>', body: `<div class="wrap--narrow">${faqList(FAQ.filter((q) => ['what', 'status', 'airflow', 'reproducible', 'bench'].includes(q.id)))}<p class="center"><a class="btn btn--ghost" href="/faq/">All questions ${icon('arrow', 'icon icon--arrow')}</a></p></div>` })}
+${section({ id: 'faq', cls: 'section--band', title: 'Common questions', body: `<div class="wrap--narrow">${faqList(FAQ.filter((q) => ['what', 'status', 'airflow', 'reproducible', 'bench'].includes(q.id)))}<p class="center"><a class="btn btn--ghost" href="/faq/">All questions ${icon('arrow', 'icon icon--arrow')}</a></p></div>` })}
 
 ${ctaForge(cfg)}
 `

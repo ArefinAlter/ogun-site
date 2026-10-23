@@ -96,12 +96,12 @@ export const acquirePlate = () =>
 
 // ---------------------------------------------------------------- Fig. III: the lifecycle
 export const STAGES = [
-  ['acquire', 'Acquire', 'bucket', 'Fetch from HTTP, APIs, S3, Hugging Face, Git or a browser session (through Zeus). Resumable, segmented, polite.'],
+  ['acquire', 'Acquire', 'bucket', 'Fetch from HTTP, APIs, S3, Hugging Face, Git or a browser session (through Zeus). Transfers are segmented, resumable and rate-limited per host.'],
   ['materialize', 'Materialize', 'ingot', 'Land bytes as immutable, content-addressed artifacts with an id, a hash and a source.'],
-  ['verify', 'Verify', 'balance', 'SHA-256 and BLAKE3, publisher checksums, schemas and data-quality checks. Failures stop the line.'],
+  ['verify', 'Verify', 'balance', 'SHA-256 and BLAKE3, publisher checksums, schemas and data-quality checks. A failed check stops the run.'],
   ['transform', 'Transform', 'crucible', 'Unzip, convert, parse, OCR, SQL, Python: operators run sandboxed, pinned by version and content hash.'],
   ['organize', 'Organize', 'drawers', 'Partition by date or key, deduplicate by hash, name by template, version as assets.'],
-  ['extract', 'Extract', 'press', 'Pull structure out: tables, metadata, entities. Optionally with LLM operators bound to a schema.'],
+  ['extract', 'Extract', 'press', 'Extract tables, metadata and entities, optionally with LLM operators bound to a schema.'],
   ['curate', 'Curate', 'sieve', 'Filter, deduplicate near-duplicates, classify and review. Approvals gate anything costly or irreversible.'],
   ['publish', 'Publish', 'seal', 'Write Parquet, DuckDB, files or object storage, with a manifest and OpenLineage events.'],
 ]
@@ -112,7 +112,7 @@ export function pipelinePlate() {
   const path = smoothOpen(xs.map((x, i) => [x, ys[i]]), 0.9)
   const stations = STAGES.map(
     ([id, name, ic], i) =>
-      `<g class="station" transform="translate(${n(xs[i])} ${ys[i]})" data-stage="${id}" tabindex="0" role="button" aria-label="${name}"><circle class="station-ring" r="40"/><circle class="station-face" r="33"/><g transform="translate(-14 -14) scale(1.17)" class="station-icon" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">${ICONS[ic]}</g><text y="-54" class="station-num" text-anchor="middle">${['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'][i]}</text><text y="68" class="station-name" text-anchor="middle">${name}</text></g>`,
+      `<g class="station" transform="translate(${n(xs[i])} ${ys[i]})" data-stage="${id}" tabindex="0" role="button" aria-label="${name}"><circle class="station-ring" r="40"/><circle class="station-face" r="33"/><g transform="translate(-14 -14) scale(1.17)" class="station-icon" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">${ICONS[ic]}</g><text y="68" class="station-name" text-anchor="middle">${name}</text></g>`,
   ).join('')
   return svg(
     `0 0 ${W} 250`,

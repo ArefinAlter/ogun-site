@@ -55,7 +55,7 @@ Ogun is the developer product in a two-product family. Its sibling, Zeus, has it
 | Documentary: footnotes, figure numbers, decision records | Chatty |
 | Respectful of prior art: names it, credits it | Dismissive of other tools |
 
-**Rules.** Lead with the answer (the TL;DR box). Every claim maps to a decision record or a spec; planned work says "planned" and names its phase (O0–O4). Use the real vocabulary: IR, DAG, partition, backfill, lineage, CAS, JCS, determinism class. Define terms in the glossary rather than softening them. Cite standards and benchmarks by their proper names (Spider 2.0-DBT, ADE-bench, Terminal-Bench 2.0, Harbor, OpenLineage, W3C PROV, Croissant). No emoji, no exclamation marks.
+**Rules.** Lead with the answer (the summary box). Every claim maps to a decision record or a spec; planned work says "planned" and names its phase (O0–O4). Use the real vocabulary: IR, DAG, partition, backfill, lineage, CAS, JCS, determinism class. Define terms in the glossary rather than softening them. Cite standards and benchmarks by their proper names (Spider 2.0-DBT, ADE-bench, Terminal-Bench 2.0, Harbor, OpenLineage, W3C PROV, Croissant). No emoji, no exclamation marks. Avoid slogan constructions ("X is a pause, not a restart", "Every state is honest"), stacked three-beat sentences and copy that tells the visitor to hover or click.
 
 **Tone by context.**
 
@@ -146,7 +146,7 @@ Two themes from one token set; plates (figures) are always vellum. Ratios verifi
 | Code, data, labels, keys | IBM Plex Mono 400/500 | Labels uppercase with 0.12–0.14em tracking |
 | Figure captions | EB Garamond italic | "FIG. II" key in Plex Mono |
 
-The section sign (§) prefixes eyebrows and legal section numbers; it is Ogun's typographic signature. Garamond is a Renaissance roman (1540s), contemporary with Agricola; Plex comes from engineering documentation. Fonts are self-hosted under the SIL Open Font License.
+Headings are plain sentences: no kicker labels above them, no italic punchline split off the end, no § or numeral ornaments. Italic display type is kept for the home-page headline. Garamond is a Renaissance roman (1540s), contemporary with Agricola; Plex comes from engineering documentation. Fonts are self-hosted under the SIL Open Font License.
 
 ---
 
@@ -198,9 +198,7 @@ The section sign (§) prefixes eyebrows and legal section numbers; it is Ogun's 
 10. The session-bridge edge in the architecture figure flows.
 11. Benchmark matrix: the column under the pointer is highlighted.
 12. Cards: an ember glow follows the pointer; icons tilt.
-13. The navigation shows a § before the hovered or current item.
-14. The Latin motto cross-fades to its translation.
-15. Reading-progress hairline in ember.
+13. Reading-progress hairline in ember.
 
 **Reduced motion.** All loops stop, construction lines appear drawn, sparks never fire, demos jump to their end states.
 

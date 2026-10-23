@@ -23,7 +23,7 @@ function legalPage(cfg, { slug, title, h1, nav, description, lede, sections, asi
     crumbs: [{ name: 'Legal', path: '/legal/' }, { name: nav, path }],
     ogType: 'article',
     article: { type: 'Article', headline: h1.replace(/<[^>]+>/g, '') },
-    body: () => `${pageHead({ crumbs: [{ name: 'Legal', path: '/legal/' }, { name: nav, path }], eyebrow: 'Legal', title: h1, lede, meta: meta(cfg) })}${docPage({ sections, aside })}`,
+    body: () => `${pageHead({ crumbs: [{ name: 'Legal', path: '/legal/' }, { name: nav, path }], title: h1, lede, meta: meta(cfg) })}${docPage({ sections, aside })}`,
   }
 }
 
@@ -38,7 +38,7 @@ export function legalPages(cfg, product) {
     slug: 'privacy',
     nav: 'Privacy policy',
     title: `Privacy policy: ${cfg.name} by Verne`,
-    h1: 'Privacy <em>policy</em>',
+    h1: 'Privacy policy',
     description: `How ${cfg.name} and this website handle personal data: no cookies, no analytics, no telemetry. What we process when you email us, and your rights.`,
     lede: `The short version: this website uses no cookies and no analytics, ${P} sends no telemetry, and we only process personal data when you write to us.`,
     sections: [
@@ -64,7 +64,7 @@ export function legalPages(cfg, product) {
     slug: 'cookies',
     nav: 'Cookie notice',
     title: `Cookie notice: ${cfg.name} uses no cookies`,
-    h1: 'Cookie <em>notice</em>',
+    h1: 'Cookie notice',
     description: `This website sets no cookies and uses no local storage, analytics or tracking. That is why there is no cookie banner. Here is exactly what we mean.`,
     lede: 'There is no cookie banner on this site because there are no cookies to ask about.',
     sections: [
@@ -80,7 +80,7 @@ export function legalPages(cfg, product) {
     slug: 'terms',
     nav: 'Terms of use',
     title: `Terms of use: ${cfg.name} website and software`,
-    h1: 'Terms of <em>use</em>',
+    h1: 'Terms of use',
     description: `The terms for using the ${cfg.name} website, how the Apache-2.0 license governs the software, the pre-alpha disclaimer, liability and governing law.`,
     lede: `These terms govern this website. The ${P} software itself is licensed to you under Apache-2.0, and nothing here takes away the rights that license gives you.`,
     sections: [
@@ -104,7 +104,7 @@ export function legalPages(cfg, product) {
     slug: 'acceptable-use',
     nav: 'Acceptable use',
     title: `Acceptable use policy: ${cfg.name} by Verne`,
-    h1: 'Acceptable <em>use</em>',
+    h1: 'Acceptable use',
     description: `How ${cfg.name} may and may not be used: lawful downloads only, no circumventing access controls, captchas or copy protection, respect for websites and people.`,
     lede: `${P} is built to be a good citizen of the web. This policy says how we expect it to be used and what we will not support.`,
     sections: [
@@ -121,7 +121,7 @@ export function legalPages(cfg, product) {
     slug: 'trademark',
     nav: 'Trademark policy',
     title: `Trademark policy: using the ${cfg.name} name and logo`,
-    h1: 'Trademark <em>policy</em>',
+    h1: 'Trademark policy',
     description: `How you may refer to ${cfg.name} and use its logo, what forks must do, and what needs our permission. The open-source license does not cover our marks.`,
     lede: `${P} is open source; its name and logo are not. This policy keeps the name meaningful, so people know what they are getting.`,
     sections: [
@@ -139,7 +139,7 @@ export function legalPages(cfg, product) {
     slug: 'licenses',
     nav: 'Licenses',
     title: `Licenses and third-party notices: ${cfg.name}`,
-    h1: 'Licenses and <em>notices</em>',
+    h1: 'Licenses and notices',
     description: `The open-source licenses behind ${cfg.name} and this website: Apache-2.0 for the software, the SIL Open Font License for the typefaces, and our notices.`,
     lede: `What you may do with ${P}, its website, and the fonts and artwork used here.`,
     sections: [
@@ -155,7 +155,7 @@ export function legalPages(cfg, product) {
     slug: 'security',
     nav: 'Security policy',
     title: `Security policy and vulnerability disclosure: ${cfg.name}`,
-    h1: 'Security and <em>disclosure</em>',
+    h1: 'Security and disclosure',
     description: `How to report a security vulnerability in ${cfg.name} or this website, what is in scope, how we respond, and our safe-harbour commitment to researchers.`,
     lede: `${P} handles downloads${product.hasExtension ? ' and, with consent, website sessions' : ' and data-source credentials'}. If you find a weakness, we want to hear about it first.`,
     aside: `<p class="small muted"><a href="/.well-known/security.txt">security.txt</a></p>`,
@@ -173,7 +173,7 @@ export function legalPages(cfg, product) {
     slug: 'accessibility',
     nav: 'Accessibility',
     title: `Accessibility statement: ${cfg.name} website`,
-    h1: 'Accessibility <em>statement</em>',
+    h1: 'Accessibility statement',
     description: `Our accessibility commitment for the ${cfg.name} website: WCAG 2.2 AA as the target, what we have done, known limitations and how to tell us about a barrier.`,
     lede: 'Everyone should be able to read about, evaluate and use our software. Here is where we stand.',
     sections: [
@@ -189,7 +189,7 @@ export function legalPages(cfg, product) {
     slug: 'company',
     nav: 'Company details',
     title: `Company details: ${cfg.name} is a product of Verne Systems`,
-    h1: 'Company <em>details</em>',
+    h1: 'Company details',
     description: `${cfg.name} is published by Verne Systems, Dhaka, Bangladesh. Legal entity, registered address, registration identifiers and contact details.`,
     lede: `${P} is a product of ${esc(o.legalName)}. This page lists the legal entity behind it.`,
     sections: [
@@ -213,7 +213,7 @@ export function legalPages(cfg, product) {
     title: `Legal: privacy, terms and policies for ${cfg.name}`,
     description: `All legal documents for ${cfg.name} and its website: privacy, terms of use, acceptable use, cookies, trademarks, licenses, security, accessibility.`,
     crumbs: [{ name: 'Legal', path: '/legal/' }],
-    body: () => `${pageHead({ crumbs: [{ name: 'Legal', path: '/legal/' }], eyebrow: 'Legal', title: 'Policies, in <em>plain words</em>', lede: `Every document that governs ${P} and this website. We try to write them so they can actually be read.` })}<div class="wrap section--tight">${note(`<p>${P} is free, open-source software that runs on your computer. Most of what these documents say comes down to three things: we collect almost nothing, you stay in control, and please use ${P} lawfully.</p>`, 'scroll')}<div class="cards">${all.map((p) => `<article class="card" data-reveal><h2 class="h3-like">${p.nav}</h2><p>${p.description}</p><a class="card-link" href="${p.path}">Read</a></article>`).join('')}</div></div>`,
+    body: () => `${pageHead({ crumbs: [{ name: 'Legal', path: '/legal/' }], title: 'Legal', lede: `Every document that governs ${P} and this website. We try to write them so they can actually be read.` })}<div class="wrap section--tight">${note(`<p>${P} is free, open-source software that runs on your computer. Most of what these documents say comes down to three things: we collect almost nothing, you stay in control, and please use ${P} lawfully.</p>`, 'scroll')}<div class="cards">${all.map((p) => `<article class="card" data-reveal><h2 class="h3-like">${p.nav}</h2><p>${p.description}</p><a class="card-link" href="${p.path}">Read</a></article>`).join('')}</div></div>`,
   }
   return [index, ...all]
 }
