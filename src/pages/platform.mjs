@@ -3,7 +3,7 @@ import { METRICS, OPERATORS, RUN_STATES, TRIGGERS } from '../content.mjs'
 import { SAMPLES } from './index.mjs'
 import { answer, cards, checklist, codeTabs, ctaForge, figure, hl, note, pageHead, section, table } from '../parts.mjs'
 
-const UPDATED = '2026-10-06'
+const UPDATED = '2026-10-23'
 const head = (path, name, title, lede) => pageHead({ crumbs: [{ name, path }], title, lede })
 
 // ---------------------------------------------------------------- architecture

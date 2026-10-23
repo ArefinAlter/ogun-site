@@ -2,7 +2,7 @@ import { brokenGear, icon, mark } from '../art/index.mjs'
 import { COMPARE, FAQ, GLOSSARY, NOT_BUILT, ROADMAP } from '../content.mjs'
 import { answer, cards, checklist, ctaForge, faqList, note, pageHead, section, statusNote, table } from '../parts.mjs'
 
-const UPDATED = '2026-10-06'
+const UPDATED = '2026-10-23'
 const groups = [...new Set(FAQ.map((q) => q.group))]
 const gid = (g) => 'g-' + g.toLowerCase().replace(/\W+/g, '-')
 
@@ -64,7 +64,7 @@ ${section({ id: 'together', cls: 'section--band', title: 'Using Ogun with other 
   { icon: 'database', title: 'Before a warehouse', text: 'Ogun acquires and verifies; DuckDB or dbt operators shape; Parquet and lineage events go wherever your warehouse loads from.' },
   { icon: 'agent', title: 'Beside your agents', text: 'Your coding agent writes an extractor; Ogun runs it over 100 000 files; a QA agent reviews failures; Ogun retries only the failed partitions.' },
 ]) })}
-${section({ id: 'zeus', title: 'Ogun and Zeus', body: `<div class="split"><div data-reveal><p class="lede">Zeus is Verne’s consumer download and file manager for AI assistants: your agent asks, Zeus fetches, you decide. Ogun is for engineers building datasets, pipelines and benchmarks. Both run on zeus-core.</p><a class="btn btn--ghost" href="${ctx.cfg.sibling.url}">Visit Zeus ${icon('arrow', 'icon icon--arrow')}</a></div><div data-reveal data-delay="120">${checklist(['Need your AI assistant to download a file? Zeus.', 'Need a scheduled, partitioned, verified dataset? Ogun.', 'Need a source behind your browser login in a pipeline? Ogun, through Zeus.'])}</div></div>` })}
+${section({ id: 'zeus', title: 'Ogun and Zeus', body: `<div class="split"><div data-reveal><p class="lede">Zeus is Verne’s session-aware download and file layer for AI agents: your agent asks, Zeus fetches, you decide. Ogun is for engineers building datasets, pipelines and benchmarks. Both run on zeus-core.</p><a class="btn btn--ghost" href="${ctx.cfg.sibling.url}">Visit Zeus ${icon('arrow', 'icon icon--arrow')}</a></div><div data-reveal data-delay="120">${checklist(['Need your AI assistant to download a file? Zeus.', 'Need a scheduled, partitioned, verified dataset? Ogun.', 'Need a source behind your browser login in a pipeline? Ogun, through Zeus.'])}</div></div>` })}
 ${ctaForge(ctx.cfg)}`,
 }
 
@@ -80,7 +80,7 @@ const roadmap = {
   description: 'Ogun’s phases from contracts (now) to the runtime MVP, data and model operators, the benchmark profile and Studio, with each phase’s exit test.',
   crumbs: [{ name: 'Roadmap', path: '/roadmap/' }],
   body: (ctx) => `
-${pageHead({ crumbs: [{ name: 'Roadmap', path: '/roadmap/' }], title: 'Roadmap', lede: 'Targets, not promises. The runtime starts when the shared engine passes its crash-and-resume test; each phase ends with an exit test.' })}
+${pageHead({ crumbs: [{ name: 'Roadmap', path: '/roadmap/' }], title: 'Roadmap', lede: 'Targets, not promises. The runtime starts when the shared engine’s crash-and-resume testing is complete, and each phase ends with an exit test.' })}
 ${section({ id: 'phases', body: `<div class="wrap--narrow"><ol class="timeline">${ROADMAP.map((r) => `<li class="${r.state}" data-reveal><span class="when">${r.when}</span><h3>${r.title}</h3><p>${r.text}</p></li>`).join('')}</ol></div>` })}
 ${section({ id: 'not', cls: 'section--band', title: 'Out of scope', body: `<div class="wrap--narrow" data-reveal>${checklist(NOT_BUILT, true)}</div>` })}
 ${ctaForge(ctx.cfg)}`,
