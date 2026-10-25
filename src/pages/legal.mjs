@@ -3,7 +3,10 @@ import { legalPages } from '../legal.mjs'
 
 export default legalPages(cfg, {
   hasExtension: false,
-  softwarePrivacy: `<p>Ogun runs on your machine. It sends nothing to Verne: no telemetry, no analytics, no crash reports, no account.</p>
+  hostedTitle: 'The hosted pre-alpha hub',
+  hostedPrivacy: `<p>Verne runs a pre-alpha hub at ${'https://ogun.103.191.50.32.sslip.io'} on its own server so you can try Ogun Studio without installing anything. It is a shared sample: one sample account whose password is shown on its sign-in page, sample data, and a reset every night.</p>
+<ul><li><strong>What it keeps:</strong> what you store there (workflows, runs and their outputs) until the nightly reset, visible to every other visitor; agent threads and settings you change, per browser, for 24 hours. Do not enter anything private or personal.</li><li><strong>Cookies:</strong> a sign-in session cookie and an anonymous visitor cookie, both needed for the service to work, no tracking.</li><li><strong>Logs:</strong> the web server keeps request logs (IP address, time, address, user agent) for up to 14 days to keep the service working and secure.</li><li><strong>No model:</strong> the agent on the hub calls no AI model; nothing you type is sent to a third party.</li></ul>`,
+  softwarePrivacy: `<p>Ogun runs on your machine. It sends nothing to Verne: no telemetry, no analytics, no crash reports, no account. The one exception is your choice of hub: the 0.0.1a desktop Studio opens on the hosted pre-alpha hub described below, and switches to your own daemon in Settings, Environments.</p>
 <h3>What Ogun keeps on your machine</h3>
 <ul><li>Workflows, their versions and hashes; run records, events, checkpoints and the cost ledger.</li><li>The content-addressed artifact store and lineage records, including source addresses (with secret parameters redacted in logs and exports).</li><li>An audit log of approvals and policy changes.</li><li>Credentials you configure for data sources and model providers, held in your operating system’s secret store or zeroized memory, never logged or written to run records.</li></ul>
 <p>Datasets you collect may contain personal data published by others. You are responsible for handling it lawfully; Ogun’s lineage and deletion tools are there to help.</p>

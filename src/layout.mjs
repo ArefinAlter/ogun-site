@@ -25,7 +25,7 @@ ${ctx.head}
       <ul class="nav-menu" id="nav-menu">${nav}</ul>
       <button class="icon-btn theme-toggle" type="button" aria-label="Switch theme">${icon('moon', 'icon icon--moon')}${icon('sun', 'icon icon--sun')}</button>
       <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">${icon('menu')}</button>
-      <a class="btn btn--ember btn--small btn--header" href="/get-started/">Get started</a>
+      <a class="btn btn--ember btn--small btn--header" href="/get-started/">Try the pre-alpha</a>
     </nav>
   </div>
 </header>

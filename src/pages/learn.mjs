@@ -1,8 +1,9 @@
 import { brokenGear, icon, mark } from '../art/index.mjs'
 import { COMPARE, FAQ, GLOSSARY, NOT_BUILT, ROADMAP } from '../content.mjs'
 import { answer, cards, checklist, ctaForge, faqList, note, pageHead, section, statusNote, table } from '../parts.mjs'
+import { RELEASE, fmtSize } from '../release.mjs'
 
-const UPDATED = '2026-10-23'
+const UPDATED = '2026-10-25'
 const groups = [...new Set(FAQ.map((q) => q.group))]
 const gid = (g) => 'g-' + g.toLowerCase().replace(/\W+/g, '-')
 
@@ -94,21 +95,28 @@ const getStarted = {
   priority: 0.8,
   changefreq: 'weekly',
   updated: UPDATED,
-  title: 'Get started with Ogun: early access and the design documents',
-  description: 'Ogun is pre-alpha with no release yet. How to get early access, what to read first, what you will need, and how to give feedback on the specifications.',
+  title: 'Get started with Ogun: try the pre-alpha',
+  description: 'Try Ogun 0.0.1a, a pre-alpha: the hosted hub with sample data, or Ogun Studio, ogun and ogund for Windows and Linux. File names, sizes and SHA-256 checksums.',
   crumbs: [{ name: 'Get started', path: '/get-started/' }],
   body: (ctx) => `
-${pageHead({ crumbs: [{ name: 'Get started', path: '/get-started/' }], title: 'Get started', lede: 'There is nothing to install yet: the runtime runs in development and has no release. You can read the design and send feedback while the specifications are a first draft.' })}
+${pageHead({ crumbs: [{ name: 'Get started', path: '/get-started/' }], title: 'Try the pre-alpha', lede: `Ogun ${RELEASE.version} is a pre-alpha: the runtime works end to end, much of the product is still being built, and things will change. Try it in the browser on sample data, or download it for Windows or Linux.` })}
 <div class="wrap wrap--narrow">${statusNote(ctx.cfg)}</div>
-${section({ id: 'access', title: 'Early access', body: `<div class="split"><div data-reveal><p class="lede">Tell us what you build, which sources you fight with and which benchmarks you run. We will write when a build can run your first workflow.</p><div class="btn-row"><a class="btn btn--ember" href="mailto:${ctx.cfg.contacts.general}?subject=Ogun%20early%20access&amp;body=I%20build%3A%0AMy%20sources%3A%0ABenchmarks%20I%20care%20about%3A%0A">${icon('mail')} Email for early access</a><a class="btn btn--ghost" href="${ctx.cfg.org.social.linkedin}" rel="me">Follow Verne</a></div></div><div class="center" data-reveal data-delay="120"><span class="lost-gear">${mark('gs')}</span></div></div>` })}
+${section({ id: 'try', title: 'Try it in the browser', body: `<div class="split"><div data-reveal><p class="lede">The hosted hub runs Ogun Studio on the real daemon with sample workflows: runs, partitions, backfills, approvals, artifacts and lineage, and an agent that reads the daemon for you. Its sign-in page shows a shared sample account.</p><div class="btn-row"><a class="btn btn--ember" href="${RELEASE.hosted}/" rel="noopener">Open the hosted hub ${icon('arrow', 'icon icon--arrow')}</a></div><p class="small muted">Shared by every visitor and reset every night at 03:00 UTC, so do not enter anything private. The agent's replies are prepared (no model is called) while its tool calls read the real daemon. Code operators do not run there, and approvals are decided only at the host's terminal.</p></div><div class="center" data-reveal data-delay="120"><span class="lost-gear">${mark('gs')}</span></div></div>` })}
+${section({ id: 'download', cls: 'section--band', title: 'Download', lede: `${RELEASE.title}, released ${RELEASE.date}. The desktop Studio opens on the hosted hub; Settings, Environments switches it to ogund on your own machine.`, body: `${RELEASE.assets.length ? table({ caption: `Files of ${RELEASE.tag}`, head: ['File', 'For', 'Size', 'SHA-256'], rows: RELEASE.assets.map((f) => [`<a href="${RELEASE.base}${f.name}">${f.name}</a>`, f.for, fmtSize(f.size), `<code class="sha">${f.sha256}</code>`]) }) : ''}<div class="wrap--narrow" data-reveal>${checklist([
+  `The binaries are not signed. Windows SmartScreen warns about the installer: choose More info, then Run anyway. Check the SHA-256 first (<code>certutil -hashfile file SHA256</code> on Windows, <code>sha256sum file</code> on Linux) against the table or <a href="${RELEASE.base}SHA256SUMS">SHA256SUMS</a>.`,
+  'Windows x64: the installer, or the portable zip with a single ogun-studio.exe. Studio needs the WebView2 runtime, which Windows 10 and 11 have.',
+  'Linux x64: the AppImage (make it executable and run it) or the .deb for Debian and Ubuntu 22.04 or later.',
+  'ogun and ogund: the command line and the daemon, in the zip and the tar.gz. Start ogund, then ogun daemon status. On Windows, code operators need allow_unsandboxed and terminal approvals are not available yet.',
+  `Release notes, known issues and the source: <a href="${RELEASE.page}">the release page on GitHub</a>.`,
+])}</div>` })}
 ${section({ id: 'read', cls: 'section--band', title: 'What to read first', body: cards([
   { icon: 'book', title: 'Architecture', text: 'The parts, the trust boundaries and the decision records.', link: ['Read', '/architecture/'] },
   { icon: 'ledger', title: 'Workflows', text: 'The IR, authoring, the run state machine, triggers and backfills.', link: ['Read', '/workflows/'] },
   { icon: 'cube', title: 'Lineage', text: 'Artifacts, the content-addressed store and exports.', link: ['Read', '/lineage/'] },
   { icon: 'matrix', title: 'Benchmarks', text: 'The profile, isolation, trajectories and metrics.', link: ['Read', '/benchmarks/'] },
 ]) })}
-${section({ id: 'need', title: 'Requirements for the first release', body: `<div class="wrap--narrow" data-reveal>${checklist(['Windows, macOS or Linux', 'The tools your operators wrap (DuckDB, dbt, Python and so on), or an environment image that provides them', 'Docker or WSL 2 for the benchmark profile', 'Optionally, the Zeus app, for sources behind a browser login', 'Optionally, a model provider of your choice, for LLM operators'])}</div>` })}
-${ctaForge(ctx.cfg, { title: 'Send feedback on the design', primary: ['Read the architecture', '/architecture/'], secondary: ['See the roadmap', '/roadmap/'] })}`,
+${section({ id: 'need', title: 'What the full product will need', body: `<div class="wrap--narrow" data-reveal>${checklist(['Windows, macOS or Linux', 'The tools your operators wrap (DuckDB, dbt, Python and so on), or an environment image that provides them', 'Docker or WSL 2 for the benchmark profile', 'Optionally, the Zeus app, for sources behind a browser login', 'Optionally, a model provider of your choice, for LLM operators'])}</div>` })}
+${ctaForge(ctx.cfg, { title: 'Tell us what broke', text: 'This is a pre-alpha: feedback now changes what gets built next. Write to info@vernesystems.com, or open an issue on GitHub.', primary: ['Open the hosted hub', RELEASE.hosted + '/'], secondary: ['See the roadmap', '/roadmap/'] })}`,
 }
 
 const about = {

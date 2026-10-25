@@ -71,7 +71,7 @@ ${section({
   title: 'Technology',
   body: `<div class="split split--top"><div data-reveal>${checklist(['Rust, edition 2024; unsafe code only in isolated, reviewed platform modules', 'tokio and rustls; HTTP/1.1 and HTTP/2', 'redb for the transfer journal', 'BLAKE3 and SHA-256; JCS (RFC 8785) for canonical hashing', 'JSON-RPC 2.0 over a local socket or named pipe as the single daemon contract', 'MCP via rmcp, targeting the stateless 2026-07-28 revision'])}</div><div data-reveal data-delay="120">${note('<p>Specifications come before code. Ogun’s contracts (O-00 to O-08) build on the Zeus specifications for conventions, the daemon API, approvals and the artifact store, so both products share one vocabulary.</p>', 'book')}</div></div>`,
 })}
-${ctaForge(ctx.cfg, { title: 'Disagree with a decision?', text: 'Write to info@vernesystems.com. The records are accepted, and the specifications are a first draft that feedback can still change.', primary: ['Ask for early access', '/get-started/'] })}`,
+${ctaForge(ctx.cfg, { title: 'Disagree with a decision?', text: 'Write to info@vernesystems.com. The records are accepted, and the specifications are a first draft that feedback can still change.', primary: ['Try the pre-alpha', '/get-started/'] })}`,
 }
 
 // ---------------------------------------------------------------- workflows
@@ -255,7 +255,7 @@ ${section({
   title: 'Prior art',
   body: table({ head: ['Project', 'What it is', 'How Ogun relates'], rows: [['Harbor', 'The task format and harness Terminal-Bench 2.0 ships in', 'Read Harbor tasks through an adapter'], ['ADE-bench harness', 'dbt Labs’ runner for analytics and data-engineering tasks', 'Run its tasks; use its graders unmodified'], ['Spider 2.0 framework', 'The agent framework published with Spider 2.0', 'Run Spider2-DBT tasks with the official evaluation'], ['Inspect', 'A general framework for evaluating language models', 'Complementary; export trajectories and scores']] }),
 })}
-${ctaForge(ctx.cfg, { title: 'Tell us what to support', text: 'If you build or evaluate coding and data agents, tell us which benchmarks and agents you use. That decides which adapters are built first.', primary: ['Ask for early access', '/get-started/'] })}`,
+${ctaForge(ctx.cfg, { title: 'Tell us what to support', text: 'If you build or evaluate coding and data agents, tell us which benchmarks and agents you use. That decides which adapters are built first.', primary: ['Try the pre-alpha', '/get-started/'] })}`,
 }
 
 // ---------------------------------------------------------------- security model

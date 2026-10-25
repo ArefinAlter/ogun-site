@@ -125,9 +125,9 @@ export default {
     <div>
       <h1 id="hero-title"><span class="line">Forge raw sources into</span><span class="line line--2"><em>reproducible datasets.</em></span></h1>
       <p class="lede">Ogun is a local-first runtime for acquiring and transforming data on a schedule, and for running agent benchmarks. It is built on the Zeus download engine. Workflows are versioned JSON documents, runs resume after a crash, and every output records where it came from.</p>
-      <div class="btn-row"><a class="btn btn--ember" href="/architecture/">Read the architecture ${icon('arrow', 'icon icon--arrow')}</a><a class="btn btn--ghost" href="/get-started/">Get early access</a></div>
+      <div class="btn-row"><a class="btn btn--ember" href="/get-started/">Try the pre-alpha ${icon('arrow', 'icon icon--arrow')}</a><a class="btn btn--ghost" href="/architecture/">Read the architecture</a></div>
       <div class="cmd" aria-label="Development build command"><span class="prompt" aria-hidden="true">$</span><code id="hero-cmd">ogun backfill noaa-daily --from 2020-01-01 --to 2026-10-22 --yes</code><button class="copy-btn" type="button" data-copy="hero-cmd">${icon('copy')}<span class="copy-label">copy</span></button></div>
-      <p class="small muted">A command of the development build, which runs on Linux. There is no release yet.</p>
+      <p class="small muted">A command of ogun 0.0.1a, a pre-alpha for Windows and Linux. <a href="/get-started/">Download it or try the hosted hub</a>.</p>
     </div>
     <div class="hero-figure" data-spinup>
       <div class="plate-wrap">${heroPlate()}<canvas class="sparks" aria-hidden="true"></canvas><button class="hero-strike-btn" type="button" aria-label="Strike the anvil: plays a short animation"></button></div>

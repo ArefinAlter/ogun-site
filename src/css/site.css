@@ -568,3 +568,6 @@ td .icon { width: 16px; height: 16px; }
   .doc-grid { grid-template-columns: 1fr; }
   .prose a[href^='http']::after { content: ' (' attr(href) ')'; font-size: .85em; }
 }
+
+/* Release checksums on the get-started page */
+code.sha { font-size: .74rem; word-break: break-all; }
