@@ -93,7 +93,22 @@
       "permanent": false
     },
     {
+      "source": "/studio/",
+      "destination": "https://ogun.103.191.50.32.sslip.io/",
+      "permanent": false
+    },
+    {
       "source": "/studio/:path*",
+      "destination": "https://ogun.103.191.50.32.sslip.io/",
+      "permanent": false
+    },
+    {
+      "source": "/demo",
+      "destination": "https://ogun.103.191.50.32.sslip.io/",
+      "permanent": false
+    },
+    {
+      "source": "/demo/",
       "destination": "https://ogun.103.191.50.32.sslip.io/",
       "permanent": false
     },
