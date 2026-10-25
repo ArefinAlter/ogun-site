@@ -2,13 +2,14 @@
 import { esc, join, slug } from '../lib/html.mjs'
 import { ctaGears, icon } from './art/index.mjs'
 
-export function pageHead({ crumbs = [], title, lede, meta }) {
+export function pageHead({ crumbs = [], title, lede, meta, actions }) {
   const trail = [{ name: 'Home', path: '/' }, ...crumbs]
   return `<header class="page-head"><div class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><ol>${trail.map((c, i) => `<li>${i === trail.length - 1 ? `<span aria-current="page">${esc(c.name)}</span>` : `<a href="${c.path}">${esc(c.name)}</a>`}</li>`).join('')}</ol></nav>
 <h1>${title}</h1>
 ${lede ? `<p class="lede">${lede}</p>` : ''}
 ${meta ? `<div class="doc-meta">${meta}</div>` : ''}
+${actions ? `<div class="dl-hero-row">${actions}</div>` : ''}
 </div></header>`
 }
 

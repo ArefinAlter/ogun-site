@@ -331,4 +331,25 @@
   const openFromHash = () => { const el = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1))); if (el && el.tagName === 'DETAILS') el.open = true }
   window.addEventListener('hashchange', openFromHash)
   openFromHash()
+  // ---------------------------------------------------------------- downloads: highlight the visitor's platform (read here, never stored or sent)
+  const dlOS = (() => {
+    const ua = navigator.userAgent || ''
+    const uad = navigator.userAgentData
+    const plat = (uad && uad.platform) || navigator.platform || ''
+    if ((uad && uad.mobile) || /android|iphone|ipad|ipod/i.test(ua)) return ''
+    if (/win/i.test(plat) || /windows nt/i.test(ua)) return 'windows'
+    if (/mac/i.test(plat) || /macintosh|mac os x/i.test(ua)) return 'mac'
+    if (/cros/i.test(ua)) return ''
+    if (/linux/i.test(plat) || /linux|x11/i.test(ua)) return 'linux'
+    return ''
+  })()
+  if (dlOS) {
+    for (const card of $$('.dl-card[data-os="' + dlOS + '"]')) { card.classList.add('is-detected'); const b = $('.dl-badge', card); b && (b.hidden = false) }
+    const names = { windows: 'Windows', linux: 'Linux' }
+    for (const a of $$('[data-dl-hero]')) {
+      const href = a.getAttribute('data-href-' + dlOS)
+      const label = $('[data-dl-hero-label]', a)
+      if (href && label && names[dlOS]) { a.href = href; label.textContent = 'Download for ' + names[dlOS] }
+    }
+  }
 })()
