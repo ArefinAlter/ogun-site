@@ -43,7 +43,7 @@ ${usedRows.join('\n')}
 
 ## Treatment
 
-Treatment parameters are in \`art/build.py\`: the crop (centre and width, with the aspect of the target size), the tone settings per painting (\`TUNE\`: black point, gamma, local contrast; Turner's *Rain, Steam and Speed* and Monet's station are inverted so that the engine becomes the hot iron), the grid (480 x 300 art pixels for the hero, 480 x 96 for the wide bands on pages and between sections, 480 x 140 for the 404 page, 560 x 200 for a panorama behind a call to action, 300 x 170 for the backdrop of a legal page) and the ten-colour ramps (\`RAMPS\`). One art pixel is drawn 2 to 4 CSS pixels wide. The hero is mirrored, so that the glowing iron sits under the Studio slab.
+Treatment parameters are in \`art/build.py\`: the crop (centre and width, with the aspect of the target size), the tone settings per painting (\`TUNE\`: black point, gamma, local contrast; Turner's *Rain, Steam and Speed* and Monet's station are inverted so that the engine becomes the hot iron), the grid (480 x 300 art pixels for the hero, 480 x 96 for the wide bands on pages and between sections, 480 x 140 for the 404 page, 560 x 200 for a panorama behind a call to action) and the ten-colour ramps (\`RAMPS\`). One art pixel is drawn 2 to 4 CSS pixels wide. The hero is mirrored, so that the glowing iron sits under the Studio slab.
 `
 writeFileSync(join(ROOT, 'art', 'SOURCES.md'), md)
 console.log('art/SOURCES.md', md.length, 'bytes')

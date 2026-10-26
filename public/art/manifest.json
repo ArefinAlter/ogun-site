@@ -423,165 +423,149 @@
     ],
     "bytes": 12357
   },
-  "l-hub": {
-    "painting": "courbet-stonebreakers",
-    "size": [
-      300,
-      170
-    ],
-    "bytes": 16146
-  },
-  "l-hub-sepia": {
-    "painting": "courbet-stonebreakers",
-    "size": [
-      300,
-      170
-    ],
-    "bytes": 16146
-  },
-  "l-privacy": {
+  "s-legal-privacy": {
     "painting": "meunier-mining-region",
     "size": [
-      300,
-      170
+      480,
+      96
     ],
-    "bytes": 11163
+    "bytes": 9519
   },
-  "l-privacy-sepia": {
+  "s-legal-privacy-sepia": {
     "painting": "meunier-mining-region",
     "size": [
-      300,
-      170
+      480,
+      96
     ],
-    "bytes": 11163
+    "bytes": 9519
   },
-  "l-terms": {
+  "s-legal-terms": {
     "painting": "velazquez-vulcan",
     "size": [
-      300,
-      170
+      480,
+      96
     ],
-    "bytes": 12598
+    "bytes": 11650
   },
-  "l-terms-sepia": {
+  "s-legal-terms-sepia": {
     "painting": "velazquez-vulcan",
     "size": [
-      300,
-      170
+      480,
+      96
     ],
-    "bytes": 12598
+    "bytes": 11650
   },
-  "l-aup": {
+  "s-legal-aup": {
     "painting": "le-nain-forge",
     "size": [
-      300,
-      170
+      480,
+      96
     ],
-    "bytes": 15244
+    "bytes": 12895
   },
-  "l-aup-sepia": {
+  "s-legal-aup-sepia": {
     "painting": "le-nain-forge",
     "size": [
-      300,
-      170
+      480,
+      96
     ],
-    "bytes": 15244
+    "bytes": 12895
   },
-  "l-cookies": {
+  "s-legal-cookies": {
     "painting": "brueghel-fire",
     "size": [
-      300,
-      170
+      480,
+      96
     ],
-    "bytes": 15853
+    "bytes": 14167
   },
-  "l-cookies-sepia": {
+  "s-legal-cookies-sepia": {
     "painting": "brueghel-fire",
     "size": [
-      300,
-      170
+      480,
+      96
     ],
-    "bytes": 15853
+    "bytes": 14167
   },
-  "l-trademark": {
+  "s-legal-trademark": {
     "painting": "luce-charleroi",
     "size": [
-      300,
-      170
+      480,
+      96
     ],
-    "bytes": 15002
+    "bytes": 13605
   },
-  "l-trademark-sepia": {
+  "s-legal-trademark-sepia": {
     "painting": "luce-charleroi",
     "size": [
-      300,
-      170
+      480,
+      96
     ],
-    "bytes": 15002
+    "bytes": 13605
   },
-  "l-licenses": {
+  "s-legal-licenses": {
     "painting": "wright-air-pump",
     "size": [
-      300,
-      170
+      480,
+      96
     ],
-    "bytes": 10721
+    "bytes": 8647
   },
-  "l-licenses-sepia": {
+  "s-legal-licenses-sepia": {
     "painting": "wright-air-pump",
     "size": [
-      300,
-      170
+      480,
+      96
     ],
-    "bytes": 10721
+    "bytes": 8647
   },
-  "l-security": {
+  "s-legal-security": {
     "painting": "loutherbourg-coalbrookdale",
     "size": [
-      300,
-      170
+      480,
+      96
     ],
-    "bytes": 14084
+    "bytes": 12526
   },
-  "l-security-sepia": {
+  "s-legal-security-sepia": {
     "painting": "loutherbourg-coalbrookdale",
     "size": [
-      300,
-      170
+      480,
+      96
     ],
-    "bytes": 14084
+    "bytes": 12526
   },
-  "l-accessibility": {
+  "s-legal-accessibility": {
     "painting": "turner-burning-parliament",
     "size": [
-      300,
-      170
+      480,
+      96
     ],
-    "bytes": 12061
+    "bytes": 10960
   },
-  "l-accessibility-sepia": {
+  "s-legal-accessibility-sepia": {
     "painting": "turner-burning-parliament",
     "size": [
-      300,
-      170
+      480,
+      96
     ],
-    "bytes": 12061
+    "bytes": 10960
   },
-  "l-company": {
+  "s-legal-company": {
     "painting": "wright-iron-forge",
     "size": [
-      300,
-      170
+      480,
+      96
     ],
-    "bytes": 12328
+    "bytes": 11522
   },
-  "l-company-sepia": {
+  "s-legal-company-sepia": {
     "painting": "wright-iron-forge",
     "size": [
-      300,
-      170
+      480,
+      96
     ],
-    "bytes": 12328
+    "bytes": 11522
   },
   "c-mill": {
     "painting": "menzel-eisenwalzwerk",

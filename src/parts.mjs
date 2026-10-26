@@ -10,9 +10,9 @@ let bandN = 0
 export const begin = (page) => { pagePath = page.path; bandN = 0 }
 
 /**
- * The head of a page: breadcrumbs, title, lede, and a painting from the library (src/art/library.mjs, PAGE_ART) laid out one of four ways:
- * banner (a full-width band above the breadcrumbs), strip (a full-width band under the lede), edge (fading in from the right behind the head)
- * or bleed (behind the whole head). The art carries no caption: it has alt text, and its credit is on /credits/.
+ * The head of a page: breadcrumbs, title, lede, and a painting from the library (src/art/library.mjs, PAGE_ART) laid out one of two ways:
+ * banner (a full-width band above the breadcrumbs) or strip (a full-width band under the lede). No copy sits on the art, and the art carries no
+ * caption: it has alt text, and its credit is on /credits/.
  */
 export function pageHead({ crumbs = [], title, lede, meta, actions, art }) {
   const trail = [{ name: 'Home', path: '/' }, ...crumbs]
@@ -24,9 +24,8 @@ ${meta ? `<div class="doc-meta">${meta}</div>` : ''}
 ${actions ? `<div class="dl-hero-row">${actions}</div>` : ''}`
   if (!a) return `<header class="page-head"><div class="wrap">${text}</div></header>`
   const img = artImg(a.banner, { alt: altOf(a.banner) })
-  if (a.layout === 'banner') return `<header class="page-head page-head--banner"><figure class="band-art page-banner">${img}</figure><div class="wrap">${text}</div></header>`
   if (a.layout === 'strip') return `<header class="page-head page-head--strip"><div class="wrap">${text}</div><figure class="band-art page-strip">${img}</figure></header>`
-  return `<header class="page-head page-head--${a.layout}"><div class="page-art page-art--${a.layout}" aria-hidden="true">${artImg(a.banner)}</div><div class="wrap">${text}</div></header>`
+  return `<header class="page-head page-head--banner"><figure class="band-art page-banner">${img}</figure><div class="wrap">${text}</div></header>`
 }
 
 /**

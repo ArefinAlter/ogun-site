@@ -146,9 +146,6 @@ img.art-sepia { display: none !important; }
 
 /* ------------------------------------------------------------------ paintings in the page: see the end of this file */
 .page-head { position: relative; overflow: clip; isolation: isolate; }
-.page-art { position: absolute; inset: 0 0 0 auto; width: min(48%, 680px); z-index: -1; pointer-events: none; opacity: .52;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 78%), linear-gradient(180deg, #000 46%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 78%), linear-gradient(180deg, #000 46%, transparent 100%); -webkit-mask-composite: source-in; mask-composite: intersect; }
-.page-art img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; }
 
 /* ------------------------------------------------------------------ the closing call to action over the rolling mill, and the footer wordmark */
 .cta { position: relative; isolation: isolate; overflow: hidden; text-align: center; padding-block: var(--space-10); border-top: 1px solid var(--line); background: var(--bg-2); }
@@ -187,7 +184,7 @@ img.art-sepia { display: none !important; }
   .pixel-wordmark rect { transition: none; }
 }
 @media print {
-  .fh-art, .fh-shade, .fh-sparks, .band-art, .page-art, .cta-art, .foot-forge { display: none !important; }
+  .fh-art, .fh-shade, .fh-sparks, .band-art, .cta-art, .foot-forge { display: none !important; }
   .forge-hero { margin-top: 0; min-height: 0; background: none; padding-block: 1rem; }
 }
 
@@ -195,8 +192,6 @@ img.art-sepia { display: none !important; }
 
 .type-specimen .pix { font: 400 22px/1.3 var(--font-pixel); letter-spacing: .04em; color: var(--text); margin: 0 0 var(--space-4); }
 
-:root[data-theme='light'] .page-art { opacity: .38; }
-@media (prefers-color-scheme: light) { :root:not([data-theme='dark']) .page-art { opacity: .38; } }
 
 @media (max-width: 420px) {
   .made-by { flex-wrap: wrap; white-space: normal; margin-left: 0; gap: .4rem .65rem; }
@@ -232,7 +227,7 @@ img.art-sepia { display: none !important; }
 .art-band--slim { height: clamp(100px, 12vw, 190px); }
 .page-head--banner { padding-top: 0; }
 .page-head--banner > .wrap { padding-top: var(--space-7); }
-.page-head--strip { padding-bottom: 0; }
+.page-head--strip { padding-bottom: 0; margin-bottom: var(--space-7); }
 .page-head--strip + * { margin-top: 0; }
 .plate--wide { max-width: 860px; margin-inline: auto; }
 .plate-credit i { font-style: normal; color: var(--text-2); }
@@ -240,10 +235,6 @@ img.art-sepia { display: none !important; }
 .credit-uses li { font-size: .82rem; }
 .credit-card .pixel-frame img { aspect-ratio: 3 / 2; object-fit: cover; }
 
-/* a painting behind the head of a legal page: faint on the left, where the text is */
-.page-art img { object-fit: cover; }
-.page-art { -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .34) 56%, #000 100%), linear-gradient(180deg, #000 46%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .34) 56%, #000 100%), linear-gradient(180deg, #000 46%, transparent 100%); }
-.page-art--bleed { inset: 0; width: 100%; opacity: .42; -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .2) 46%, rgba(0, 0, 0, .34) 72%, #000 100%), linear-gradient(180deg, #000 60%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .2) 46%, rgba(0, 0, 0, .34) 72%, #000 100%), linear-gradient(180deg, #000 60%, transparent 100%); }
 .cta-art { z-index: -2; }
 .cta::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse 58% 80% at 50% 46%, color-mix(in srgb, var(--bg-2) 94%, transparent) 28%, transparent 80%); }
 .fh-shade { background:
@@ -254,6 +245,5 @@ img.art-sepia { display: none !important; }
   .fh-shade { background: linear-gradient(180deg, color-mix(in srgb, var(--hero-floor) 78%, transparent) 0, var(--hero-floor) 62%), linear-gradient(0deg, var(--bg) 0, transparent 14%); }
 }
 @media (max-width: 720px) {
-  .page-art, .page-art--bleed, :root[data-theme='light'] .page-art, :root:not([data-theme='dark']) .page-art { inset: 5.4rem 0 0 0; width: 100%; opacity: .2; }
   .page-strip { margin-top: var(--space-6); }
 }

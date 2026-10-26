@@ -10,30 +10,30 @@ Originals are not committed: `python -I art/build.py --raw <empty scratch dir> -
 
 | Id | Work | Owner and object | Object page | Original file on Wikimedia Commons | Licence tag | Crops |
 |---|---|---|---|---|---|---|
-| `wright-iron-forge` | Joseph Wright of Derby (1734 to 1797), *An Iron Forge*, 1772 | Tate (T06670) | [Tate](https://www.tate.org.uk/art/artworks/wright-an-iron-forge-t06670) | https://commons.wikimedia.org/wiki/File:Joseph_Wright_-_An_Iron_Forge_-_Google_Art_Project.jpg (Google Arts & Culture 8QFaV4btMWcjBA) | PD-Art, PD-old-100-expired | `forge-hero`, `l-company` |
+| `wright-iron-forge` | Joseph Wright of Derby (1734 to 1797), *An Iron Forge*, 1772 | Tate (T06670) | [Tate](https://www.tate.org.uk/art/artworks/wright-an-iron-forge-t06670) | https://commons.wikimedia.org/wiki/File:Joseph_Wright_-_An_Iron_Forge_-_Google_Art_Project.jpg (Google Arts & Culture 8QFaV4btMWcjBA) | PD-Art, PD-old-100-expired | `forge-hero`, `s-legal-company` |
 | `wright-blacksmiths-shop` | Joseph Wright of Derby (1734 to 1797), *The Blacksmith's Shop*, 1771 | Yale Center for British Art, Paul Mellon Collection | [Wikidata item, Yale B1981.25.712](https://www.wikidata.org/wiki/Q23759607) | https://commons.wikimedia.org/wiki/File:Joseph_Wright_of_Derby_-_The_Blacksmith's_Shop_-_Google_Art_Project.jpg (Google Arts & Culture YQG7cp1C1rHxag) | PD-Art, PD-old-100-expired | `forge-smithy`, `s-workflows` |
 | `wright-forge-from-without` | Joseph Wright of Derby (1734 to 1797), *An Iron Forge Viewed from Without*, 1773 | Hermitage Museum, Saint Petersburg | [Web Gallery of Art](https://www.wga.hu/html/w/wright/ironforg.html) | https://commons.wikimedia.org/wiki/File:The_Iron_Forge_Viewed_from_Without.jpg (Web Gallery of Art) | PD-Art, PD-old-auto-expired | `s-about` |
 | `wright-vesuvius` | Joseph Wright of Derby (1734 to 1797), *Vesuvius in Eruption, with a View over the Islands in the Bay of Naples*, about 1776 | Tate (T05846) | [Tate](https://www.tate.org.uk/art/artworks/wright-vesuvius-in-eruption-with-a-view-over-the-islands-in-the-bay-of-naples-t05846) | https://commons.wikimedia.org/wiki/File:Joseph_Wright_of_Derby_-_Vesuvius_in_Eruption,_with_a_View_over_the_Islands_in_the_Bay_of_Naples_-_Google_Art_Project.jpg (Google Arts & Culture 2wGacn0NsRO65Q) | PD-Art, PD-old-auto-expired | `s-404`, `c-vesuvius` |
 | `wright-alchemist` | Joseph Wright of Derby (1734 to 1797), *The Alchemist Discovering Phosphorus*, 1771 | Derby Museum and Art Gallery (1883-152) | [Wikidata item, Derby 1883-152](https://www.wikidata.org/wiki/Q1652023) | https://commons.wikimedia.org/wiki/File:Joseph_Wright_of_Derby_The_Alchemist.jpg (Derby Museums) | PD-Art, PD-old-auto-expired | `s-glossary` |
-| `wright-air-pump` | Joseph Wright of Derby (1734 to 1797), *An Experiment on a Bird in the Air Pump*, 1768 | National Gallery, London | [National Gallery](https://www.nationalgallery.org.uk/paintings/joseph-wright-of-derby-an-experiment-on-a-bird-in-the-air-pump) | https://commons.wikimedia.org/wiki/File:An_Experiment_on_a_Bird_in_an_Air_Pump_by_Joseph_Wright_of_Derby,_1768.jpg (National Gallery) | PD-Art, PD-old-auto-expired | `s-benchmarks`, `w-bench`, `l-licenses` |
+| `wright-air-pump` | Joseph Wright of Derby (1734 to 1797), *An Experiment on a Bird in the Air Pump*, 1768 | National Gallery, London | [National Gallery](https://www.nationalgallery.org.uk/paintings/joseph-wright-of-derby-an-experiment-on-a-bird-in-the-air-pump) | https://commons.wikimedia.org/wiki/File:An_Experiment_on_a_Bird_in_an_Air_Pump_by_Joseph_Wright_of_Derby,_1768.jpg (National Gallery) | PD-Art, PD-old-auto-expired | `s-benchmarks`, `w-bench`, `s-legal-licenses` |
 | `menzel-eisenwalzwerk` | Adolph Menzel (1815 to 1905), *The Iron Rolling Mill (Modern Cyclops)*, 1872 to 1875 | Alte Nationalgalerie, Staatliche Museen zu Berlin | [Wikidata item, Alte Nationalgalerie](https://www.wikidata.org/wiki/Q18683026) | https://commons.wikimedia.org/wiki/File:Adolph_Menzel_-_Eisenwalzwerk_-_Google_Art_Project.jpg (Google Arts & Culture pgFVPI1J1YGXZA) | PD-art-two-auto | `s-get-started`, `c-mill` |
-| `loutherbourg-coalbrookdale` | Philip James de Loutherbourg (1740 to 1812), *Coalbrookdale by Night*, 1801 | Science Museum Group, London | [Web Gallery of Art](https://www.wga.hu/html/l/loutherb/coalbroo.html) | https://commons.wikimedia.org/wiki/File:Philipp_Jakob_Loutherbourg_d._J._-_Coalbrookdale_by_Night_-_WGA13730.jpg (Web Gallery of Art) | PD-Art, PD-old-auto-expired | `s-operators`, `l-security`, `c-coal` |
-| `turner-burning-parliament` | J. M. W. Turner (1775 to 1851), *The Burning of the Houses of Lords and Commons, 16 October 1834*, 1834 to 1835 | Cleveland Museum of Art (1942.647), open access CC0 | [Cleveland Museum of Art](https://www.clevelandart.org/art/1942.647) | https://commons.wikimedia.org/wiki/File:Joseph_Mallord_William_Turner_-_The_Burning_of_the_Houses_of_Lords_and_Commons,_16_October_1834_-_1942.647_-_Cleveland_Museum_of_Art.jpg (Cleveland Museum of Art) | PD-Art, PD-old-100-expired; Cleveland Museum of Art open access (CC0) | `s-lineage`, `w-lineage`, `l-accessibility`, `c-fire` |
+| `loutherbourg-coalbrookdale` | Philip James de Loutherbourg (1740 to 1812), *Coalbrookdale by Night*, 1801 | Science Museum Group, London | [Web Gallery of Art](https://www.wga.hu/html/l/loutherb/coalbroo.html) | https://commons.wikimedia.org/wiki/File:Philipp_Jakob_Loutherbourg_d._J._-_Coalbrookdale_by_Night_-_WGA13730.jpg (Web Gallery of Art) | PD-Art, PD-old-auto-expired | `s-operators`, `s-legal-security`, `c-coal` |
+| `turner-burning-parliament` | J. M. W. Turner (1775 to 1851), *The Burning of the Houses of Lords and Commons, 16 October 1834*, 1834 to 1835 | Cleveland Museum of Art (1942.647), open access CC0 | [Cleveland Museum of Art](https://www.clevelandart.org/art/1942.647) | https://commons.wikimedia.org/wiki/File:Joseph_Mallord_William_Turner_-_The_Burning_of_the_Houses_of_Lords_and_Commons,_16_October_1834_-_1942.647_-_Cleveland_Museum_of_Art.jpg (Cleveland Museum of Art) | PD-Art, PD-old-100-expired; Cleveland Museum of Art open access (CC0) | `s-lineage`, `w-lineage`, `s-legal-accessibility`, `c-fire` |
 | `turner-rain-steam-speed` | J. M. W. Turner (1775 to 1851), *Rain, Steam and Speed: The Great Western Railway*, 1844 | National Gallery, London (NG538) | [National Gallery](https://www.nationalgallery.org.uk/paintings/joseph-mallord-william-turner-rain-steam-and-speed-the-great-western-railway) | https://commons.wikimedia.org/wiki/File:Turner_-_Rain,_Steam_and_Speed_-_National_Gallery_file.jpg (National Gallery) | PD-Art, PD-old-auto-expired | `s-architecture`, `w-lifecycle`, `c-rails` |
 | `monet-saint-lazare` | Claude Monet (1840 to 1926), *Arrival of the Normandy Train, Gare Saint-Lazare*, 1877 | Art Institute of Chicago, Mr. and Mrs. Martin A. Ryerson Collection | [Wikidata item, Art Institute of Chicago](https://www.wikidata.org/wiki/Q20272169) | https://commons.wikimedia.org/wiki/File:Claude_Monet_-_Arrival_of_the_Normandy_Train,_Gare_Saint-Lazare_-_Google_Art_Project.jpg (Google Arts & Culture _gHKDt1FQ51WQA) | PD-Art, PD-old-auto-1923 | `s-roadmap`, `w-run`, `c-station` |
-| `luce-charleroi` | Maximilien Luce (1858 to 1941), *Factories near Charleroi (Usines près de Charleroi)*, 1897 | Musée d'Orsay, Paris | [Wikidata item, Orsay RF 1990 27](https://www.wikidata.org/wiki/Q64491304) | https://commons.wikimedia.org/wiki/File:Maximilien_Luce_(1858-1941)_Fabrieken_bij_Charleroi_-_Mus%C3%A9e_d'Orsay_Parijs_22-8-2017_16-28-31.JPG (Photograph by Paul Hermans) | PD-Art, PD-old-auto (the painter died in 1941; also public domain in the United States, as a work of 1897) | `s-compare`, `l-trademark`, `c-factory` |
-| `meunier-mining-region` | Constantin Meunier (1831 to 1905), *Mining Region (Steenkolenstreek)*, undated | Royal Museum of Fine Arts Antwerp (2041) | [Wikidata item, KMSKA 2041](https://www.wikidata.org/wiki/Q21620070) | https://commons.wikimedia.org/wiki/File:Constantin_Meunier_-_Mining_region.jpg (KMSKA Antwerp) | PD-art, PD-old-100-expired | `s-credits`, `l-privacy`, `c-hills` |
-| `courbet-stonebreakers` | Gustave Courbet (1819 to 1877), *The Stonebreakers*, 1849 | formerly Gemäldegalerie, Dresden; destroyed in 1945. Shown from a reproduction | [Web Gallery of Art](https://www.wga.hu/html/c/courbet/1/courb103.html) | https://commons.wikimedia.org/wiki/File:Gustave_Courbet_-_The_Stonebreakers_-_WGA05457.jpg (Web Gallery of Art) | PD-Art, PD-old-auto-expired | `s-legal`, `w-durable`, `l-hub` |
-| `velazquez-vulcan` | Diego Velázquez (1599 to 1660), *The Forge of Vulcan*, 1630 | Museo Nacional del Prado, Madrid | [Museo del Prado](https://www.museodelprado.es/coleccion/obra-de-arte/la-fragua-de-vulcano/84a0240d-b41a-404d-8433-6e4e2efd21ab) | https://commons.wikimedia.org/wiki/File:Vel%C3%A1zquez_-_La_Fragua_de_Vulcano_(Museo_del_Prado,_1630).jpg (Museo del Prado) | PD-Art, PD-old-auto-expired | `s-brand`, `w-principles`, `l-terms` |
-| `le-nain-forge` | Louis Le Nain (about 1593 to 1648), *The Forge (La Forge)*, about 1640 to 1642 | Musée du Louvre, Paris | [Wikidata item, Louvre INV 6838](https://www.wikidata.org/wiki/Q29847543) | https://commons.wikimedia.org/wiki/File:%22La_forge%22,_Louis_Le_Nain,_vers_1640-1642._Mus%C3%A9e_du_Louvre._(35366251024).jpg (Photograph by Grégory Lejeune) | painting in the public domain; photograph CC0 (Grégory Lejeune) | `s-security`, `w-integrations`, `l-aup` |
-| `brueghel-fire` | Jan Brueghel the Elder (1568 to 1625), *Fire (Allegory of Fire)*, 1606 | Musée des Beaux-Arts de Lyon (A75) | [Wikidata item, MBA Lyon A 75](https://www.wikidata.org/wiki/Q69419574) | https://commons.wikimedia.org/wiki/File:Fire-Brueghel_the_Elder-MBA_Lyon_A75-IMG_0409.jpg (Photograph by Rama) | PD-Art, PD-old-auto-expired | `s-faq`, `w-faq`, `l-cookies` |
+| `luce-charleroi` | Maximilien Luce (1858 to 1941), *Factories near Charleroi (Usines près de Charleroi)*, 1897 | Musée d'Orsay, Paris | [Wikidata item, Orsay RF 1990 27](https://www.wikidata.org/wiki/Q64491304) | https://commons.wikimedia.org/wiki/File:Maximilien_Luce_(1858-1941)_Fabrieken_bij_Charleroi_-_Mus%C3%A9e_d'Orsay_Parijs_22-8-2017_16-28-31.JPG (Photograph by Paul Hermans) | PD-Art, PD-old-auto (the painter died in 1941; also public domain in the United States, as a work of 1897) | `s-compare`, `s-legal-trademark`, `c-factory` |
+| `meunier-mining-region` | Constantin Meunier (1831 to 1905), *Mining Region (Steenkolenstreek)*, undated | Royal Museum of Fine Arts Antwerp (2041) | [Wikidata item, KMSKA 2041](https://www.wikidata.org/wiki/Q21620070) | https://commons.wikimedia.org/wiki/File:Constantin_Meunier_-_Mining_region.jpg (KMSKA Antwerp) | PD-art, PD-old-100-expired | `s-credits`, `s-legal-privacy`, `c-hills` |
+| `courbet-stonebreakers` | Gustave Courbet (1819 to 1877), *The Stonebreakers*, 1849 | formerly Gemäldegalerie, Dresden; destroyed in 1945. Shown from a reproduction | [Web Gallery of Art](https://www.wga.hu/html/c/courbet/1/courb103.html) | https://commons.wikimedia.org/wiki/File:Gustave_Courbet_-_The_Stonebreakers_-_WGA05457.jpg (Web Gallery of Art) | PD-Art, PD-old-auto-expired | `s-legal`, `w-durable` |
+| `velazquez-vulcan` | Diego Velázquez (1599 to 1660), *The Forge of Vulcan*, 1630 | Museo Nacional del Prado, Madrid | [Museo del Prado](https://www.museodelprado.es/coleccion/obra-de-arte/la-fragua-de-vulcano/84a0240d-b41a-404d-8433-6e4e2efd21ab) | https://commons.wikimedia.org/wiki/File:Vel%C3%A1zquez_-_La_Fragua_de_Vulcano_(Museo_del_Prado,_1630).jpg (Museo del Prado) | PD-Art, PD-old-auto-expired | `s-brand`, `w-principles`, `s-legal-terms` |
+| `le-nain-forge` | Louis Le Nain (about 1593 to 1648), *The Forge (La Forge)*, about 1640 to 1642 | Musée du Louvre, Paris | [Wikidata item, Louvre INV 6838](https://www.wikidata.org/wiki/Q29847543) | https://commons.wikimedia.org/wiki/File:%22La_forge%22,_Louis_Le_Nain,_vers_1640-1642._Mus%C3%A9e_du_Louvre._(35366251024).jpg (Photograph by Grégory Lejeune) | painting in the public domain; photograph CC0 (Grégory Lejeune) | `s-security`, `w-integrations`, `s-legal-aup` |
+| `brueghel-fire` | Jan Brueghel the Elder (1568 to 1625), *Fire (Allegory of Fire)*, 1606 | Musée des Beaux-Arts de Lyon (A75) | [Wikidata item, MBA Lyon A 75](https://www.wikidata.org/wiki/Q69419574) | https://commons.wikimedia.org/wiki/File:Fire-Brueghel_the_Elder-MBA_Lyon_A75-IMG_0409.jpg (Photograph by Rama) | PD-Art, PD-old-auto-expired | `s-faq`, `w-faq`, `s-legal-cookies` |
 
-## Crops and where they are used (44, each in an ember and a sepia grade)
+## Crops and where they are used (43, each in an ember and a sepia grade)
 
 | Crop (file in `public/art/`) | Where |
 |---|---|
 | `forge-hero` | Home page, hero backdrop (mirrored) |
-| `l-company` | Company details, backdrop at the edge of the title |
+| `s-legal-company` | Company details, banner above the title |
 | `forge-smithy` | Home page, beside the acquisition text |
 | `s-workflows` | Workflows, strip under the title |
 | `s-about` | About, strip under the title |
@@ -44,7 +44,7 @@ Originals are not committed: `python -I art/build.py --raw <empty scratch dir> -
 | `s-glossary` | Glossary, strip under the title |
 | `w-bench` | Home page, band above the bench section |
 | `s-benchmarks` | Benchmarks, banner above the title |
-| `l-licenses` | Licenses, backdrop at the edge of the title |
+| `s-legal-licenses` | Licenses, strip under the title |
 | `c-mill` | Home page, closing call to action |
 | `c-mill` | Glossary, closing call to action |
 | `s-get-started` | Get started, banner above the title |
@@ -54,14 +54,14 @@ Originals are not committed: `python -I art/build.py --raw <empty scratch dir> -
 | `s-operators` | Operators, banner above the title |
 | `c-coal` | Compare, closing call to action |
 | `c-coal` | Privacy, closing call to action |
-| `l-security` | Security policy, backdrop at the edge of the title |
+| `s-legal-security` | Security policy, banner above the title |
 | `c-coal` | Company details, closing call to action |
 | `w-lineage` | Home page, band above the lineage section |
 | `s-lineage` | Lineage, strip under the title |
 | `c-fire` | Lineage, closing call to action |
 | `c-fire` | Get started, closing call to action |
 | `c-fire` | Security policy, closing call to action |
-| `l-accessibility` | Accessibility, backdrop at the edge of the title |
+| `s-legal-accessibility` | Accessibility, strip under the title |
 | `w-lifecycle` | Home page, band above the lifecycle section |
 | `s-architecture` | Architecture, banner above the title |
 | `c-rails` | FAQ, closing call to action |
@@ -75,24 +75,24 @@ Originals are not committed: `python -I art/build.py --raw <empty scratch dir> -
 | `c-factory` | Operators, closing call to action |
 | `s-compare` | Compare, banner above the title |
 | `c-factory` | Roadmap, closing call to action |
-| `l-trademark` | Trademarks, backdrop at the edge of the title |
+| `s-legal-trademark` | Trademarks, banner above the title |
 | `c-factory` | Accessibility, closing call to action |
 | `c-hills` | Security model, closing call to action |
 | `s-credits` | Art credits, strip under the title |
 | `c-hills` | Art credits, closing call to action |
-| `l-privacy` | Privacy, backdrop at the edge of the title |
+| `s-legal-privacy` | Privacy, banner above the title |
 | `c-hills` | Terms, closing call to action |
 | `w-durable` | Home page, band above the durable section |
 | `s-legal` | Legal, banner above the title |
 | `w-principles` | Home page, band above the principles section |
 | `s-brand` | Brand and press, banner above the title |
-| `l-terms` | Terms, backdrop at the edge of the title |
+| `s-legal-terms` | Terms, strip under the title |
 | `w-integrations` | Home page, band above the integrations section |
 | `s-security` | Security model, strip under the title |
-| `l-aup` | Acceptable use, backdrop at the edge of the title |
+| `s-legal-aup` | Acceptable use, banner above the title |
 | `w-faq` | Home page, band above the faq section |
 | `s-faq` | FAQ, banner above the title |
-| `l-cookies` | Cookies, backdrop at the edge of the title |
+| `s-legal-cookies` | Cookies, strip under the title |
 
 ## Other pictures
 
@@ -104,4 +104,4 @@ Originals are not committed: `python -I art/build.py --raw <empty scratch dir> -
 
 ## Treatment
 
-Treatment parameters are in `art/build.py`: the crop (centre and width, with the aspect of the target size), the tone settings per painting (`TUNE`: black point, gamma, local contrast; Turner's *Rain, Steam and Speed* and Monet's station are inverted so that the engine becomes the hot iron), the grid (480 x 300 art pixels for the hero, 480 x 96 for the wide bands on pages and between sections, 480 x 140 for the 404 page, 560 x 200 for a panorama behind a call to action, 300 x 170 for the backdrop of a legal page) and the ten-colour ramps (`RAMPS`). One art pixel is drawn 2 to 4 CSS pixels wide. The hero is mirrored, so that the glowing iron sits under the Studio slab.
+Treatment parameters are in `art/build.py`: the crop (centre and width, with the aspect of the target size), the tone settings per painting (`TUNE`: black point, gamma, local contrast; Turner's *Rain, Steam and Speed* and Monet's station are inverted so that the engine becomes the hot iron), the grid (480 x 300 art pixels for the hero, 480 x 96 for the wide bands on pages and between sections, 480 x 140 for the 404 page, 560 x 200 for a panorama behind a call to action) and the ten-colour ramps (`RAMPS`). One art pixel is drawn 2 to 4 CSS pixels wide. The hero is mirrored, so that the glowing iron sits under the Studio slab.

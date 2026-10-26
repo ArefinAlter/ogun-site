@@ -24,7 +24,7 @@ export function altOf(crop) {
 // ---------------------------------------------------------------- where each crop is used
 // There are no captions on the art: every painting is credited once, on /credits/ (this file feeds its "Used for" lists).
 // layout: how the banner sits in the page head. banner: a full-width band above the breadcrumbs. strip: a full-width band under the lede.
-// edge: a painting fading in from the right behind the head. bleed: behind the whole head. `cta`: the panorama behind the closing call to action.
+// `cta`: the panorama behind the closing call to action.
 export const PAGE_ART = {
   '/architecture/': { banner: 's-architecture', layout: 'banner', cta: 'c-station' },
   '/workflows/': { banner: 's-workflows', layout: 'strip', cta: 'c-coal' },
@@ -41,15 +41,15 @@ export const PAGE_ART = {
   '/brand/': { banner: 's-brand', layout: 'banner', cta: 'c-rails' },
   '/credits/': { banner: 's-credits', layout: 'strip', cta: 'c-hills' },
   '/legal/': { banner: 's-legal', layout: 'banner', cta: 'c-vesuvius' },
-  '/legal/privacy/': { banner: 'l-privacy', layout: 'edge', cta: 'c-coal' },
-  '/legal/terms/': { banner: 'l-terms', layout: 'edge', cta: 'c-hills' },
-  '/legal/acceptable-use/': { banner: 'l-aup', layout: 'edge', cta: 'c-mill' },
-  '/legal/cookies/': { banner: 'l-cookies', layout: 'edge', cta: 'c-rails' },
-  '/legal/trademark/': { banner: 'l-trademark', layout: 'edge', cta: 'c-station' },
-  '/legal/licenses/': { banner: 'l-licenses', layout: 'edge', cta: 'c-vesuvius' },
-  '/legal/security/': { banner: 'l-security', layout: 'edge', cta: 'c-fire' },
-  '/legal/accessibility/': { banner: 'l-accessibility', layout: 'edge', cta: 'c-factory' },
-  '/legal/company/': { banner: 'l-company', layout: 'edge', cta: 'c-coal' },
+  '/legal/privacy/': { banner: 's-legal-privacy', layout: 'banner', cta: 'c-coal' },
+  '/legal/terms/': { banner: 's-legal-terms', layout: 'strip', cta: 'c-hills' },
+  '/legal/acceptable-use/': { banner: 's-legal-aup', layout: 'banner', cta: 'c-mill' },
+  '/legal/cookies/': { banner: 's-legal-cookies', layout: 'strip', cta: 'c-rails' },
+  '/legal/trademark/': { banner: 's-legal-trademark', layout: 'banner', cta: 'c-station' },
+  '/legal/licenses/': { banner: 's-legal-licenses', layout: 'strip', cta: 'c-vesuvius' },
+  '/legal/security/': { banner: 's-legal-security', layout: 'banner', cta: 'c-fire' },
+  '/legal/accessibility/': { banner: 's-legal-accessibility', layout: 'strip', cta: 'c-factory' },
+  '/legal/company/': { banner: 's-legal-company', layout: 'banner', cta: 'c-coal' },
   '/404/': { banner: 's-404', layout: 'banner', cta: 'c-mill' },
 }
 
@@ -74,7 +74,7 @@ export function uses() {
   const out = [['forge-hero', 'Home page, hero backdrop (mirrored)', 'hero'], ['forge-smithy', 'Home page, beside the acquisition text', 'plate']]
   for (const [sec, crop] of Object.entries(HOME_ART.bands)) out.push([crop, `Home page, band above the ${sec} section`, 'band'])
   out.push([HOME_ART.cta, 'Home page, closing call to action', 'panorama'])
-  const where = { banner: 'banner above the title', strip: 'strip under the title', edge: 'backdrop at the edge of the title', bleed: 'backdrop behind the title' }
+  const where = { banner: 'banner above the title', strip: 'strip under the title' }
   for (const [path, a] of Object.entries(PAGE_ART)) {
     out.push([a.banner, `${PAGE_NAMES[path]}, ${where[a.layout]}`, 'banner'])
     out.push([a.cta, `${PAGE_NAMES[path]}, closing call to action`, 'panorama'])

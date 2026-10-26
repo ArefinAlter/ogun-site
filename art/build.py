@@ -128,8 +128,8 @@ def box_for(img_size, cx, cy, wf, aspect):
 # --------------------------------------------------------------------------- the plates
 # name: (painting, cx, cy, crop width as a fraction of the painting, logical size, extra options)
 # Sizes: wide band 480 x 96 (page banners, strips and the bands between home sections: one art pixel = 3 CSS pixels on a laptop, so a band is 1440 px wide
-# and 288 px tall), 404 band 480 x 140, legal page backdrop 300 x 170 (behind the title, faded), panorama 560 x 200 (behind the closing call to action), hero 480 x 300.
-B, C, S, S404 = (300, 170), (560, 200), (480, 96), (480, 140)
+# and 288 px tall), 404 band 480 x 140, panorama 560 x 200 (behind the closing call to action), hero 480 x 300.
+C, S, S404 = (560, 200), (480, 96), (480, 140)
 PLATES = {
     # the hero is Wright of Derby's iron forge, mirrored so that the glowing iron sits under the Studio slab
     'forge-hero': ('wright-iron-forge', 0.5, 0.64, 1.0, (480, 300), dict(flip=True, glow=(280, 217))),
@@ -160,17 +160,16 @@ PLATES = {
     'w-principles': ('velazquez-vulcan', 0.62, 0.58, 0.55, S, {}),
     'w-integrations': ('le-nain-forge', 0.50, 0.55, 0.80, S, {}),
     'w-faq': ('brueghel-fire', 0.20, 0.50, 0.40, S, {}),
-    # legal pages: quieter crops
-    'l-hub': ('courbet-stonebreakers', 0.55, 0.55, 0.75, B, {}),
-    'l-privacy': ('meunier-mining-region', 0.30, 0.45, 0.50, B, {}),
-    'l-terms': ('velazquez-vulcan', 0.45, 0.62, 0.55, B, {}),
-    'l-aup': ('le-nain-forge', 0.50, 0.78, 0.90, B, {}),
-    'l-cookies': ('brueghel-fire', 0.75, 0.50, 0.40, B, {}),
-    'l-trademark': ('luce-charleroi', 0.25, 0.45, 0.50, B, {}),
-    'l-licenses': ('wright-air-pump', 0.88, 0.32, 0.26, B, {}),
-    'l-security': ('loutherbourg-coalbrookdale', 0.30, 0.50, 0.50, B, {}),
-    'l-accessibility': ('turner-burning-parliament', 0.75, 0.45, 0.50, B, {}),
-    'l-company': ('wright-iron-forge', 0.30, 0.70, 0.60, B, {}),
+    # the other legal pages: the same wide band, cut closer
+    's-legal-privacy': ('meunier-mining-region', 0.30, 0.50, 0.70, S, {}),
+    's-legal-terms': ('velazquez-vulcan', 0.45, 0.60, 0.60, S, {}),
+    's-legal-aup': ('le-nain-forge', 0.50, 0.75, 0.90, S, {}),
+    's-legal-cookies': ('brueghel-fire', 0.72, 0.50, 0.50, S, {}),
+    's-legal-trademark': ('luce-charleroi', 0.25, 0.45, 0.60, S, {}),
+    's-legal-licenses': ('wright-air-pump', 0.78, 0.36, 0.50, S, {}),
+    's-legal-security': ('loutherbourg-coalbrookdale', 0.30, 0.52, 0.60, S, {}),
+    's-legal-accessibility': ('turner-burning-parliament', 0.72, 0.48, 0.60, S, {}),
+    's-legal-company': ('wright-iron-forge', 0.30, 0.68, 0.70, S, {}),
     # panoramas behind the closing call to action
     'c-mill': ('menzel-eisenwalzwerk', 0.50, 0.45, 0.95, C, {}),
     'c-coal': ('loutherbourg-coalbrookdale', 0.50, 0.50, 1.0, C, {}),
