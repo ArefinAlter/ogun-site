@@ -8,7 +8,7 @@ import { CAPTURED, text } from '../captures.mjs'
 const WF_JSON = text('trips-backfill.workflow.json')
 
 export const SAMPLES = [
-  { label: 'trips-backfill.json', icon: 'ledger', lang: 'json', code: WF_JSON },
+  { label: 'workflow.json', icon: 'ledger', lang: 'json', code: WF_JSON },
   { label: 'validate', icon: 'terminal', html: term(text('validate.txt')) },
   { label: 'diff', icon: 'terminal', html: term(text('diff.txt')) },
   { label: 'partitions', icon: 'terminal', html: term(text('partitions.txt')) },
