@@ -30,10 +30,14 @@ const hash = (s) => createHash('sha256').update(s).digest('hex').slice(0, 10)
 rmSync(DIST, { recursive: true, force: true })
 mkdirSync(join(DIST, 'assets'), { recursive: true })
 const css = readFileSync(join(ROOT, 'src/css/site.css'), 'utf8')
+const css2 = readFileSync(join(ROOT, 'src/css/forge.css'), 'utf8')
 const js = readFileSync(join(ROOT, 'src/js/site.js'), 'utf8')
-const assets = { css: `/assets/site.${hash(css)}.css`, js: `/assets/site.${hash(js)}.js` }
+const js2 = readFileSync(join(ROOT, 'src/js/forge.js'), 'utf8')
+const assets = { css: `/assets/site.${hash(css)}.css`, css2: `/assets/forge.${hash(css2)}.css`, js: `/assets/site.${hash(js)}.js`, js2: `/assets/forge.${hash(js2)}.js` }
 writeFileSync(join(DIST, assets.css), css)
+writeFileSync(join(DIST, assets.css2), css2)
 writeFileSync(join(DIST, assets.js), js)
+writeFileSync(join(DIST, assets.js2), js2)
 cpSync(join(ROOT, 'public'), DIST, { recursive: true })
 
 // ---- pages ----
@@ -186,7 +190,7 @@ for (const { page, html } of rendered) {
     errors.push(`${where}: placeholder or rendering artifact (TODO, {{, undefined, [object Object] or NaN)`)
 }
 const kb = (f) => (statSync(f).size / 1024).toFixed(1)
-console.log(`${cfg.name}: ${rendered.length} pages, css ${kb(join(DIST, assets.css))} kB, js ${kb(join(DIST, assets.js))} kB, largest page ${Math.max(...rendered.map((r) => statSync(r.out).size / 1024)).toFixed(0)} kB`)
+console.log(`${cfg.name}: ${rendered.length} pages, css ${kb(join(DIST, assets.css))}+${kb(join(DIST, assets.css2))} kB, js ${kb(join(DIST, assets.js))}+${kb(join(DIST, assets.js2))} kB, largest page ${Math.max(...rendered.map((r) => statSync(r.out).size / 1024)).toFixed(0)} kB`)
 for (const w of warnings) console.log('warn  ' + w)
 for (const e of errors) console.log('ERROR ' + e)
 if (errors.length) {

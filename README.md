@@ -2,7 +2,7 @@
 
 The marketing website for **Ogun**, the developer platform for reproducible data pipelines and agent benchmarks. A Verne product.
 
-Static, dependency-free and private by construction: no cookies, no analytics, no third-party requests, a strict Content Security Policy. All artwork (engraved plates of the forge and windlass, meshing gear trains, the lifecycle aqueduct, the lineage and architecture figures) is generated from code in `src/art/`. Dark "forge" theme by default, light "vellum" theme by system setting or toggle.
+Static, dependency-free and private by construction: no cookies, no analytics, no third-party requests, a strict Content Security Policy. The art is public-domain forge paintings (Joseph Wright of Derby, Adolph Menzel) translated into ember pixel art by `art/build.py`, a pixel wordmark read from Departure Mono, and diagrams generated from code in `src/art/`. Terminal output on the pages is captured from the released binaries, never typed. Dark "forge" theme by default, light "vellum" (bone paper, sepia grade) by system setting or toggle.
 
 ## Commands
 
@@ -25,8 +25,10 @@ Requires Node 20 or newer. There is nothing to install.
 | `src/content.mjs` | Shared copy: principles, run states, triggers, operators, metrics, FAQ, glossary, comparisons, roadmap. Used by pages, llms.txt and JSON-LD. |
 | `src/legal.mjs` | Legal page generator (shared design with `zeus-site`); product specifics in `src/pages/legal.mjs`. |
 | `src/layout.mjs`, `src/parts.mjs` | Page shell and reusable sections. |
-| `src/art/` | SVG art generators: `kit.mjs` (primitives, shared with zeus-site), `motifs.mjs` (gears, anvil, hammer, windlass, plate frames), `index.mjs` (plates, diagrams, icons, logos, PNG render pages). |
-| `src/css/site.css`, `src/js/site.js` | Design system and interactions. Content-hashed into `/assets/`. |
+| `src/art/` | SVG generators: `kit.mjs` (primitives, shared with zeus-site), `motifs.mjs` (gears, anvil, hammer, windlass, plate frames), `index.mjs` (diagrams, icons, logos, PNG render pages), `pixel.mjs` and `pixel-wordmark.mjs` (the pixel wordmark and the painting helpers). |
+| `art/` | `build.py` turns the originals into `public/art/*.png` (ember and sepia grades) and `manifest.json`; `wordmark.py` reads the wordmark's pixels from Departure Mono; `SOURCES.md` lists every original with its licence. Run with `python -I art/build.py --raw <scratch dir> --download`. |
+| `src/js/forge.js`, `src/css/forge.css` | The forge: embers and the hammer strike, the partition strip, plates, the footer wordmark. |
+| `src/css/site.css`, `src/js/site.js` | Design system and interactions. Content-hashed into `/assets/`, with forge.css and forge.js. |
 | `lib/` | The builder's helpers: SEO head and JSON-LD, HTML-to-text for llms-full.txt. |
 | `public/` | Fonts (OFL), PNG icons, social image. Copied verbatim. |
 | `brand/BRAND.md` | Brand guidelines: positioning, voice, logo, colour, type, art, motion, product UI, website system. |

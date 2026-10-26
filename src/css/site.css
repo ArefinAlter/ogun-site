@@ -48,6 +48,7 @@
   --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem; --space-5: 1.5rem; --space-6: 2rem; --space-7: 3rem; --space-8: 4rem; --space-9: 6rem; --space-10: 8rem;
   --radius: 6px; --radius-sm: 4px; --radius-lg: 10px;
   --wrap: 1200px;
+  --gutter: clamp(24px, 7vw, 128px); /* one fluid side margin for header, sections, cards and footer: about 90 px at 1280, 96 at 1366, growing to the 1200 px column cap */
   --ease-out: cubic-bezier(.16, 1, .3, 1);
   --ease-mech: cubic-bezier(.45, 0, .55, 1);
   --dur-1: 140ms; --dur-2: 260ms; --dur-3: 520ms; --dur-4: 820ms;
@@ -95,8 +96,8 @@ code, kbd, pre, samp { font-family: var(--font-mono); font-size: .88em; }
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 100; background: var(--accent); color: var(--accent-ink); padding: .6rem 1rem; border-radius: 4px; font-weight: 600; }
 .skip-link:focus { top: 1rem; }
-.wrap { width: min(100% - 2rem, var(--wrap)); margin-inline: auto; }
-.wrap--narrow { width: min(100% - 2rem, 800px); margin-inline: auto; }
+.wrap { width: min(100% - 2 * var(--gutter), var(--wrap)); margin-inline: auto; }
+.wrap--narrow { width: min(100% - 2 * var(--gutter), 800px); margin-inline: auto; }
 .lede { font-size: var(--step-1); color: var(--text-2); max-width: 52ch; line-height: 1.5; }
 .muted { color: var(--text-2); }
 .small { font-size: var(--step--1); }
@@ -161,36 +162,16 @@ code, kbd, pre, samp { font-family: var(--font-mono); font-size: .88em; }
 .rule span { font-size: 1.3rem; color: var(--brass); }
 
 /* ------------------------------------------------------------------ hero */
-.hero { position: relative; padding-block: var(--space-8) var(--space-9); overflow: clip; }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.04fr); gap: var(--space-8); align-items: center; }
-.hero h1 { font-size: clamp(2.8rem, 1.9rem + 4vw, 5.6rem); line-height: .98; }
-.hero h1 .line { display: block; opacity: 0; transform: translateY(14px); animation: rise var(--dur-4) var(--ease-out) forwards; }
-.hero h1 .line--2 { animation-delay: 120ms; }
-.hero .lede { margin-bottom: var(--space-6); }
 .cmd { display: flex; align-items: center; gap: .8rem; width: fit-content; max-width: 100%; margin-top: var(--space-5); padding: .6rem .6rem .6rem 1rem; border: 1px solid var(--line-2); border-radius: 4px; background: var(--code-bg); color: #E9E1D0; font: 400 .9rem/1.3 var(--font-mono); overflow-x: auto; }
 .cmd .prompt { color: var(--accent); user-select: none; }
 .cmd code { background: none; border: 0; padding: 0; color: inherit; white-space: nowrap; min-width: 0; overflow-x: auto; scrollbar-width: none; }
 .cmd .copy-btn { position: static; flex: none; }
-.hero-figure { position: relative; }
 .plate-wrap { position: relative; box-shadow: var(--shadow); border-radius: 2px; transform: rotate(-.6deg); transition: transform var(--dur-4) var(--ease-out); }
 .plate-wrap:hover { transform: rotate(0); }
 .plate-svg { width: 100%; height: auto; }
 .plate-title { font: 600 10px var(--font-display); letter-spacing: .32em; fill: var(--plate-ink); }
 .plate-caption { font: italic 13.5px var(--font-display); fill: var(--plate-ink-2); }
 .plate-label, .plate-key { font: italic 14px var(--font-display); fill: var(--plate-ink); }
-.construct { animation: none; }
-.js .hero-plate .construct-layer path { stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw 2.2s var(--ease-out) .2s forwards; }
-.gear-spin { transform-box: fill-box; transform-origin: center; }
-.js .gear-spin { animation: spin var(--gear-dur, 40s) linear infinite; }
-.gear-spin--ccw { animation-direction: reverse; }
-.hammer { transform-box: view-box; transform-origin: 520px 300px; transform: rotate(20deg); transition: transform 420ms var(--ease-out); }
-.hero-plate.is-striking .hammer { animation: hammer 520ms var(--ease-mech); }
-.impact-glow { opacity: 0; transform-box: fill-box; transform-origin: center; }
-.hero-plate.is-striking .impact-glow { animation: impact 700ms ease-out 180ms; }
-.sparks { position: absolute; inset: 0; pointer-events: none; width: 100%; height: 100%; }
-.hero-strike-btn { position: absolute; inset: 0; z-index: 2; border: 0; background: none; cursor: crosshair; border-radius: 2px; }
-@media (max-width: 980px) { .hero-grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-7); } }
-.hero-grid > *, .split > * { min-width: 0; }
 @media (max-width: 760px) {
   .pipeline { overflow-x: auto; padding-bottom: .5rem; }
   .pipeline-svg { min-width: 860px; }
@@ -232,11 +213,10 @@ code, kbd, pre, samp { font-family: var(--font-mono); font-size: .88em; }
 .figure figcaption b { font-style: normal; font: 500 .74rem var(--font-mono); letter-spacing: .14em; color: var(--brass-text); margin-right: .6em; }
 .split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-8); align-items: center; }
 .split--top { align-items: start; }
+.split > * { min-width: 0; }
 .section-split { margin-top: var(--space-7); }
 .figure--wide .plate-wrap { transform: none; box-shadow: none; }
 @media (max-width: 920px) { .split { grid-template-columns: 1fr; gap: var(--space-6); } }
-.windlass-drum { transform-box: fill-box; transform-origin: center; animation: spin 6s linear infinite; }
-.windlass-load { animation: hoist 6s var(--ease-mech) infinite alternate; }
 
 /* ------------------------------------------------------------------ pipeline (Fig. III) */
 .pipeline { position: relative; }
@@ -325,7 +305,7 @@ code, kbd, pre, samp { font-family: var(--font-mono); font-size: .88em; }
 .arch-label { font: italic 13.5px var(--font-display); fill: var(--brass); paint-order: stroke; stroke: var(--bg); stroke-width: 6px; stroke-linejoin: round; }
 
 /* ------------------------------------------------------------------ formulas, metrics, matrices */
-.formula { font-family: var(--font-display); font-size: 1.3rem; padding: var(--space-4) var(--space-5); border-left: 2px solid var(--accent); background: var(--surface); margin: var(--space-4) 0; overflow-x: auto; white-space: nowrap; }
+.formula { max-width: 100%; font-family: var(--font-display); font-size: 1.3rem; padding: var(--space-4) var(--space-5); border-left: 2px solid var(--accent); background: var(--surface); margin: var(--space-4) 0; overflow-x: auto; white-space: nowrap; }
 .formula var { font-style: italic; }
 .formula sub { font-size: .65em; }
 .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: var(--space-5); }
@@ -446,11 +426,6 @@ td .icon { width: 16px; height: 16px; }
 .prose .table-wrap { margin: var(--space-4) 0 var(--space-5); }
 
 /* ------------------------------------------------------------------ cta (the forge) */
-.cta { position: relative; overflow: hidden; text-align: center; padding-block: var(--space-10); border-top: 1px solid var(--line); background: radial-gradient(700px 360px at 50% 100%, var(--glow), transparent 70%), var(--bg-2); }
-.cta h2 { font-size: var(--step-5); }
-.cta .lede { margin-inline: auto; }
-.cta .btn-row { justify-content: center; margin-top: var(--space-6); }
-.cta-gears { width: min(520px, 90%); margin: var(--space-8) auto 0; opacity: .9; }
 
 /* ------------------------------------------------------------------ footer */
 .site-footer { border-top: 1px solid var(--line); padding-block: var(--space-9) var(--space-6); font-size: .9rem; color: var(--text-2); background: var(--bg); }
@@ -498,7 +473,6 @@ td .icon { width: 16px; height: 16px; }
 .lost { text-align: center; padding-block: var(--space-9); }
 .lost .btn-row { justify-content: center; }
 .lost h1 { font-size: var(--step-4); }
-.lost-gear { width: 160px; margin: 0 auto var(--space-6); }
 
 /* ------------------------------------------------------------------ reveal, progress */
 .js [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity var(--dur-4) var(--ease-out), transform var(--dur-4) var(--ease-out); transition-delay: var(--delay, 0ms); }

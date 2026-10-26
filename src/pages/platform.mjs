@@ -5,7 +5,8 @@ import { between, CAPTURED, MCP_TOOLS, OPERATORS as OPS, text } from '../capture
 import { answer, cards, checklist, codeTabs, ctaForge, figure, hl, note, pageHead, section, table, term } from '../parts.mjs'
 
 const UPDATED = '2026-10-26'
-const head = (path, name, title, lede) => pageHead({ crumbs: [{ name, path }], title, lede })
+const ART_OF = { '/workflows/': 'forge-smithy', '/operators/': 'forge-slab', '/benchmarks/': 'forge-mill-wide', '/security-model/': 'forge-slab' }
+const head = (path, name, title, lede) => pageHead({ crumbs: [{ name, path }], title, lede, art: ART_OF[path] || 'forge-night' })
 
 // ---------------------------------------------------------------- architecture
 const architecture = {

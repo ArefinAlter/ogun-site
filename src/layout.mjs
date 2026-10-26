@@ -1,6 +1,7 @@
 // The page shell: skip link, header with navigation and theme toggle, main, footer with the Verne endorsement.
 import { esc } from '../lib/html.mjs'
 import { icon, lockup, verneLogo } from './art/index.mjs'
+import { pixelWordmark } from './art/pixel.mjs'
 
 export function layout(page, body, ctx) {
   const { cfg } = ctx
@@ -47,6 +48,7 @@ ${body}
       <a class="made-by" href="${cfg.org.url}" aria-label="Designed and built by Verne Ltd. (vernesystems.com)"><span class="made-by-label">Designed and built by</span>${verneLogo('vl')}<span class="made-by-name">Verne Ltd.</span></a>
     </div>
   </div>
+  <div class="foot-forge" aria-hidden="true"><div class="foot-glow"></div><div class="wrap">${pixelWordmark('foot-wordmark')}</div></div>
 </footer>
 </body>
 </html>

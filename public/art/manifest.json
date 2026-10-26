@@ -1,0 +1,122 @@
+{
+  "forge-hero": {
+    "source": "wright-iron-forge",
+    "size": [
+      480,
+      300
+    ],
+    "bytes": 34801,
+    "glow": [
+      200,
+      217
+    ]
+  },
+  "forge-hero-sepia": {
+    "source": "wright-iron-forge",
+    "size": [
+      480,
+      300
+    ],
+    "bytes": 34801,
+    "glow": [
+      200,
+      217
+    ]
+  },
+  "forge-mill-wide": {
+    "source": "menzel-eisenwalzwerk",
+    "size": [
+      560,
+      200
+    ],
+    "bytes": 32241,
+    "glow": [
+      273,
+      115
+    ]
+  },
+  "forge-mill-wide-sepia": {
+    "source": "menzel-eisenwalzwerk",
+    "size": [
+      560,
+      200
+    ],
+    "bytes": 32241,
+    "glow": [
+      273,
+      115
+    ]
+  },
+  "forge-smithy": {
+    "source": "wright-blacksmiths-shop",
+    "size": [
+      200,
+      160
+    ],
+    "bytes": 7928,
+    "glow": [
+      111,
+      54
+    ]
+  },
+  "forge-smithy-sepia": {
+    "source": "wright-blacksmiths-shop",
+    "size": [
+      200,
+      160
+    ],
+    "bytes": 7928,
+    "glow": [
+      111,
+      54
+    ]
+  },
+  "forge-slab": {
+    "source": "menzel-eisenwalzwerk",
+    "size": [
+      240,
+      160
+    ],
+    "bytes": 11399,
+    "glow": [
+      161,
+      83
+    ]
+  },
+  "forge-slab-sepia": {
+    "source": "menzel-eisenwalzwerk",
+    "size": [
+      240,
+      160
+    ],
+    "bytes": 11399,
+    "glow": [
+      161,
+      83
+    ]
+  },
+  "forge-night": {
+    "source": "wright-forge-from-without",
+    "size": [
+      240,
+      160
+    ],
+    "bytes": 11336,
+    "glow": [
+      136,
+      112
+    ]
+  },
+  "forge-night-sepia": {
+    "source": "wright-forge-from-without",
+    "size": [
+      240,
+      160
+    ],
+    "bytes": 11336,
+    "glow": [
+      136,
+      112
+    ]
+  }
+}

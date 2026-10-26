@@ -18,13 +18,15 @@ export default legalPages(cfg, {
   aupNot: '<li>Train or evaluate on data in breach of its licence or of the rights of the people it describes.</li><li>Use the benchmark profile to misrepresent results, for example by hiding cache or network settings that differ between agents.</li>',
   aupDesign: 'When it collects from websites, it follows robots.txt by default, spaces out requests per host and limits concurrency. Code-executing operators run sandboxed and need a person’s approval.',
   otherMarks: 'the gear-and-anvil device',
-  artNames: 'engraved plates of the forge, the windlass, the lifecycle and the gear trains',
+  artNames: 'pixel wordmark, the diagrams and the engraved plates',
+  artNote: 'The pixel paintings are our translations of public-domain works. The originals stay in the public domain; only our treatment is ours, and the <a href="/credits/">art credits</a> name each painting, its owner and its source.',
   nameNote: 'Ògún is the name of a Yoruba orisha. Our use covers software and services for data acquisition, data engineering and agent evaluation only. We do not claim any right in the name beyond that field, and we do not use sacred imagery.',
   softwareList: 'Ogun (ogund, the ogun command line, its MCP server and bridges) and the zeus-core engine library it embeds',
   fonts: [
     ['EB Garamond', 'Copyright 2017 The EB Garamond Project Authors', 'LICENSE-eb-garamond.txt'],
     ['IBM Plex Sans', 'Copyright 2019 IBM Corp.', 'LICENSE-ibm-plex-sans.txt'],
     ['IBM Plex Mono', 'Copyright 2017 IBM Corp.', 'LICENSE-ibm-plex-mono.txt'],
+    ['Departure Mono', 'Copyright 2022 to 2024 Helena Zhang', 'LICENSE-departure-mono.txt'],
   ],
   securityScope: ['ogund, the ogun command line and its MCP server and bridges.', 'Operator sandboxing and the operator ABI.', 'The artifact store and lineage records.', 'The zeus-core engine library as embedded by Ogun, and the session bridge to Zeus.'],
   securityPriorities: [

@@ -38,6 +38,7 @@ const transcript = []
 const show = (cmd, res) => { transcript.push(`$ ${cmd}`); if (res.out) transcript.push(res.out); if (res.code) transcript.push(`[exit status ${res.code}]`) }
 const flush = (name) => { writeFileSync(join(OUT, name), transcript.join('\n') + '\n'); transcript.length = 0 }
 const ex = 'examples/bikeshare/'
+for (const f of ['trips-backfill', 'rebalance-plan']) copyFileSync(join(REPO, 'examples', 'bikeshare', f + '.workflow.json'), join(OUT, f + '.workflow.json'))
 
 // ---------------------------------------------------------------- offline commands (no daemon)
 show('ogun --version', ogun(['--version']))

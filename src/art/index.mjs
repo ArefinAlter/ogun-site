@@ -1,4 +1,5 @@
 // Ogun compositions: engraved plates, diagrams, icons, logos, standalone files and PNG render pages.
+import { pixelWordmark, pixelWordmarkDoc } from './pixel.mjs'
 import { WORDMARK } from './wordmark-data.mjs'
 import { anvil, C, centerMark, compassArc, dimension, gear, gearTrain, hammer, leader, markInner, plateFrame, windlass } from './motifs.mjs'
 import { n, smoothOpen } from './kit.mjs'
@@ -203,6 +204,8 @@ export function standalone(cfg) {
     'wordmark-light': doc(`${WORDMARK.x} ${WORDMARK.y} ${WORDMARK.w} ${WORDMARK.h}`, `<path d="${WORDMARK.d}" fill="${C.bone}"/>`, `${cfg.name} wordmark, light`),
     lockup: lockupDoc(C.ink, C.emberText),
     'lockup-light': lockupDoc(C.bone, C.ember),
+    'pixel-wordmark': pixelWordmarkDoc(['#FFE7B8', '#FFD08A', '#F9B25A', '#F59A3B', '#EE7F34', '#E8662E', '#CF5222', '#B8441B'], `${cfg.name} wordmark in pixels`),
+    'pixel-wordmark-light': pixelWordmarkDoc(['#E88A33', '#DE7C2D', '#D26E28', '#C56123', '#B8551F', '#A94A1B', '#963F17', '#823513'], `${cfg.name} wordmark in pixels, for vellum`),
     'plate-forge': doc('0 0 640 560', heroPlate().replace(/^<svg[^>]*>|<\/svg>$/g, ''), 'Fig. I: the forge'),
     'plate-windlass': doc('0 0 560 470', acquirePlate().replace(/^<svg[^>]*>|<\/svg>$/g, ''), 'Fig. II: the windlass'),
   }
@@ -213,12 +216,12 @@ export function renders(cfg) {
   const page = (w, h, body, extra = '') =>
     `<!doctype html><html><head><meta charset="utf-8"><meta name="robots" content="noindex"><style>${fonts}html,body{margin:0;width:${w}px;height:${h}px;overflow:hidden}body{background:#13110F;color:#E9E1D0;font-family:Plex,sans-serif}.plate-title{font:600 10px EBG;letter-spacing:.3em;fill:#1E1A16}.plate-caption{font:italic 13px EBG;fill:#57503F}.plate-label,.plate-key{font:italic 13px EBG;fill:#1E1A16}.gear-spin{}.hammer{transform-origin:520px 300px;transform:rotate(28deg)}.impact-glow{opacity:0}${extra}</style></head><body>${body}</body></html>`
   const icon = (s, bg) => page(s, s, `<svg viewBox="0 0 32 32" width="${s}" height="${s}">${markInner('ic', { ink: C.bone, accent: C.ember, bg })}</svg>`, 'body{background:transparent}')
+  // The social card: the pixel forge behind the pixel wordmark. Rendered by tools/render-pngs.sh from dist/_render/og/.
   const og = page(
     1200,
     630,
-    `<div class="glow"></div><svg class="pl" viewBox="0 0 640 560">${heroPlate().replace(/^<svg[^>]*>|<\/svg>$/g, '')}</svg>
-<div class="t"><svg class="w" viewBox="${WORDMARK.x} ${WORDMARK.y} ${WORDMARK.w} ${WORDMARK.h}"><path d="${WORDMARK.d}" fill="#E9E1D0"/></svg><h1>The forge for<br><em>reproducible data.</em></h1><p>Durable data pipelines and agent benchmarks, built on the Zeus engine. Local-first, open source.</p><div class="v"><svg viewBox="0 0 34 40" width="13" height="15"><path d="M2 3 L17 37 L32 3" fill="none" stroke="#A99F8C" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> A VERNE PRODUCT</div></div>`,
-    `.glow{position:absolute;inset:0;background:radial-gradient(50% 70% at 28% 60%,rgba(232,102,46,.22),transparent 70%)}.pl{position:absolute;left:52px;top:46px;width:600px;height:525px;filter:drop-shadow(0 30px 40px rgba(0,0,0,.6))}.t{position:absolute;left:700px;top:96px;right:56px}.w{height:40px;display:block;margin-bottom:30px}h1{font:500 64px/1 EBG;margin:0;letter-spacing:-.01em}h1 em{color:#E8662E}p{font-size:22px;line-height:1.45;color:#A99F8C;margin:24px 0 0}.v{position:absolute;top:410px;font:500 13px PlexMono;letter-spacing:.2em;color:#A99F8C;display:flex;gap:10px;align-items:center}`,
+    `<img class="bg" src="../../art/forge-hero.png" alt=""><div class="shade"></div><div class="t">${pixelWordmark('pw')}<h1>Forge raw sources into<br><em>reproducible datasets.</em></h1><p>Durable data pipelines and agent benchmarks, built on the Zeus engine. Local-first, open source.</p><div class="v">PRE-ALPHA RELEASE 0.0.1A &nbsp;·&nbsp; A VERNE PRODUCT</div></div><div class="cr">Backdrop: Joseph Wright of Derby, An Iron Forge, 1772, Tate. Public domain.</div>`,
+    `.bg{position:absolute;right:-60px;top:-45px;width:1200px;height:750px;image-rendering:pixelated}.shade{position:absolute;inset:0;background:linear-gradient(90deg,#0B0908 0,rgba(11,9,8,.94) 34%,rgba(11,9,8,.55) 56%,rgba(11,9,8,.12) 78%,transparent),linear-gradient(0deg,rgba(11,9,8,.8),transparent 30%)}.t{position:absolute;left:64px;top:62px;width:640px}.pw{width:320px;height:auto;display:block;margin-bottom:34px}.pw .wm-row--0 rect{fill:#FFE7B8}.pw .wm-row--1 rect{fill:#FFD08A}.pw .wm-row--2 rect{fill:#F9B25A}.pw .wm-row--3 rect{fill:#F59A3B}.pw .wm-row--4 rect{fill:#EE7F34}.pw .wm-row--5 rect{fill:#E8662E}.pw .wm-row--6 rect{fill:#CF5222}.pw .wm-row--7 rect{fill:#B8441B}h1{font:500 56px/1.04 EBG;margin:0;letter-spacing:-.01em}h1 em{color:#E8662E}p{font:400 22px/1.45 Plex;color:#A99F8C;margin:24px 0 0;max-width:560px}.v{margin-top:30px;font:400 15px/1 PlexMono;letter-spacing:.12em;color:#B89157}.cr{position:absolute;left:64px;bottom:26px;font:400 13px/1 PlexMono;color:#7E7564}`,
   )
   return { og, 'icon-512': icon(512, C.forge), 'icon-192': icon(192, C.forge), 'apple-touch-icon': icon(180, C.forge), 'favicon-32': icon(32, C.forge) }
 }
