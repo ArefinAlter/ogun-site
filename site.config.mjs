@@ -34,7 +34,7 @@ export default {
   tagline: 'The forge for reproducible data.',
   description:
     'Ogun is a local-first developer platform for data acquisition, data engineering and AI-agent benchmarks, built on the Zeus engine. Workflows are data; every artifact has a lineage.',
-  ogAlt: 'Ogun: an engraved plate of an anvil, a hammer and meshing gears, titled "The forge for reproducible data".',
+  ogAlt: 'Ogun: the pixel wordmark OGUN over a pixel-art forge painting, titled "Forge raw sources into reproducible datasets".',
   status: 'Pre-alpha release',
   statusNote: 'Release 0.0.1a is a pre-alpha: Ogun Studio for Windows and Linux, the ogun command line and the ogund daemon, and a hosted hub on sample data that anyone can try. The runtime passed its first exit test on Linux in October 2026 (a partitioned backfill and a stream window survive kill -9 of the daemon and resume only the unfinished work). Code operators, remote approvals, mobile builds and most connectors are not ready yet.',
   sourcePublic: true,
@@ -65,7 +65,7 @@ export default {
     keywords: ['data pipeline', 'data engineering', 'data mining', 'LLM dataset', 'agent benchmark', 'Spider 2.0-DBT', 'ADE-bench', 'workflow orchestration', 'lineage', 'local-first', 'Rust'],
   },
   fonts: {
-    names: ['EB Garamond', 'IBM Plex Sans', 'IBM Plex Mono'],
+    names: ['EB Garamond', 'IBM Plex Sans', 'IBM Plex Mono', 'Departure Mono'],
     preload: ['/fonts/eb-garamond-vf.woff2', '/fonts/ibm-plex-sans-vf.woff2'],
   },
   nav: [
@@ -78,7 +78,7 @@ export default {
   footer: [
     { title: 'Platform', links: [['Architecture', '/architecture/'], ['Workflows', '/workflows/'], ['Operators', '/operators/'], ['Lineage', '/lineage/'], ['Benchmarks', '/benchmarks/'], ['Security model', '/security-model/']] },
     { title: 'Learn', links: [['FAQ', '/faq/'], ['Glossary', '/glossary/'], ['Compare', '/compare/'], ['Roadmap', '/roadmap/'], ['Get started', '/get-started/']] },
-    { title: 'Company', links: [['About', '/about/'], ['Brand & press', '/brand/'], ['Security', '/legal/security/'], ['Contact', 'mailto:info@vernesystems.com']] },
+    { title: 'Company', links: [['About', '/about/'], ['Brand & press', '/brand/'], ['Art credits', '/credits/'], ['Security', '/legal/security/'], ['Contact', 'mailto:info@vernesystems.com']] },
     { title: 'Legal', links: [['Privacy', '/legal/privacy/'], ['Terms', '/legal/terms/'], ['Acceptable use', '/legal/acceptable-use/'], ['Cookies', '/legal/cookies/'], ['Trademarks', '/legal/trademark/'], ['Licenses', '/legal/licenses/'], ['Accessibility', '/legal/accessibility/'], ['Company details', '/legal/company/']] },
   ],
   llms: {

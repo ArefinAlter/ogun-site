@@ -1,0 +1,249 @@
+/* The forge: pixel paintings, the hero, plates, the partition strip and the footer wordmark.
+   Loaded after site.css. Rules: no inline styles (CSP), no third-party requests, every animation has a reduced-motion fallback,
+   pixel art is drawn with image-rendering: pixelated at 2 to 4 CSS pixels per art pixel. */
+
+@font-face { font-family: 'Departure Mono'; src: url('/fonts/departure-mono.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+
+:root {
+  --font-pixel: 'Departure Mono', 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  --px: 2;
+  /* the wordmark's heat, from its top row (hottest) to its bottom row */
+  --wm-0: #FFE7B8; --wm-1: #FFD08A; --wm-2: #F9B25A; --wm-3: #F59A3B; --wm-4: #EE7F34; --wm-5: #E8662E; --wm-6: #CF5222; --wm-7: #B8441B;
+  --cold: #2A2520; --warm: #5A2616; --run: #E8662E; --hot: #FFD08A; --ash: #0B0908;
+  --hero-floor: #0B0908;
+}
+@media (min-width: 1000px) { :root { --px: 3; } }
+@media (min-width: 1920px) { :root { --px: 4; } }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    --wm-0: #E88A33; --wm-1: #DE7C2D; --wm-2: #D26E28; --wm-3: #C56123; --wm-4: #B8551F; --wm-5: #A94A1B; --wm-6: #963F17; --wm-7: #823513;
+    --cold: #D6C9AE; --warm: #C9976C; --run: #C0642B; --hot: #F0CC9A; --hero-floor: #F1E9D8;
+  }
+}
+:root[data-theme='light'] {
+  --wm-0: #E88A33; --wm-1: #DE7C2D; --wm-2: #D26E28; --wm-3: #C56123; --wm-4: #B8551F; --wm-5: #A94A1B; --wm-6: #963F17; --wm-7: #823513;
+  --cold: #D6C9AE; --warm: #C9976C; --run: #C0642B; --hot: #F0CC9A; --hero-floor: #F1E9D8;
+}
+
+/* pixel type for small labels: native size is 11px, so it stays crisp at 11px and 22px */
+.status-pill, .footer-col h2, .made-by-label { font-family: var(--font-pixel); font-size: 11px; letter-spacing: .08em; font-weight: 400; }
+.table-wrap thead th, .term .aka { font-family: var(--font-pixel); font-size: 11px; font-weight: 400; letter-spacing: .08em; }
+
+/* ------------------------------------------------------------------ the two grades of a painting: ember on the dark theme, sepia on the light one */
+img.art-sepia { display: none !important; }
+:root[data-theme='light'] img.art-ember { display: none !important; }
+:root[data-theme='light'] img.art-sepia { display: block !important; }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) img.art-ember { display: none !important; }
+  :root:not([data-theme='dark']) img.art-sepia { display: block !important; }
+}
+.art-ember, .art-sepia { image-rendering: pixelated; }
+.slab img, .shot img { image-rendering: auto; }
+
+/* ------------------------------------------------------------------ the pixel wordmark */
+.pixel-wordmark { display: block; height: auto; max-width: 100%; fill: currentColor; }
+.wm-row--0 rect { fill: var(--wm-0); } .wm-row--1 rect { fill: var(--wm-1); } .wm-row--2 rect { fill: var(--wm-2); } .wm-row--3 rect { fill: var(--wm-3); }
+.wm-row--4 rect { fill: var(--wm-4); } .wm-row--5 rect { fill: var(--wm-5); } .wm-row--6 rect { fill: var(--wm-6); } .wm-row--7 rect { fill: var(--wm-7); }
+.pixel-wordmark rect { transition: fill 220ms var(--ease-out); }
+.pixel-wordmark rect.is-glint { fill: #FFF6E0; transition-duration: 60ms; }
+
+/* ------------------------------------------------------------------ the hero */
+.forge-hero { --heat: .42; --flicker: 1; position: relative; isolation: isolate; overflow: clip; margin-top: -66px; padding-block: calc(66px + clamp(2.25rem, 7vh, 5rem)) var(--space-8); min-height: min(100svh, 900px); background: var(--hero-floor); }
+.fh-art { position: absolute; top: 0; right: calc(-10px * var(--px)); z-index: -3; width: calc(480px * var(--px)); height: calc(300px * var(--px)); will-change: transform; -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%); mask-image: linear-gradient(180deg, #000 70%, transparent 100%); }
+.fh-art img { display: block; width: 100%; height: 100%; }
+.fh-shade { position: absolute; inset: 0; z-index: -2; pointer-events: none;
+  background:
+    linear-gradient(90deg, var(--hero-floor) 0, color-mix(in srgb, var(--hero-floor) 94%, transparent) 30%, color-mix(in srgb, var(--hero-floor) 60%, transparent) 48%, color-mix(in srgb, var(--hero-floor) 18%, transparent) 62%, transparent 74%),
+    linear-gradient(0deg, var(--bg) 0, transparent 20%),
+    radial-gradient(46% 42% at 44% 66%, rgba(232, 102, 46, calc(.2 * var(--flicker))), transparent 72%); }
+.fh-sparks { position: absolute; top: 0; right: 0; z-index: 3; image-rendering: pixelated; pointer-events: none; }
+.fh-grid { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: var(--space-8); align-items: center; }
+.fh-grid > * { min-width: 0; }
+.fh-wordmark { width: clamp(200px, min(26vw, 46vh), 440px); margin: 0 0 var(--space-5) -2px; filter: drop-shadow(0 0 calc(10px + 16px * var(--flicker)) rgba(232, 102, 46, calc(.16 + .3 * var(--flicker)))); }
+.forge-hero h1 { font-size: clamp(1.9rem, 3vw, 3.4rem); line-height: 1.03; max-width: 22ch; }
+.forge-hero h1 .line { display: block; opacity: 0; transform: translateY(14px); animation: rise var(--dur-4) var(--ease-out) forwards; }
+.forge-hero h1 .line--2 { animation-delay: 140ms; }
+.forge-hero .lede { margin-bottom: var(--space-5); font-size: clamp(1rem, .85rem + .4vw, 1.2rem); max-width: 46ch; }
+.forge-hero .cmd { background: rgba(14, 12, 11, .86); backdrop-filter: blur(3px); font-size: .8rem; }
+.fh-slab { margin: 0; position: relative; will-change: transform; }
+.slab { position: relative; border-radius: 6px; overflow: hidden; border: 1px solid color-mix(in srgb, var(--hot) 34%, transparent); background: #0E0C0B; animation: slab-in 1100ms var(--ease-out) 200ms both;
+  box-shadow: 0 0 0 1px rgba(232, 102, 46, .3), 0 0 calc(30px + 70px * var(--heat)) rgba(232, 102, 46, calc(.22 + .46 * var(--heat))), 0 30px 70px rgba(0, 0, 0, .6), inset 0 0 calc(34px * var(--heat)) rgba(232, 102, 46, calc(.4 * var(--heat))); }
+.slab img { display: block; width: 100%; height: auto; }
+.slab::after { content: ''; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen;
+  background: linear-gradient(180deg, rgba(255, 208, 138, calc(.2 * var(--heat))) 0, transparent 24%), linear-gradient(0deg, rgba(232, 102, 46, calc(.26 * var(--heat))) 0, transparent 32%); }
+:root[data-theme='light'] .slab { background: #F8F2E4; box-shadow: 0 0 0 1px rgba(181, 82, 30, .25), 0 0 calc(18px + 34px * var(--heat)) rgba(232, 102, 46, calc(.1 + .3 * var(--heat))), 0 24px 50px rgba(30, 26, 22, .25); }
+@media (prefers-color-scheme: light) { :root:not([data-theme='dark']) .slab { background: #F8F2E4; box-shadow: 0 0 0 1px rgba(181, 82, 30, .25), 0 0 calc(18px + 34px * var(--heat)) rgba(232, 102, 46, calc(.1 + .3 * var(--heat))), 0 24px 50px rgba(30, 26, 22, .25); } }
+.fh-slab figcaption { margin-top: var(--space-4); padding: .6rem .8rem; border-radius: 3px; background: color-mix(in srgb, var(--hero-floor) 78%, transparent); backdrop-filter: blur(2px); }
+@keyframes slab-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* the page keeps the same grid under the hero on narrow screens: text first, the slab below, the painting behind both */
+:root[data-theme='light'] .fh-shade::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 120px; background: linear-gradient(180deg, var(--hero-floor) 30%, transparent); }
+@media (prefers-color-scheme: light) { :root:not([data-theme='dark']) .fh-shade::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 120px; background: linear-gradient(180deg, var(--hero-floor) 30%, transparent); } }
+@media (max-width: 1000px) {
+  .fh-grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-7); }
+  .forge-hero { min-height: 0; }
+  .fh-shade { background: linear-gradient(180deg, color-mix(in srgb, var(--hero-floor) 78%, transparent) 0, var(--hero-floor) 62%), linear-gradient(0deg, var(--bg) 0, transparent 14%); }
+  .forge-hero h1 { max-width: 18ch; }
+}
+@media (max-width: 520px) {
+  .fh-wordmark { width: min(78vw, 300px); }
+  .forge-hero { padding-top: calc(66px + var(--space-7)); }
+}
+
+/* ------------------------------------------------------------------ plates: a frame, a cartouche, a caption in the treatise manner */
+.plate { --cut: var(--bg); margin: 0; }
+.section--band .plate { --cut: var(--bg-2); }
+.plate-frame { position: relative; margin: 6px; padding: 14px; background: var(--surface); border: 1px solid color-mix(in srgb, var(--brass) 70%, transparent); outline: 1px solid color-mix(in srgb, var(--brass) 36%, transparent); outline-offset: 4px;
+  background-image: linear-gradient(var(--brass), var(--brass)), linear-gradient(var(--brass), var(--brass)), linear-gradient(var(--brass), var(--brass)), linear-gradient(var(--brass), var(--brass));
+  background-size: 7px 7px; background-repeat: no-repeat; background-position: -4px -4px, calc(100% + 4px) -4px, -4px calc(100% + 4px), calc(100% + 4px) calc(100% + 4px); background-origin: border-box; background-clip: border-box; }
+.plate-body > * { margin: 0; }
+.plate + .plate { margin-top: var(--space-7); }
+.plate figcaption { margin-top: var(--space-5); font: italic 1.02rem/1.45 var(--font-display); color: var(--text-2); max-width: 70ch; }
+.plate figcaption b { font: 400 11px/1 var(--font-pixel); font-style: normal; letter-spacing: .14em; color: var(--brass-text); margin-right: .8em; }
+.plate-credit { display: block; margin-top: .45rem; font: 400 11px/1.6 var(--font-pixel); font-style: normal; letter-spacing: .03em; color: var(--text-3); }
+.plate-credit i { font-style: normal; color: var(--text-2); }
+.plate--term .plate-frame { padding: 10px; background-color: var(--code-bg); }
+.plate--term .code-block { border: 0; border-radius: 0; background: transparent; padding: var(--space-4); }
+.plate--term .tabs { border: 0; background: transparent; }
+.fh-slab figcaption, .fh-slab .plate-credit { max-width: 62ch; }
+.fh-slab figcaption { font: italic .98rem/1.45 var(--font-display); color: var(--text-2); }
+.fh-slab figcaption b { font: 400 11px/1 var(--font-pixel); font-style: normal; letter-spacing: .14em; color: var(--brass-text); margin-right: .8em; }
+.pixel-frame { background: var(--ash); line-height: 0; }
+.pixel-frame img { width: 100%; height: auto; }
+.plate--shot .plate-frame { padding: 8px; }
+.shot img { width: 100%; height: auto; border-radius: 3px; }
+.plate--shot .shot img { image-rendering: auto; }
+
+/* ------------------------------------------------------------------ the partition strip */
+.section--strip { background: linear-gradient(180deg, var(--bg) 0, var(--bg-2) 100%); border-top: 1px solid var(--line); }
+.strip { display: grid; gap: var(--space-4); }
+.strip-bar { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1.4rem; font: 400 11px/1.5 var(--font-pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--text-2); }
+.strip-name { color: var(--text); }
+.strip-meter { color: var(--brass-text); margin-left: auto; }
+.strip-replay { font: 400 11px/1 var(--font-pixel); letter-spacing: .1em; text-transform: uppercase; color: var(--text-2); background: none; border: 1px solid var(--line-2); border-radius: 3px; padding: .55rem .8rem; cursor: pointer; transition: color var(--dur-1), border-color var(--dur-1); }
+.strip-replay:hover { color: var(--text); border-color: var(--accent); }
+.strip-grid { display: grid; gap: 7px; padding: var(--space-3) 0; }
+.strip-month { display: grid; grid-template-columns: 3.4rem minmax(0, 1fr); align-items: center; gap: 10px; }
+.strip-label { font: 400 11px/1 var(--font-pixel); letter-spacing: .14em; color: var(--text-3); }
+.strip-cells { display: grid; grid-template-columns: repeat(31, minmax(0, 1fr)); gap: 4px; }
+.strip-cells i { display: block; aspect-ratio: 1; border-radius: 1px; background: var(--cold); box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .04);
+  transition: background-color 420ms var(--ease-out), box-shadow 420ms var(--ease-out), transform 300ms var(--ease-out); }
+.strip-cells i[data-s='warm'] { background: var(--warm); box-shadow: 0 0 6px rgba(184, 68, 27, .5), inset 0 -2px 0 rgba(0, 0, 0, .3); }
+.strip-cells i[data-s='run'] { background: var(--run); box-shadow: 0 0 12px rgba(232, 102, 46, .75), inset 0 -2px 0 rgba(0, 0, 0, .22); transition-duration: 300ms; }
+.strip-cells i[data-s='hot'] { background: var(--hot); box-shadow: 0 0 16px rgba(255, 208, 138, .95); transform: scale(1.22); transition-duration: 70ms; }
+.strip-cells i[data-s='ok'] { background: var(--ok); box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .25); transition-duration: 1100ms, 900ms, 500ms; }
+.strip-cells i[data-s='fail'] { background: var(--bad); box-shadow: 0 0 12px rgba(224, 96, 74, .8); transform: rotate(8deg) scale(.9); }
+.strip-cells i[data-s='retry'] { background: var(--brass); box-shadow: 0 0 8px rgba(184, 145, 87, .6); }
+.strip-cells i[data-s='killed'] { background: var(--ash); box-shadow: inset 0 0 0 1px var(--bad); transition-duration: 60ms; }
+.strip.is-killed .strip-grid { animation: cut 760ms var(--ease-out); }
+@keyframes cut { 0% { filter: brightness(2.4) saturate(.4); } 100% { filter: none; } }
+.strip-state { min-height: 1.6em; margin: 0; font: 400 11px/1.6 var(--font-pixel); letter-spacing: .04em; color: var(--text-2); }
+@media (max-width: 720px) {
+  .strip-month { grid-template-columns: minmax(0, 1fr); gap: 5px; }
+  .strip-cells { grid-template-columns: repeat(16, minmax(0, 1fr)); gap: 4px; }
+  .strip-meter { margin-left: 0; flex-basis: 100%; }
+}
+
+/* ------------------------------------------------------------------ paintings in the page: see the end of this file */
+.page-head { position: relative; overflow: clip; isolation: isolate; }
+
+/* ------------------------------------------------------------------ the closing call to action over the rolling mill, and the footer wordmark */
+.cta { position: relative; isolation: isolate; overflow: hidden; text-align: center; padding-block: var(--space-10); border-top: 1px solid var(--line); background: var(--bg-2); }
+.cta-art { position: absolute; inset: 0; z-index: -1; opacity: .5; pointer-events: none; -webkit-mask-image: linear-gradient(0deg, #000 0, transparent 96%); mask-image: linear-gradient(0deg, #000 0, transparent 96%); }
+.cta-art img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%; }
+.cta h2 { font-size: var(--step-5); }
+.cta .lede { margin-inline: auto; }
+.cta .btn-row { justify-content: center; margin-top: var(--space-6); }
+.foot-forge { --flicker: 1; position: relative; margin-top: var(--space-9); overflow: hidden; padding-top: var(--space-5); }
+.foot-glow { position: absolute; left: 50%; bottom: -32%; width: 130%; height: 96%; transform: translateX(-50%); pointer-events: none;
+  background: radial-gradient(ellipse at 50% 100%, rgba(232, 102, 46, calc(.5 * var(--flicker))) 0, rgba(184, 68, 27, calc(.22 * var(--flicker))) 38%, transparent 70%); }
+.foot-wordmark { position: relative; width: min(100%, 1240px); margin-inline: auto; padding-bottom: var(--space-4); filter: drop-shadow(0 8px calc(16px + 22px * var(--flicker)) rgba(232, 102, 46, calc(.3 + .3 * var(--flicker)))); }
+.site-footer { padding-bottom: 0; }
+
+/* ------------------------------------------------------------------ the lifecycle pipe: an ember travels it (script) */
+.pipe-flow { animation: none; stroke-dasharray: 2 10; opacity: .55; }
+.pipe-ember { fill: var(--hot); filter: drop-shadow(0 0 6px rgba(232, 102, 46, .9)); shape-rendering: crispEdges; }
+
+/* ------------------------------------------------------------------ credits */
+.credit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-5); }
+.credit-card { border: 1px solid var(--line-2); border-radius: var(--radius); background: var(--surface); overflow: hidden; }
+.credit-card .pixel-frame { border-bottom: 1px solid var(--line); }
+.credit-card .pixel-frame img { aspect-ratio: 3 / 2; object-fit: cover; }
+.credit-card div.credit-body { padding: var(--space-4) var(--space-5) var(--space-5); font-size: .92rem; }
+.credit-card h3 { font-size: var(--step-1); margin-bottom: var(--space-2); }
+.credit-card dl { margin: var(--space-3) 0 0; display: grid; grid-template-columns: auto 1fr; gap: .25rem .8rem; font-size: .84rem; }
+.credit-card dt { font: 400 11px/1.9 var(--font-pixel); letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); }
+.credit-card dd { margin: 0; color: var(--text-2); }
+
+/* ------------------------------------------------------------------ reduced motion and print */
+@media (prefers-reduced-motion: reduce) {
+  .forge-hero h1 .line { animation: none; opacity: 1; transform: none; }
+  .slab { animation: none; }
+  .strip-cells i, .strip-replay { transition: none; }
+  .strip.is-killed .strip-grid { animation: none; }
+  .pixel-wordmark rect { transition: none; }
+}
+@media print {
+  .fh-art, .fh-shade, .fh-sparks, .band-art, .cta-art, .foot-forge { display: none !important; }
+  .forge-hero { margin-top: 0; min-height: 0; background: none; padding-block: 1rem; }
+}
+
+.steps-list { padding-left: 1.4rem; display: grid; gap: .6rem; margin: var(--space-5) 0; }
+
+.type-specimen .pix { font: 400 22px/1.3 var(--font-pixel); letter-spacing: .04em; color: var(--text); margin: 0 0 var(--space-4); }
+
+
+@media (max-width: 420px) {
+  .made-by { flex-wrap: wrap; white-space: normal; margin-left: 0; gap: .4rem .65rem; }
+  .endorse { justify-content: flex-start; }
+}
+.fh-wordmark { margin-left: 0; }
+.arch-wrap, .figure .plate-wrap { transform: none; }
+
+/* every command and terminal is readable in full: long lines wrap instead of running under the copy button or out of the box */
+.forge-hero .cmd { align-items: flex-start; }
+.cmd code { white-space: normal; overflow-wrap: anywhere; overflow: visible; min-width: 0; flex: 1 1 auto; line-height: 1.5; }
+.cmd .copy-btn { align-self: flex-start; }
+.code-block pre, .tabpanel pre { white-space: pre-wrap; overflow-wrap: anywhere; word-break: normal; }
+.code-block:has(> .copy-btn) { padding-top: 3rem; }
+.tabpanel:has(> .copy-btn) pre { padding-top: 3rem; }
+
+/* the tab labels always fit their box */
+.tablist button { padding: .95rem .85rem; font-size: .78rem; }
+@media (max-width: 560px) { .tablist button { padding: .85rem .6rem; font-size: .74rem; } .tablist button .icon { display: none; } }
+@media (max-width: 1100px) { .tablist button { padding: .85rem .65rem; } .tablist button .icon { display: none; } }
+@media (max-width: 440px) { .tablist button { padding: .8rem .5rem; font-size: .7rem; } }
+
+/* ------------------------------------------------------------------ painting in the page
+   The art carries no caption: it has alt text, and every painting is credited on /credits/. Bands are pictures of their own and no copy sits on them.
+   Where a painting does sit behind copy (the head of a long legal page, the closing call to action, the hero) it is held to roughly a fifth of its strength, and
+   tools/textbg.cjs measures every text run against the pixels behind it. */
+.band-art { position: relative; margin: 0; overflow: hidden; line-height: 0; background: var(--ash); border-block: 1px solid var(--line-2); }
+.band-art img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+.page-banner { height: clamp(150px, 20vw, 300px); }
+.page-banner--tall { height: clamp(190px, 28vw, 430px); }
+.page-strip { height: clamp(120px, 16vw, 250px); margin-top: var(--space-7); }
+.art-band { height: clamp(130px, 18vw, 280px); }
+.art-band--slim { height: clamp(100px, 12vw, 190px); }
+.page-head--banner { padding-top: 0; }
+.page-head--banner > .wrap { padding-top: var(--space-7); }
+.page-head--strip { padding-bottom: 0; margin-bottom: var(--space-7); }
+.page-head--strip + * { margin-top: 0; }
+.plate--wide { max-width: 860px; margin-inline: auto; }
+.plate-credit i { font-style: normal; color: var(--text-2); }
+.credit-uses { list-style: none; margin: 0; padding: 0; display: grid; gap: .1rem; }
+.credit-uses li { font-size: .82rem; }
+.credit-card .pixel-frame img { aspect-ratio: 3 / 2; object-fit: cover; }
+
+.cta-art { z-index: -2; }
+.cta::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse 58% 80% at 50% 46%, color-mix(in srgb, var(--bg-2) 94%, transparent) 28%, transparent 80%); }
+.fh-shade { background:
+    linear-gradient(90deg, var(--hero-floor) 0, color-mix(in srgb, var(--hero-floor) 97%, transparent) 38%, color-mix(in srgb, var(--hero-floor) 66%, transparent) 50%, color-mix(in srgb, var(--hero-floor) 20%, transparent) 63%, transparent 75%),
+    linear-gradient(0deg, var(--bg) 0, transparent 20%),
+    radial-gradient(46% 42% at 44% 66%, rgba(232, 102, 46, calc(.2 * var(--flicker))), transparent 72%); }
+@media (max-width: 1000px) {
+  .fh-shade { background: linear-gradient(180deg, color-mix(in srgb, var(--hero-floor) 78%, transparent) 0, var(--hero-floor) 62%), linear-gradient(0deg, var(--bg) 0, transparent 14%); }
+}
+@media (max-width: 720px) {
+  .page-strip { margin-top: var(--space-6); }
+}

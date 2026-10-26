@@ -1,23 +1,43 @@
 // Reusable page parts for Ogun. Same structure as zeus-site (so SEO and accessibility stay consistent), Ogun styling.
 import { esc, join, slug } from '../lib/html.mjs'
-import { ctaGears, icon } from './art/index.mjs'
+import { icon } from './art/index.mjs'
+import { artImg } from './art/pixel.mjs'
+import { altOf, HOME_ART, PAGE_ART } from './art/library.mjs'
 
-export function pageHead({ crumbs = [], title, lede, meta, actions }) {
+// build.mjs calls begin() before each page's body is made, so that the parts know which page they are on and the bands between sections can alternate.
+let pagePath = '/'
+let bandN = 0
+export const begin = (page) => { pagePath = page.path; bandN = 0 }
+
+/**
+ * The head of a page: breadcrumbs, title, lede, and a painting from the library (src/art/library.mjs, PAGE_ART) laid out one of two ways:
+ * banner (a full-width band above the breadcrumbs) or strip (a full-width band under the lede). No copy sits on the art, and the art carries no
+ * caption: it has alt text, and its credit is on /credits/.
+ */
+export function pageHead({ crumbs = [], title, lede, meta, actions, art }) {
   const trail = [{ name: 'Home', path: '/' }, ...crumbs]
-  return `<header class="page-head"><div class="wrap">
-<nav class="crumbs" aria-label="Breadcrumb"><ol>${trail.map((c, i) => `<li>${i === trail.length - 1 ? `<span aria-current="page">${esc(c.name)}</span>` : `<a href="${c.path}">${esc(c.name)}</a>`}</li>`).join('')}</ol></nav>
+  const a = art === false ? null : PAGE_ART[(crumbs[crumbs.length - 1] || {}).path || pagePath]
+  const text = `<nav class="crumbs" aria-label="Breadcrumb"><ol>${trail.map((c, i) => `<li>${i === trail.length - 1 ? `<span aria-current="page">${esc(c.name)}</span>` : `<a href="${c.path}">${esc(c.name)}</a>`}</li>`).join('')}</ol></nav>
 <h1>${title}</h1>
 ${lede ? `<p class="lede">${lede}</p>` : ''}
 ${meta ? `<div class="doc-meta">${meta}</div>` : ''}
-${actions ? `<div class="dl-hero-row">${actions}</div>` : ''}
-</div></header>`
+${actions ? `<div class="dl-hero-row">${actions}</div>` : ''}`
+  if (!a) return `<header class="page-head"><div class="wrap">${text}</div></header>`
+  const img = artImg(a.banner, { alt: altOf(a.banner) })
+  if (a.layout === 'strip') return `<header class="page-head page-head--strip"><div class="wrap">${text}</div><figure class="band-art page-strip">${img}</figure></header>`
+  return `<header class="page-head page-head--banner"><figure class="band-art page-banner">${img}</figure><div class="wrap">${text}</div></header>`
 }
 
-export function section({ id, title, lede, body, cls = '', center = false }) {
+/**
+ * A section of a page. `art` is a crop from the library: it is shown as a full-width band of painting directly above the section (no caption),
+ * alternately tall and slim so that the bands do not repeat one rhythm.
+ */
+export function section({ id, title, lede, body, cls = '', center = false, art = '' }) {
   const head = title
     ? `<div class="section-head${center ? ' center' : ''}" data-reveal><h2${id ? ` id="${id}-title"` : ''}>${title}</h2>${lede ? `<p class="lede">${lede}</p>` : ''}</div>`
     : ''
-  return `<section class="section ${cls}"${id ? ` id="${id}"` : ''}${id && title ? ` aria-labelledby="${id}-title"` : ''}><div class="wrap">${head}${body}</div></section>`
+  const band = art ? `<figure class="band-art art-band${bandN++ % 2 ? ' art-band--slim' : ''}">${artImg(art, { alt: altOf(art) })}</figure>` : ''
+  return `${band}<section class="section ${cls}"${id ? ` id="${id}"` : ''}${id && title ? ` aria-labelledby="${id}-title"` : ''}><div class="wrap">${head}${body}</div></section>`
 }
 
 export function answer({ title = 'In short', text, facts }) {
@@ -53,9 +73,10 @@ export const yes = (t = 'Yes') => `<span class="yes">${icon('check')}${t}</span>
 export const no = (t = 'No') => `<span class="no">${icon('x')}${t}</span>`
 export const part = (t) => `<span class="part">${icon('minus')}${t}</span>`
 
-/** Closing call to action, with the small gear train. */
-export function ctaForge(cfg, { title = 'Read the design', text, primary = ['Read the architecture', '/architecture/'], secondary = ['See the roadmap', '/roadmap/'] } = {}) {
-  return `<section class="cta" aria-labelledby="cta-title" data-spinup><div class="wrap" data-reveal><h2 id="cta-title">${title}</h2><p class="lede">${text || 'The decisions and first-draft specifications are public, and the runtime is being tested. Feedback is most useful now, before the contracts are frozen.'}</p><div class="btn-row"><a class="btn btn--ember" href="${primary[1]}">${primary[0]} ${icon('arrow', 'icon icon--arrow')}</a><a class="btn btn--ghost" href="${secondary[1]}">${secondary[0]}</a></div></div>${ctaGears()}</section>`
+/** Closing call to action, set over a pixel panorama chosen for the page (PAGE_ART.cta; the home page has its own). */
+export function ctaForge(cfg, { title = 'Read the design', text, primary = ['Read the architecture', '/architecture/'], secondary = ['See the roadmap', '/roadmap/'], art } = {}) {
+  const crop = art || (pagePath === '/' ? HOME_ART.cta : (PAGE_ART[pagePath] || {}).cta) || 'c-mill'
+  return `<section class="cta" aria-labelledby="cta-title"><div class="cta-art" aria-hidden="true">${artImg(crop)}</div><div class="wrap" data-reveal><h2 id="cta-title">${title}</h2><p class="lede">${text || 'The decisions and first-draft specifications are public, and the runtime is being tested. Feedback is most useful now, before the contracts are frozen.'}</p><div class="btn-row"><a class="btn btn--ember" href="${primary[1]}">${primary[0]} ${icon('arrow', 'icon icon--arrow')}</a><a class="btn btn--ghost" href="${secondary[1]}">${secondary[0]}</a></div></div></section>`
 }
 
 export function docPage({ sections, aside = '' }) {
@@ -68,7 +89,14 @@ export const rule = (glyph = '❦') => `<div class="wrap rule" aria-hidden="true
 export const note = (html, ic = 'spark') => `<div class="note">${icon(ic)}<div>${html}</div></div>`
 export const statusNote = (cfg) => note(`<p><strong>${esc(cfg.status)}.</strong> ${esc(cfg.statusNote)} <a href="/roadmap/">See the roadmap</a>.</p>`, 'hourglass')
 
-export const figure = (art, num, caption, cls = '') => `<figure class="figure ${cls}" data-reveal><div class="plate-wrap${/arch-svg|lineage-svg/.test(art) ? ' arch-wrap' : ''}">${art}</div><figcaption><b>FIG. ${num}</b>${caption}</figcaption></figure>`
+/**
+ * A plate: a framed terminal capture, screenshot or drawing with a plain caption underneath that says what the reader is looking at.
+ * `credit` is an optional second line of provenance for something drawn rather than recorded. Paintings never get a plate caption.
+ */
+export const plate = ({ caption = '', credit = '', body, cls = '' }) =>
+  `<figure class="plate ${cls}" data-reveal><div class="plate-frame"><div class="plate-body">${body}</div></div>${caption || credit ? `<figcaption>${caption}${credit ? `<span class="plate-credit">${credit}</span>` : ''}</figcaption>` : ''}</figure>`
+
+export const figure = (art, caption, cls = '') => `<figure class="figure ${cls}" data-reveal><div class="plate-wrap${/arch-svg|lineage-svg/.test(art) ? ' arch-wrap' : ''}">${art}</div><figcaption>${caption}</figcaption></figure>`
 
 export { join, esc, slug }
 

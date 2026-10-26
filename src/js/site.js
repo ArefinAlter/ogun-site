@@ -59,69 +59,6 @@
     reveals.forEach((el) => io.observe(el))
   } else reveals.forEach((el) => el.classList.add('is-in'))
 
-  // ---------------------------------------------------------------- gears: per-gear speed from the tooth ratio; spin up on hover
-  for (const g of $$('.gear-spin')) if (g.dataset.dur) g.style.setProperty('--gear-dur', g.dataset.dur + 's')
-  const setRate = (scope, rate) => { if (reduce || !scope.getAnimations) return; for (const g of $$('.gear-spin', scope)) for (const a of g.getAnimations()) a.updatePlaybackRate ? a.updatePlaybackRate(rate) : (a.playbackRate = rate) }
-  for (const fig of $$('[data-spinup]')) {
-    fig.addEventListener('pointerenter', () => setRate(fig, 4))
-    fig.addEventListener('pointerleave', () => setRate(fig, 1))
-    fig.addEventListener('focusin', () => setRate(fig, 4))
-    fig.addEventListener('focusout', () => setRate(fig, 1))
-  }
-
-  // ---------------------------------------------------------------- the hammer: strike and sparks
-  const plate = $('.hero-plate')
-  const strikeBtn = $('.hero-strike-btn')
-  const canvas = $('.sparks')
-  if (plate && strikeBtn && canvas) {
-    const ctx = canvas.getContext('2d')
-    let parts = []
-    let raf = 0
-    let last = 0
-    const size = () => { const r = canvas.getBoundingClientRect(); canvas.width = r.width * devicePixelRatio; canvas.height = r.height * devicePixelRatio }
-    size()
-    window.addEventListener('resize', size)
-    const tick = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-      parts = parts.filter((p) => p.life > 0)
-      for (const p of parts) {
-        p.vy += 0.32 * devicePixelRatio
-        p.x += p.vx; p.y += p.vy; p.life -= 1
-        const a = Math.max(0, p.life / p.max)
-        ctx.strokeStyle = `rgba(${p.hot ? '255,214,140' : '232,102,46'},${a})`
-        ctx.lineWidth = p.w
-        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p.x - p.vx * 1.6, p.y - p.vy * 1.6); ctx.stroke()
-      }
-      raf = parts.length ? requestAnimationFrame(tick) : 0
-    }
-    const burst = () => {
-      const [ix, iy] = plate.dataset.impact.split(' ').map(Number)
-      const pt = plate.createSVGPoint(); pt.x = ix; pt.y = iy
-      const m = plate.getScreenCTM()
-      const cr = canvas.getBoundingClientRect()
-      const s = pt.matrixTransform(m)
-      const x = (s.x - cr.left) * devicePixelRatio
-      const y = (s.y - cr.top) * devicePixelRatio
-      for (let i = 0; i < 46; i++) {
-        const ang = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 1.25
-        const sp = (3 + Math.random() * 7) * devicePixelRatio
-        const max = 26 + Math.random() * 30
-        parts.push({ x, y, vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp, life: max, max, w: (0.8 + Math.random() * 1.4) * devicePixelRatio, hot: Math.random() > 0.6 })
-      }
-      if (!raf) raf = requestAnimationFrame(tick)
-    }
-    const strike = () => {
-      const now = performance.now()
-      if (now - last < 650) return
-      last = now
-      plate.classList.remove('is-striking'); void plate.getBoundingClientRect(); plate.classList.add('is-striking')
-      if (!reduce) setTimeout(burst, 300)
-      setTimeout(() => plate.classList.remove('is-striking'), 760)
-    }
-    strikeBtn.addEventListener('click', strike)
-    if (!reduce) setTimeout(strike, 1400)
-  }
-
   // ---------------------------------------------------------------- copy buttons
   for (const btn of $$('[data-copy]')) {
     btn.addEventListener('click', async () => {
@@ -183,7 +120,7 @@
       s.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick() } })
     })
     show(0)
-    onView(pipe, () => { const loop = () => { if (!auto) return; show((idx + 1) % stations.length); setTimeout(loop, 3200) }; setTimeout(loop, 3200) })
+    pipe.addEventListener('stage', (e) => { if (auto) show(e.detail) })
   }
 
   // ---------------------------------------------------------------- lineage (Fig. IV): trace ancestors and descendants

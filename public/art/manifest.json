@@ -1,0 +1,698 @@
+{
+  "forge-hero": {
+    "painting": "wright-iron-forge",
+    "size": [
+      480,
+      300
+    ],
+    "bytes": 34694,
+    "glow": [
+      280,
+      217
+    ]
+  },
+  "forge-hero-sepia": {
+    "painting": "wright-iron-forge",
+    "size": [
+      480,
+      300
+    ],
+    "bytes": 34694,
+    "glow": [
+      280,
+      217
+    ]
+  },
+  "forge-smithy": {
+    "painting": "wright-blacksmiths-shop",
+    "size": [
+      200,
+      160
+    ],
+    "bytes": 7862
+  },
+  "forge-smithy-sepia": {
+    "painting": "wright-blacksmiths-shop",
+    "size": [
+      200,
+      160
+    ],
+    "bytes": 7862
+  },
+  "s-architecture": {
+    "painting": "turner-rain-steam-speed",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 12339
+  },
+  "s-architecture-sepia": {
+    "painting": "turner-rain-steam-speed",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 12339
+  },
+  "s-workflows": {
+    "painting": "wright-blacksmiths-shop",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 11263
+  },
+  "s-workflows-sepia": {
+    "painting": "wright-blacksmiths-shop",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 11263
+  },
+  "s-operators": {
+    "painting": "loutherbourg-coalbrookdale",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 11223
+  },
+  "s-operators-sepia": {
+    "painting": "loutherbourg-coalbrookdale",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 11223
+  },
+  "s-lineage": {
+    "painting": "turner-burning-parliament",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 11880
+  },
+  "s-lineage-sepia": {
+    "painting": "turner-burning-parliament",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 11880
+  },
+  "s-benchmarks": {
+    "painting": "wright-air-pump",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 10889
+  },
+  "s-benchmarks-sepia": {
+    "painting": "wright-air-pump",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 10889
+  },
+  "s-security": {
+    "painting": "le-nain-forge",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 14356
+  },
+  "s-security-sepia": {
+    "painting": "le-nain-forge",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 14356
+  },
+  "s-faq": {
+    "painting": "brueghel-fire",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 14263
+  },
+  "s-faq-sepia": {
+    "painting": "brueghel-fire",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 14263
+  },
+  "s-glossary": {
+    "painting": "wright-alchemist",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 10746
+  },
+  "s-glossary-sepia": {
+    "painting": "wright-alchemist",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 10746
+  },
+  "s-compare": {
+    "painting": "luce-charleroi",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 13099
+  },
+  "s-compare-sepia": {
+    "painting": "luce-charleroi",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 13099
+  },
+  "s-roadmap": {
+    "painting": "monet-saint-lazare",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 13955
+  },
+  "s-roadmap-sepia": {
+    "painting": "monet-saint-lazare",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 13955
+  },
+  "s-get-started": {
+    "painting": "menzel-eisenwalzwerk",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 12946
+  },
+  "s-get-started-sepia": {
+    "painting": "menzel-eisenwalzwerk",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 12946
+  },
+  "s-about": {
+    "painting": "wright-forge-from-without",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 14468
+  },
+  "s-about-sepia": {
+    "painting": "wright-forge-from-without",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 14468
+  },
+  "s-brand": {
+    "painting": "velazquez-vulcan",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 11672
+  },
+  "s-brand-sepia": {
+    "painting": "velazquez-vulcan",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 11672
+  },
+  "s-credits": {
+    "painting": "meunier-mining-region",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 10865
+  },
+  "s-credits-sepia": {
+    "painting": "meunier-mining-region",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 10865
+  },
+  "s-legal": {
+    "painting": "courbet-stonebreakers",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 14784
+  },
+  "s-legal-sepia": {
+    "painting": "courbet-stonebreakers",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 14784
+  },
+  "s-404": {
+    "painting": "wright-vesuvius",
+    "size": [
+      480,
+      140
+    ],
+    "bytes": 12968
+  },
+  "s-404-sepia": {
+    "painting": "wright-vesuvius",
+    "size": [
+      480,
+      140
+    ],
+    "bytes": 12968
+  },
+  "w-durable": {
+    "painting": "courbet-stonebreakers",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 14325
+  },
+  "w-durable-sepia": {
+    "painting": "courbet-stonebreakers",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 14325
+  },
+  "w-lifecycle": {
+    "painting": "turner-rain-steam-speed",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 11216
+  },
+  "w-lifecycle-sepia": {
+    "painting": "turner-rain-steam-speed",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 11216
+  },
+  "w-run": {
+    "painting": "monet-saint-lazare",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 13354
+  },
+  "w-run-sepia": {
+    "painting": "monet-saint-lazare",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 13354
+  },
+  "w-lineage": {
+    "painting": "turner-burning-parliament",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 12323
+  },
+  "w-lineage-sepia": {
+    "painting": "turner-burning-parliament",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 12323
+  },
+  "w-bench": {
+    "painting": "wright-air-pump",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 11482
+  },
+  "w-bench-sepia": {
+    "painting": "wright-air-pump",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 11482
+  },
+  "w-principles": {
+    "painting": "velazquez-vulcan",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 10111
+  },
+  "w-principles-sepia": {
+    "painting": "velazquez-vulcan",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 10111
+  },
+  "w-integrations": {
+    "painting": "le-nain-forge",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 14036
+  },
+  "w-integrations-sepia": {
+    "painting": "le-nain-forge",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 14036
+  },
+  "w-faq": {
+    "painting": "brueghel-fire",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 12357
+  },
+  "w-faq-sepia": {
+    "painting": "brueghel-fire",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 12357
+  },
+  "s-legal-privacy": {
+    "painting": "meunier-mining-region",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 9519
+  },
+  "s-legal-privacy-sepia": {
+    "painting": "meunier-mining-region",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 9519
+  },
+  "s-legal-terms": {
+    "painting": "velazquez-vulcan",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 11650
+  },
+  "s-legal-terms-sepia": {
+    "painting": "velazquez-vulcan",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 11650
+  },
+  "s-legal-aup": {
+    "painting": "le-nain-forge",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 12895
+  },
+  "s-legal-aup-sepia": {
+    "painting": "le-nain-forge",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 12895
+  },
+  "s-legal-cookies": {
+    "painting": "brueghel-fire",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 14167
+  },
+  "s-legal-cookies-sepia": {
+    "painting": "brueghel-fire",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 14167
+  },
+  "s-legal-trademark": {
+    "painting": "luce-charleroi",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 13605
+  },
+  "s-legal-trademark-sepia": {
+    "painting": "luce-charleroi",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 13605
+  },
+  "s-legal-licenses": {
+    "painting": "wright-air-pump",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 8647
+  },
+  "s-legal-licenses-sepia": {
+    "painting": "wright-air-pump",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 8647
+  },
+  "s-legal-security": {
+    "painting": "loutherbourg-coalbrookdale",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 12526
+  },
+  "s-legal-security-sepia": {
+    "painting": "loutherbourg-coalbrookdale",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 12526
+  },
+  "s-legal-accessibility": {
+    "painting": "turner-burning-parliament",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 10960
+  },
+  "s-legal-accessibility-sepia": {
+    "painting": "turner-burning-parliament",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 10960
+  },
+  "s-legal-company": {
+    "painting": "wright-iron-forge",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 11522
+  },
+  "s-legal-company-sepia": {
+    "painting": "wright-iron-forge",
+    "size": [
+      480,
+      96
+    ],
+    "bytes": 11522
+  },
+  "c-mill": {
+    "painting": "menzel-eisenwalzwerk",
+    "size": [
+      560,
+      200
+    ],
+    "bytes": 32392
+  },
+  "c-mill-sepia": {
+    "painting": "menzel-eisenwalzwerk",
+    "size": [
+      560,
+      200
+    ],
+    "bytes": 32392
+  },
+  "c-coal": {
+    "painting": "loutherbourg-coalbrookdale",
+    "size": [
+      560,
+      200
+    ],
+    "bytes": 27383
+  },
+  "c-coal-sepia": {
+    "painting": "loutherbourg-coalbrookdale",
+    "size": [
+      560,
+      200
+    ],
+    "bytes": 27383
+  },
+  "c-fire": {
+    "painting": "turner-burning-parliament",
+    "size": [
+      560,
+      200
+    ],
+    "bytes": 26206
+  },
+  "c-fire-sepia": {
+    "painting": "turner-burning-parliament",
+    "size": [
+      560,
+      200
+    ],
+    "bytes": 26206
+  },
+  "c-rails": {
+    "painting": "turner-rain-steam-speed",
+    "size": [
+      560,
+      200
+    ],
+    "bytes": 25116
+  },
+  "c-rails-sepia": {
+    "painting": "turner-rain-steam-speed",
+    "size": [
+      560,
+      200
+    ],
+    "bytes": 25116
+  },
+  "c-station": {
+    "painting": "monet-saint-lazare",
+    "size": [
+      560,
+      200
+    ],
+    "bytes": 32170
+  },
+  "c-station-sepia": {
+    "painting": "monet-saint-lazare",
+    "size": [
+      560,
+      200
+    ],
+    "bytes": 32170
+  },
+  "c-factory": {
+    "painting": "luce-charleroi",
+    "size": [
+      560,
+      200
+    ],
+    "bytes": 33284
+  },
+  "c-factory-sepia": {
+    "painting": "luce-charleroi",
+    "size": [
+      560,
+      200
+    ],
+    "bytes": 33284
+  },
+  "c-hills": {
+    "painting": "meunier-mining-region",
+    "size": [
+      560,
+      200
+    ],
+    "bytes": 25404
+  },
+  "c-hills-sepia": {
+    "painting": "meunier-mining-region",
+    "size": [
+      560,
+      200
+    ],
+    "bytes": 25404
+  },
+  "c-vesuvius": {
+    "painting": "wright-vesuvius",
+    "size": [
+      560,
+      200
+    ],
+    "bytes": 20935
+  },
+  "c-vesuvius-sepia": {
+    "painting": "wright-vesuvius",
+    "size": [
+      560,
+      200
+    ],
+    "bytes": 20935
+  }
+}

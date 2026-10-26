@@ -20,3 +20,4 @@ shot icon-512 icon-512.png 512 512 1
 shot icon-192 icon-192.png 192 192 1
 shot apple-touch-icon apple-touch-icon.png 180 180 0
 shot favicon-32 favicon-32.png 32 32 1
+command -v python >/dev/null && python -I tools/shrink-png.py public/og.png || true
