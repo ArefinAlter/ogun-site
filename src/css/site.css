@@ -48,6 +48,7 @@
   --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem; --space-5: 1.5rem; --space-6: 2rem; --space-7: 3rem; --space-8: 4rem; --space-9: 6rem; --space-10: 8rem;
   --radius: 6px; --radius-sm: 4px; --radius-lg: 10px;
   --wrap: 1200px;
+  --gutter: clamp(24px, 7vw, 128px); /* one fluid side margin for header, sections, cards and footer: about 90 px at 1280, 96 at 1366, growing to the 1200 px column cap */
   --ease-out: cubic-bezier(.16, 1, .3, 1);
   --ease-mech: cubic-bezier(.45, 0, .55, 1);
   --dur-1: 140ms; --dur-2: 260ms; --dur-3: 520ms; --dur-4: 820ms;
@@ -95,8 +96,8 @@ code, kbd, pre, samp { font-family: var(--font-mono); font-size: .88em; }
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 100; background: var(--accent); color: var(--accent-ink); padding: .6rem 1rem; border-radius: 4px; font-weight: 600; }
 .skip-link:focus { top: 1rem; }
-.wrap { width: min(100% - 2rem, var(--wrap)); margin-inline: auto; }
-.wrap--narrow { width: min(100% - 2rem, 800px); margin-inline: auto; }
+.wrap { width: min(100% - 2 * var(--gutter), var(--wrap)); margin-inline: auto; }
+.wrap--narrow { width: min(100% - 2 * var(--gutter), 800px); margin-inline: auto; }
 .lede { font-size: var(--step-1); color: var(--text-2); max-width: 52ch; line-height: 1.5; }
 .muted { color: var(--text-2); }
 .small { font-size: var(--step--1); }
@@ -161,12 +162,12 @@ code, kbd, pre, samp { font-family: var(--font-mono); font-size: .88em; }
 .rule span { font-size: 1.3rem; color: var(--brass); }
 
 /* ------------------------------------------------------------------ hero */
-.hero { position: relative; padding-block: var(--space-8) var(--space-9); overflow: clip; }
+.hero { position: relative; padding-block: var(--space-6) var(--space-8); overflow: clip; }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.04fr); gap: var(--space-8); align-items: center; }
-.hero h1 { font-size: clamp(2.8rem, 1.9rem + 4vw, 5.6rem); line-height: .98; }
+.hero h1 { font-size: clamp(2.3rem, 3.7vw, 4.4rem); line-height: 1; }
 .hero h1 .line { display: block; opacity: 0; transform: translateY(14px); animation: rise var(--dur-4) var(--ease-out) forwards; }
 .hero h1 .line--2 { animation-delay: 120ms; }
-.hero .lede { margin-bottom: var(--space-6); }
+.hero .lede { margin-bottom: var(--space-5); font-size: clamp(1rem, .85rem + .45vw, 1.25rem); }
 .cmd { display: flex; align-items: center; gap: .8rem; width: fit-content; max-width: 100%; margin-top: var(--space-5); padding: .6rem .6rem .6rem 1rem; border: 1px solid var(--line-2); border-radius: 4px; background: var(--code-bg); color: #E9E1D0; font: 400 .9rem/1.3 var(--font-mono); overflow-x: auto; }
 .cmd .prompt { color: var(--accent); user-select: none; }
 .cmd code { background: none; border: 0; padding: 0; color: inherit; white-space: nowrap; min-width: 0; overflow-x: auto; scrollbar-width: none; }
@@ -325,7 +326,7 @@ code, kbd, pre, samp { font-family: var(--font-mono); font-size: .88em; }
 .arch-label { font: italic 13.5px var(--font-display); fill: var(--brass); paint-order: stroke; stroke: var(--bg); stroke-width: 6px; stroke-linejoin: round; }
 
 /* ------------------------------------------------------------------ formulas, metrics, matrices */
-.formula { font-family: var(--font-display); font-size: 1.3rem; padding: var(--space-4) var(--space-5); border-left: 2px solid var(--accent); background: var(--surface); margin: var(--space-4) 0; overflow-x: auto; white-space: nowrap; }
+.formula { max-width: 100%; font-family: var(--font-display); font-size: 1.3rem; padding: var(--space-4) var(--space-5); border-left: 2px solid var(--accent); background: var(--surface); margin: var(--space-4) 0; overflow-x: auto; white-space: nowrap; }
 .formula var { font-style: italic; }
 .formula sub { font-size: .65em; }
 .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: var(--space-5); }
