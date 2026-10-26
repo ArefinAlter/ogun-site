@@ -48,7 +48,7 @@ img.art-sepia { display: none !important; }
 .pixel-wordmark rect.is-glint { fill: #FFF6E0; transition-duration: 60ms; }
 
 /* ------------------------------------------------------------------ the hero */
-.forge-hero { --heat: .42; --flicker: 1; position: relative; isolation: isolate; overflow: clip; margin-top: -66px; padding-block: calc(66px + var(--space-5)) var(--space-8); min-height: min(100svh, 900px); background: var(--hero-floor); }
+.forge-hero { --heat: .42; --flicker: 1; position: relative; isolation: isolate; overflow: clip; margin-top: -66px; padding-block: calc(66px + clamp(2.25rem, 7vh, 5rem)) var(--space-8); min-height: min(100svh, 900px); background: var(--hero-floor); }
 .fh-art { position: absolute; top: 0; right: calc(-10px * var(--px)); z-index: -3; width: calc(480px * var(--px)); height: calc(300px * var(--px)); will-change: transform; -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%); mask-image: linear-gradient(180deg, #000 70%, transparent 100%); }
 .fh-art img { display: block; width: 100%; height: 100%; }
 .fh-shade { position: absolute; inset: 0; z-index: -2; pointer-events: none;
@@ -87,7 +87,7 @@ img.art-sepia { display: none !important; }
 }
 @media (max-width: 520px) {
   .fh-wordmark { width: min(78vw, 300px); }
-  .forge-hero { padding-top: calc(66px + var(--space-6)); }
+  .forge-hero { padding-top: calc(66px + var(--space-7)); }
 }
 
 /* ------------------------------------------------------------------ plates: a frame, a cartouche, a caption in the treatise manner */
