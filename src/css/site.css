@@ -628,3 +628,11 @@ code.sha { font-size: .74rem; word-break: break-all; }
 }
 .arch-wrap { transform: none; }
 @media (max-width: 420px) { .plate-wrap { transform: none; } }
+
+/* every command and terminal is readable in full: long lines wrap instead of running under the copy button or out of the box */
+.hero .cmd { align-items: flex-start; }
+.cmd code { white-space: normal; overflow-wrap: anywhere; overflow: visible; min-width: 0; flex: 1 1 auto; line-height: 1.5; }
+.cmd .copy-btn { align-self: flex-start; }
+.code-block pre, .tabpanel pre { white-space: pre-wrap; overflow-wrap: anywhere; word-break: normal; }
+.code-block:has(> .copy-btn) { padding-top: 3rem; }
+.tabpanel:has(> .copy-btn) pre { padding-top: 3rem; }
