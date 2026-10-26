@@ -96,14 +96,14 @@ export const acquirePlate = () =>
 
 // ---------------------------------------------------------------- Fig. III: the lifecycle
 export const STAGES = [
-  ['acquire', 'Acquire', 'bucket', 'Fetch from HTTP, APIs, S3, Hugging Face, Git or a browser session (through Zeus). Transfers are segmented, resumable and rate-limited per host.'],
+  ['acquire', 'Acquire', 'bucket', 'Fetch over HTTP and from S3 listings with the embedded Zeus engine, or with the rclone, git, yt-dlp and Hugging Face adapters; a browser session only through Zeus. Transfers are segmented and resumable.'],
   ['materialize', 'Materialize', 'ingot', 'Land bytes as immutable, content-addressed artifacts with an id, a hash and a source.'],
-  ['verify', 'Verify', 'balance', 'SHA-256 and BLAKE3, publisher checksums, schemas and data-quality checks. A failed check stops the run.'],
-  ['transform', 'Transform', 'crucible', 'Unzip, convert, parse, OCR, SQL, Python: operators run sandboxed, pinned by version and content hash.'],
-  ['organize', 'Organize', 'drawers', 'Partition by date or key, deduplicate by hash, name by template, version as assets.'],
-  ['extract', 'Extract', 'press', 'Extract tables, metadata and entities, optionally with LLM operators bound to a schema.'],
-  ['curate', 'Curate', 'sieve', 'Filter, deduplicate near-duplicates, classify and review. Approvals gate anything costly or irreversible.'],
-  ['publish', 'Publish', 'seal', 'Write Parquet, DuckDB, files or object storage, with a manifest and OpenLineage events.'],
+  ['verify', 'Verify', 'balance', 'Digests are checked on arrival (BLAKE3 and SHA-256, and a publisher checksum where one is given). Bytes that do not match fail the node with op.integrity.'],
+  ['transform', 'Transform', 'crucible', 'Unzip, convert, parse, OCR, SQL, Python: operators run out of process, pinned by version and content hash, in a sandbox on Linux.'],
+  ['organize', 'Organize', 'drawers', 'Partition by date or key, deduplicate by content hash, copy and move into workspace paths.'],
+  ['extract', 'Extract', 'press', 'Extract text and tables from PDFs and OCR, optionally with LLM operators bound to a JSON Schema.'],
+  ['curate', 'Curate', 'sieve', 'Filter and classify, with predicates or with LLM operators over a closed label set. A person approves new code, larger budgets and the first model operator.'],
+  ['publish', 'Publish', 'seal', 'Write Parquet or DuckDB tables and files, with a manifest; run and artifact events can be exported as OpenLineage.'],
 ]
 export function pipelinePlate() {
   const W = 1160
@@ -165,10 +165,10 @@ export function architecturePlate() {
     '0 0 1000 520',
     `<defs><marker id="ar-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="arch-arrow"/></marker></defs>
 <g class="arch-group"><rect x="20" y="20" width="560" height="480" rx="10" class="arch-zone"/><text x="40" y="48" class="arch-zone-title">ogund · your machine</text></g>
-${box(40, 70, 120, 56, 'Ogun Studio', 'GUI')}${box(170, 70, 120, 56, 'ogun', 'CLI / TUI')}${box(300, 70, 120, 56, 'MCP', 'agents')}${box(430, 70, 120, 56, 'A2A', 'bridge, off')}
+${box(40, 70, 120, 56, 'Ogun Studio', 'GUI')}${box(170, 70, 120, 56, 'ogun', 'CLI')}${box(300, 70, 120, 56, 'MCP', 'agents')}${box(430, 70, 120, 56, 'A2A', 'planned')}
 ${line('M 295 126 L 295 164', '', 0, 0)}
 ${box(60, 168, 470, 76, 'Workflow runtime', 'IR validator · scheduler · run state machine · approvals', 'arch-node--core')}
-${box(60, 266, 225, 76, 'Operators', 'sandboxed processes')}${box(305, 266, 225, 76, 'Artifact store', 'CAS · lineage · ledger')}
+${box(60, 266, 225, 76, 'Operators', 'child processes')}${box(305, 266, 225, 76, 'Artifact store', 'CAS · lineage · ledger')}
 ${box(60, 364, 470, 76, 'zeus-core engine (embedded)', 'transfer · resume · journal · verify · no sessions', 'arch-node--engine')}
 ${line('M 172 244 L 172 262', '', 0, 0)}${line('M 418 244 L 418 262', '', 0, 0)}${line('M 295 244 L 295 360', '', 0, 0)}
 <g class="arch-group"><rect x="620" y="20" width="360" height="300" rx="10" class="arch-zone arch-zone--zeus"/><text x="640" y="48" class="arch-zone-title">Zeus app (optional)</text></g>

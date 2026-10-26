@@ -1,0 +1,80 @@
+{
+  "ir_version": 0,
+  "workflow": "trips-backfill",
+  "version": 1,
+  "description": "Every station of the network, month by month since 2019, from the public open-trips archive, reduced to trips per station per day. A partitioned backfill: a crash resumes only unfinished months.",
+  "triggers": [
+    {
+      "kind": "cron",
+      "cron": "10 2 4 * *"
+    }
+  ],
+  "partitions": {
+    "kind": "time",
+    "granularity": "month",
+    "start": "2019-01"
+  },
+  "budgets": {
+    "bytes": 2147483648,
+    "wall_ms": 7200000
+  },
+  "nodes": [
+    {
+      "id": "stations",
+      "op": "crawl@1",
+      "config": {
+        "start": "https://api.open-trips.example.org/v1/stations?limit=1000",
+        "headers": {
+          "X-API-Key": {
+            "secret_ref": "archive_key"
+          }
+        },
+        "select": {
+          "json_path": "$.results[*].id"
+        },
+        "emit": "https://open-trips-archive.s3.amazonaws.com/trips/station={id}/year={partition.year}/month={partition.month}/"
+      }
+    },
+    {
+      "id": "fetch",
+      "op": "acquire@1",
+      "inputs": [
+        "stations.urls"
+      ],
+      "config": {
+        "allowed_domains": [
+          "open-trips-archive.s3.amazonaws.com"
+        ],
+        "listing": "s3_prefix"
+      },
+      "policy": {
+        "retries": 5,
+        "concurrency": 4
+      }
+    },
+    {
+      "id": "daily",
+      "op": "sql@1",
+      "inputs": [
+        "fetch.artifacts"
+      ],
+      "config": {
+        "table": "trips"
+      },
+      "code": {
+        "blake3": "7e92f3fe649e617e27e91a609efcd89955192c39f887c940c9e98610fc961448",
+        "path": "examples/bikeshare/ops/trips_monthly.sql"
+      }
+    },
+    {
+      "id": "publish",
+      "op": "duckdb@1",
+      "inputs": [
+        "daily.tables"
+      ],
+      "config": {
+        "write": "trips_daily.parquet"
+      }
+    }
+  ]
+}

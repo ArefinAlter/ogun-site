@@ -1,0 +1,44 @@
+$ ogund &
+$ ogun daemon status
+ogund 0.0.1-alpha  up since 2026-10-26T03:38:27.353Z
+  workflows         0
+  active runs       0
+  pending approvals 0
+  streams           0
+  scheduler         on
+  connection        human (not interactive)
+$ ogun put exit-backfill.workflow.json
+exit-backfill v1 stored  b10f029c3d5e2a89a6cf7cd4ea530883283d3ad04f58fdf3b145246ea98c6fdb
+  warning ir.node_has_no_inputs at /nodes/0/inputs: manifest does not start a DAG and nothing feeds this node.
+  runnable now
+$ ogun backfill exit-backfill --from 2024-01-01 --to 2024-04-30
+exit-backfill 2024-01-01 .. 2024-04-30: 121 to run, 0 up to date
+  missing      121  2024-01-01 .. 2024-04-30
+dry run; pass --yes to start it
+$ ogun backfill exit-backfill --from 2024-01-01 --to 2024-04-30 --yes
+exit-backfill 2024-01-01 .. 2024-04-30: 121 to run, 0 up to date
+  missing      121  2024-01-01 .. 2024-04-30
+orun_01M5V4KGACEC47NZK30319FE9W  started, 121 partition(s)
+$ ogun partition-status exit-backfill
+exit-backfill  b10f029c3d5e2a89a6cf7cd4ea530883283d3ad04f58fdf3b145246ea98c6fdb
+  done          30  2024-01-01 .. 2024-01-30
+  running       91  2024-01-31 .. 2024-04-30
+# ogund killed here (SIGKILL; TerminateProcess on Windows)
+$ ogund &
+$ ogun partition-status exit-backfill
+exit-backfill  b10f029c3d5e2a89a6cf7cd4ea530883283d3ad04f58fdf3b145246ea98c6fdb
+  done          66  2024-01-01 .. 2024-03-06
+  running       55  2024-03-07 .. 2024-04-30
+$ ogun partition-status exit-backfill
+exit-backfill  b10f029c3d5e2a89a6cf7cd4ea530883283d3ad04f58fdf3b145246ea98c6fdb
+  done         121  2024-01-01 .. 2024-04-30
+$ ogun show orun_01M5V4KGACEC47NZK30319FE9W | grep "attempt [2-9]"
+  m [2024-02-01]  Succeeded (OutputsCommitted)  attempt 2
+  m [2024-02-02]  Succeeded (OutputsCommitted)  attempt 2
+  m [2024-02-03]  Succeeded (OutputsCommitted)  attempt 2
+  m [2024-02-04]  Succeeded (OutputsCommitted)  attempt 2
+# 4 of 242 node instances ran again; the other 238 were not touched
+$ ogun backfill exit-backfill --from 2024-01-01 --to 2024-04-30
+exit-backfill 2024-01-01 .. 2024-04-30: 0 to run, 121 up to date
+  done         121  2024-01-01 .. 2024-04-30
+dry run; pass --yes to start it

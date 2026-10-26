@@ -1,0 +1,23 @@
+{
+  "protocol": "2025-06-18",
+  "offered_without_a_daemon": [
+    "ogun_validate",
+    "ogun_diff",
+    "ogun_partitions",
+    "ogun_operators"
+  ],
+  "daemon_backed_from_source": [
+    "ogun_daemon_status",
+    "ogun_workflows_list",
+    "ogun_workflow_get",
+    "ogun_workflow_put",
+    "ogun_run_start",
+    "ogun_run_status",
+    "ogun_runs_list",
+    "ogun_partitions_status",
+    "ogun_backfill_plan",
+    "ogun_approvals_list",
+    "ogun_streams_list",
+    "ogun_stream_status"
+  ]
+}

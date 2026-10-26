@@ -1,0 +1,11 @@
+{
+  "artifact_id": "art_01M5V4KHKAJP8EZQEE9BNRKEAP",
+  "blake3": "826a435cc93bbcae8f876f5c8c036d1a7879c8b2b0f2b4d36e34565fddb9c419",
+  "size_bytes": 98,
+  "media_type": "application/json",
+  "run_id": "orun_01M5V4KGACEC47NZK30319FE9W",
+  "node": "m",
+  "partition": "2024-01-01",
+  "output": "manifest",
+  "committed_at": "2026-10-26T03:38:28.852Z"
+}

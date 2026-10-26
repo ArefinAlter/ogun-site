@@ -1,0 +1,12 @@
+$ ogun validate examples/bikeshare/trips-backfill.workflow.json
+trips-backfill v1: valid, 4 nodes
+  workflow hash  c4699a1616aada04c07e9dfbeacb49195593fd5128ba8076a65d2ffa9ffbcf19
+  models         not used; runs with no model access
+  user code      daily (approval bound to this hash)
+$ ogun validate examples/bikeshare/rebalance-plan.workflow.json
+rebalance-plan v1: valid, 3 nodes
+  workflow hash  087b2bb2dcd1be4b446320d0fd2a1d6c8eb80d0798b41420b02fcc34cce16cd0
+  models         not used; runs with no model access
+  user code      estimate (approval bound to this hash)
+$ ogun hash examples/bikeshare/rebalance-plan.workflow.json
+087b2bb2dcd1be4b446320d0fd2a1d6c8eb80d0798b41420b02fcc34cce16cd0

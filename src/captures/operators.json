@@ -1,0 +1,306 @@
+{
+  "operators": [
+    {
+      "kind": "core",
+      "name": "acquire",
+      "outputs": [
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "core",
+      "name": "zeus.session_acquire",
+      "outputs": [
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "core",
+      "name": "crawl",
+      "outputs": [
+        "urls",
+        "documents"
+      ]
+    },
+    {
+      "kind": "core",
+      "name": "file.copy",
+      "outputs": [
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "core",
+      "name": "file.move",
+      "outputs": [
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "core",
+      "name": "archive.extract",
+      "outputs": [
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "core",
+      "name": "hash",
+      "outputs": [
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "core",
+      "name": "dedupe",
+      "outputs": [
+        "artifacts",
+        "duplicates"
+      ]
+    },
+    {
+      "kind": "core",
+      "name": "manifest",
+      "outputs": [
+        "manifest"
+      ]
+    },
+    {
+      "kind": "core",
+      "name": "partition",
+      "outputs": [
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "core",
+      "name": "filter",
+      "outputs": [
+        "artifacts",
+        "rejected"
+      ]
+    },
+    {
+      "kind": "core",
+      "name": "map",
+      "outputs": [
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "core",
+      "name": "join_metadata",
+      "outputs": [
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "adapter",
+      "name": "duckdb",
+      "outputs": [
+        "tables",
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "adapter",
+      "name": "pdf.extract",
+      "outputs": [
+        "text",
+        "tables"
+      ]
+    },
+    {
+      "kind": "adapter",
+      "name": "ffmpeg",
+      "outputs": [
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "adapter",
+      "name": "pandoc",
+      "outputs": [
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "adapter",
+      "name": "tesseract",
+      "outputs": [
+        "text"
+      ]
+    },
+    {
+      "kind": "adapter",
+      "name": "paddleocr",
+      "outputs": [
+        "text"
+      ]
+    },
+    {
+      "kind": "adapter",
+      "name": "yt_dlp",
+      "outputs": [
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "adapter",
+      "name": "rclone",
+      "outputs": [
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "adapter",
+      "name": "git",
+      "outputs": [
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "adapter",
+      "name": "hf",
+      "outputs": [
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "code",
+      "name": "python",
+      "outputs": [
+        "artifacts",
+        "rows"
+      ]
+    },
+    {
+      "kind": "code",
+      "name": "polars",
+      "outputs": [
+        "tables"
+      ]
+    },
+    {
+      "kind": "code",
+      "name": "sql",
+      "outputs": [
+        "tables"
+      ]
+    },
+    {
+      "kind": "code",
+      "name": "dbt",
+      "outputs": [
+        "artifacts",
+        "results"
+      ]
+    },
+    {
+      "kind": "code",
+      "name": "shell",
+      "outputs": [
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "core",
+      "name": "window.rollup",
+      "outputs": [
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "source",
+      "name": "stream.mqtt",
+      "outputs": [
+        "window"
+      ]
+    },
+    {
+      "kind": "source",
+      "name": "stream.http",
+      "outputs": [
+        "window"
+      ]
+    },
+    {
+      "kind": "source",
+      "name": "stream.lorawan",
+      "outputs": [
+        "window"
+      ]
+    },
+    {
+      "kind": "source",
+      "name": "stream.modbus",
+      "outputs": [
+        "window"
+      ]
+    },
+    {
+      "kind": "source",
+      "name": "stream.file_tail",
+      "outputs": [
+        "window"
+      ]
+    },
+    {
+      "kind": "model",
+      "name": "llm.extract",
+      "outputs": [
+        "rows"
+      ]
+    },
+    {
+      "kind": "model",
+      "name": "llm.classify",
+      "outputs": [
+        "labels"
+      ]
+    },
+    {
+      "kind": "model",
+      "name": "llm.map",
+      "outputs": [
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "model",
+      "name": "llm.filter",
+      "outputs": [
+        "artifacts",
+        "rejected"
+      ]
+    },
+    {
+      "kind": "model",
+      "name": "llm.rename",
+      "outputs": [
+        "artifacts"
+      ]
+    },
+    {
+      "kind": "model",
+      "name": "llm.schema",
+      "outputs": [
+        "schema"
+      ]
+    },
+    {
+      "kind": "model",
+      "name": "llm.enrich",
+      "outputs": [
+        "rows"
+      ]
+    },
+    {
+      "kind": "model",
+      "name": "embedding.generate",
+      "outputs": [
+        "vectors"
+      ]
+    }
+  ]
+}

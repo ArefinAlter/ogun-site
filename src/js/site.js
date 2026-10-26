@@ -201,59 +201,8 @@
     nodes.forEach((n, id) => { n.addEventListener('mouseenter', () => light(id)); n.addEventListener('focus', () => light(id)); n.addEventListener('mouseleave', clear); n.addEventListener('blur', clear) })
   }
 
-  // ---------------------------------------------------------------- run simulation (Studio preview)
-  const studio = $('[data-studio]')
-  if (studio) {
-    const nodes = $$('.dag-node', studio)
-    const log = $('.event-log', studio)
-    const state = $('.run-state', studio)
-    const appr = $('.approval-mini', studio)
-    let run = 0
-    let t0 = 0
-    const ts = () => { const s = Math.round((performance.now() - t0) / 100) / 10; return `+${s.toFixed(1)}s` }
-    const say = (k, msg) => { const li = document.createElement('li'); li.innerHTML = `<span class="t">${ts()}</span><span class="k">${k}</span> ${msg}`; log.appendChild(li); while (log.children.length > 7) log.removeChild(log.firstChild) }
-    const setNode = (i, st, count) => { const n = nodes[i]; n.dataset.state = st; $('.badge', n).textContent = st.replace(/_/g, ' '); if (count != null) $('.count', n).textContent = count }
-    const fill = async (i, total, unit, id, from = 0, rate = 1) => {
-      for (let v = from; v <= total && id === run; v += Math.max(1, Math.round(total / 26)) * rate) {
-        nodes[i].querySelector('.bar i').style.setProperty('--p', Math.min(100, (v / total) * 100) + '%')
-        $('.count', nodes[i]).textContent = `${Math.min(v, total)}/${total} ${unit}`
-        await sleep(70)
-      }
-      nodes[i].querySelector('.bar i').style.setProperty('--p', '100%'); $('.count', nodes[i]).textContent = `${total}/${total} ${unit}`
-    }
-    const play = async () => {
-      const id = ++run
-      t0 = performance.now()
-      log.innerHTML = ''; appr.hidden = true; state.dataset.state = 'running'; state.textContent = 'running'
-      nodes.forEach((n, i) => { setNode(i, 'pending', '·'); n.querySelector('.bar i').style.setProperty('--p', '0%') })
-      say('run.started', 'climate-papers #184 (workflow v17, 7c3e…)')
-      setNode(0, 'running'); await fill(0, 481, 'urls', id); if (id !== run) return; setNode(0, 'succeeded'); say('node.succeeded', 'discover: 481 candidate urls')
-      setNode(1, 'running'); say('node.running', 'acquire: 6 parts per file, polite 2 req/s/host')
-      await fill(1, 212, 'files', id, 0); if (id !== run) return
-      setNode(1, 'retry_scheduled'); say('retry', 'acquire: 503 from a mirror, backing off 4s'); await sleep(900); if (id !== run) return
-      setNode(1, 'running'); say('resume', 'acquire: resumed at byte 1 873 920 of file 213'); await fill(1, 481, 'files', id, 213); if (id !== run) return
-      setNode(1, 'succeeded'); say('node.succeeded', 'acquire: 481 artifacts, 43.7 GB, all hashes verified')
-      setNode(2, 'running'); await fill(2, 481, 'docs', id); if (id !== run) return; setNode(2, 'succeeded'); say('node.succeeded', 'extract: 467 text, 14 routed to ocr')
-      setNode(3, 'waiting_for_user'); say('approval', 'classify: llm.extract over 481 docs, est. $1.38, needs a person')
-      appr.hidden = false; appr.classList.add('is-armed')
-      const ok = await new Promise((resolve) => {
-        const [y, n] = $$('button', appr)
-        y.onclick = () => resolve(true); n.onclick = () => resolve(false)
-        setTimeout(() => resolve(true), reduce ? 0 : 8000)
-      })
-      if (id !== run) return
-      appr.classList.remove('is-armed'); appr.hidden = true
-      if (!ok) { setNode(3, 'skipped'); setNode(4, 'skipped'); say('approval', 'denied by you: classify and publish skipped'); state.dataset.state = 'succeeded'; state.textContent = 'stopped by you'; return }
-      say('approval', 'approved by you on Studio (bound to request hash 41d0…)')
-      setNode(3, 'running'); await fill(3, 481, 'docs', id); if (id !== run) return; setNode(3, 'succeeded'); say('node.succeeded', 'classify: 182 flagged remote sensing, $1.31 spent')
-      setNode(4, 'running'); await fill(4, 481, 'rows', id); if (id !== run) return; setNode(4, 'succeeded'); say('run.succeeded', 'published papers.parquet + OpenLineage events')
-      state.dataset.state = 'succeeded'; state.textContent = 'succeeded'
-    }
-    $('.studio-replay', studio).addEventListener('click', play)
-    onView(studio, play, 0.35)
-  }
-
   // ---------------------------------------------------------------- backfill with a kill -9 in the middle
+  // An illustration of the O1 exit test (121 daily partitions, ogund killed, restarted): not a recording.
   const bf = $('[data-backfill]')
   if (bf) {
     const cells = $$('.grid-cells i', bf)
@@ -262,33 +211,31 @@
     const killBtn = $('.bf-kill', bf)
     let id = 0
     let killed = false
-    const months = cells.map((_, i) => { const d = new Date(Date.UTC(2020, i, 1)); return d.toISOString().slice(0, 7) })
-    cells.forEach((c, i) => { c.title = `${months[i]}: pending`; c.setAttribute('aria-label', `${months[i]} pending`) })
-    const mark = (i, s, label) => { cells[i].dataset.s = s; cells[i].title = `${months[i]}: ${label}` }
-    const failAt = new Set([9, 37, 58])
+    const days = cells.map((_, i) => new Date(Date.UTC(2024, 0, 1 + i)).toISOString().slice(0, 10))
+    cells.forEach((c, i) => { c.title = `${days[i]}: pending`; c.setAttribute('aria-label', `${days[i]} pending`) })
+    const mark = (i, s, label) => { cells[i].dataset.s = s; cells[i].title = `${days[i]}: ${label}` }
     const go = async (resume) => {
       const my = ++id
       killed = false
       killBtn.disabled = false
-      if (!resume) cells.forEach((c, i) => { delete c.dataset.s; c.title = `${months[i]}: pending` })
+      if (!resume) cells.forEach((c, i) => { delete c.dataset.s; c.title = `${days[i]}: pending` })
       const todo = cells.map((c, i) => i).filter((i) => cells[i].dataset.s !== 'ok')
-      status.textContent = resume ? `ogund restarted · journal replayed · resuming ${todo.length} incomplete partitions, skipping ${cells.length - todo.length} done` : `ogun backfill noaa-daily --from 2020-01 --to ${months[months.length - 1]} · ${cells.length} partitions`
+      status.textContent = resume ? `ogund restarted · ${todo.length} partitions unfinished · ${cells.length - todo.length} done are skipped` : `ogun backfill exit-backfill --from ${days[0]} --to ${days[days.length - 1]} --yes · ${cells.length} partitions`
       const lanes = 4
       let next = 0
       const worker = async () => {
         while (next < todo.length && my === id && !killed) {
           const i = todo[next++]
           mark(i, 'run', 'running')
-          await sleep(140 + Math.random() * 160)
-          if (my !== id || killed) { if (cells[i].dataset.s === 'run') { delete cells[i].dataset.s; cells[i].title = `${months[i]}: interrupted` } return }
-          if (!resume && failAt.has(i)) { mark(i, 'fail', 'failed: 503, retry scheduled'); await sleep(500); if (my !== id || killed) return; mark(i, 'retry', 'retrying'); await sleep(300); if (my !== id || killed) return }
-          mark(i, 'ok', 'succeeded, verified')
+          await sleep(60 + Math.random() * 90)
+          if (my !== id || killed) { if (cells[i].dataset.s === 'run') { delete cells[i].dataset.s; cells[i].title = `${days[i]}: interrupted, runs again` } return }
+          mark(i, 'ok', 'succeeded')
         }
       }
       await Promise.all(Array.from({ length: lanes }, worker))
       if (my !== id || killed) return
       killBtn.disabled = true
-      status.textContent = `done · ${cells.length}/${cells.length} partitions succeeded · 3 transient failures retried · nothing fetched twice`
+      status.textContent = `${cells.length} of ${cells.length} partitions done · a second backfill over the range has 0 to run`
       startBtn.textContent = 'Run again'
     }
     startBtn.addEventListener('click', () => go(false))
@@ -297,7 +244,7 @@
       killed = true; id++
       killBtn.disabled = true
       const done = cells.filter((c) => c.dataset.s === 'ok').length
-      status.textContent = `kill -9 ogund · ${done} partitions committed · in-flight work discarded`
+      status.textContent = `kill -9 ogund · ${done} partitions committed · work in flight is discarded`
       await sleep(1200)
       go(true)
     })

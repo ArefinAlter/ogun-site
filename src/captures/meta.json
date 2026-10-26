@@ -1,0 +1,7 @@
+{
+  "captured_at": "2026-10-26T03:38:36.554Z",
+  "ogun_version": "ogun 0.0.1-alpha",
+  "platform": "Windows_NT 10.0.26300 x64",
+  "repo_examples": "examples/bikeshare, examples/noaa-daily.workflow.json",
+  "how": "node tools/capture.mjs --bin <dir> --repo <ogun checkout>"
+}

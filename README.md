@@ -21,6 +21,7 @@ Requires Node 20 or newer. There is nothing to install.
 |---|---|
 | `site.config.mjs` | Domain, Verne company facts, navigation, llms.txt summary. Change the domain here once. |
 | `src/pages/*.mjs` | Pages. Each exports a page object (or an array): path, title, description, structured-data hints, body. |
+| `src/captures/`, `tools/capture.mjs` | Real terminal transcripts, operator catalogue and sample records, captured from the released `ogun` and `ogund` binaries against the product repository's examples. The pages show them unchanged; re-run `node tools/capture.mjs --bin <dir> --repo <ogun checkout>` after a release. |
 | `src/content.mjs` | Shared copy: principles, run states, triggers, operators, metrics, FAQ, glossary, comparisons, roadmap. Used by pages, llms.txt and JSON-LD. |
 | `src/legal.mjs` | Legal page generator (shared design with `zeus-site`); product specifics in `src/pages/legal.mjs`. |
 | `src/layout.mjs`, `src/parts.mjs` | Page shell and reusable sections. |
@@ -42,7 +43,7 @@ Checks: exactly one h1 per page, unique titles and ids, no broken internal links
 
 ## Facts to confirm before launch
 
-- Domain: `https://ogun.vernesystems.com` (in `site.config.mjs`).
+- Domain: `https://ogun-site.vercel.app` is the production URL (in `site.config.mjs`); there is no `ogun.vernesystems.com` yet. When a custom domain is attached, change it there and the canonical URLs, sitemap, structured data and `llms.txt` follow.
 - Hosting provider named in the privacy policy: Vercel Inc. (`hosting` in `site.config.mjs`).
 - Contact addresses: all set to info@vernesystems.com; split into privacy@, security@ and press@ when those mailboxes exist.
 - Legal pages are written to match the software's design documents; have them reviewed by counsel before launch.

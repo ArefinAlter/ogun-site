@@ -1,0 +1,6 @@
+$ ogun partitions examples/bikeshare/trips-backfill.workflow.json --from 2019-01 --to 2026-09
+93 partitions complete: 2019-01 .. 2026-09
+  to run      93 (2019-01 .. 2026-09)
+  up to date  0
+$ ogun next examples/bikeshare/district-report.workflow.json
+2026-11-02T03:00:00.000Z

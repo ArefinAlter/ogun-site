@@ -1,6 +1,6 @@
 # Ogun brand guidelines
 
-Version 1.0, 2026-10-06. Owner: Verne Ltd. Applies to the Ogun website, the Ogun runtime surfaces (CLI and TUI, MCP descriptions, Ogun Studio), documentation, social and press material.
+Version 1.0, 2026-10-06. Owner: Verne Ltd. Applies to the Ogun website, the Ogun runtime surfaces (CLI, MCP descriptions, Ogun Studio), documentation, social and press material.
 
 Ogun is the developer product in a two-product family. Its sibling, Zeus, has its own guidelines in the `zeus-site` repository. Section 1 is shared by both documents.
 
@@ -72,10 +72,10 @@ Ogun is the developer product in a two-product family. Its sibling, Zeus, has it
 ## 4. Naming
 
 - **Ogun** in running text; **OGUN** only in the wordmark. Pronounced *OH-goon*; the Yoruba spelling is Ògún.
-- Binaries: `ogun` (CLI), `ogund` (daemon). Crates: `ogun-*`. Specs: O-00 to O-08. Phases: O0 to O4.
+- Binaries: `ogun` (CLI), `ogund` (daemon). Crates: `ogun-*`. Specs: O-00 to O-17. Phases: O0 to O4.
 - "Ogun Studio" for the GUI. "Operator", "artifact", "asset", "run", "node", "partition", "workflow version", "plan diff".
 - Run states are always written in code style and exactly: `pending`, `ready`, `running`, `waiting`, `waiting_for_user`, `waiting_for_session`, `retry_scheduled`, `succeeded`, `failed`, `cancelled`, `skipped`.
-- Figures are numbered with Roman numerals: Fig. I (the forge), II (the windlass), III (the lifecycle), IV (lineage), V (architecture).
+- Figures are numbered with Roman numerals: Fig. I (the forge), II (the windlass), III (the lifecycle), IV (lineage), V (architecture), VI (Ogun Studio).
 
 ### On the name
 
@@ -191,8 +191,8 @@ Headings are plain sentences: no kicker labels above them, no italic punchline s
 3. Clicking the plate swings the hammer onto the anvil; an ember glow blooms at the impact and canvas sparks fly with gravity. Rate-limited.
 4. The lifecycle pipe carries a flowing ember dash; stations highlight on hover or focus and auto-advance every 3.2 s until the visitor takes over; a panel explains each stage.
 5. Code tabs slide an ember ink bar under the active tab; full keyboard support (arrows, Home, End); copy buttons confirm with "copied".
-6. The run simulation (Studio preview): node states change honestly, a mirror returns 503 and retries, a transfer resumes mid-file, and the run stops at a budget approval that waits for a real click (auto-continues after 8 s).
-7. The backfill grid: 82 monthly partitions fill on four lanes; three fail and retry; the "kill -9 ogund" button interrupts the run, which then resumes only incomplete partitions.
+6. Real terminal transcripts replace invented ones: every command and output on the site is captured by `tools/capture.mjs` from the released binaries and shown unchanged.
+7. The backfill grid: 121 daily partitions (the O1 exit test) fill on four lanes; the "kill -9 ogund" button interrupts the run, which then resumes only the incomplete partitions. It is labelled as drawn, not recorded.
 8. Lineage: hovering or focusing an artifact lights its ancestors and descendants and dims the rest.
 9. The windlass drum turns and the bucket rises and falls.
 10. The session-bridge edge in the architecture figure flows.
@@ -220,7 +220,7 @@ WCAG 2.2 AA: contrast as tabled, visible 2 px ember focus outlines, skip link, o
 
 **CLI.** Plain, columnar, honest. Data on stdout, progress on stderr, `--json` everywhere. Run states printed exactly as in section 4, coloured (ember running, verdigris succeeded, cinnabar failed, brass waiting) and always paired with the word. Errors: `node: message [error_class]`, then the next step. Plans print as diffs (`+`, `-`, `~`) with the workflow hash. Honour `NO_COLOR`.
 
-**Studio (phase O4).** Forge theme by default, vellum available. Main navigation: Runs, Workflows, Artifacts, Sources, Datasets, Agents, Schedules, Benchmarks, Connections. A run page shows the DAG with live node states, an artifact panel, an agent panel, and tabs for events, logs, lineage, costs and network. Lineage views use the engraved-plate style sparingly (hairlines, italic Garamond edge labels), never decoration that slows reading. Tables are dense, monospaced for data and right-aligned for numbers.
+**Studio.** Forge theme by default, vellum available. Main navigation: Runs, Workflows, Artifacts, Sources, Datasets, Agents, Schedules, Benchmarks, Connections. A run page shows the DAG with live node states, an artifact panel, an agent panel, and tabs for events, logs, lineage, costs and network. Lineage views use the engraved-plate style sparingly (hairlines, italic Garamond edge labels), never decoration that slows reading. Tables are dense, monospaced for data and right-aligned for numbers.
 
 **The trust-surface rule.** The approval inbox and approval prompts carry **no ornament**: no plates, no ember glow, no animation except the deliberate arming delay on the approve button. Facts first, in a fixed order (what, cost or scope, workflow version and hash, who asked); the agent's words in a separate, labelled block; approve and deny at equal size. An approval must look the same every time so that a spoofed one looks wrong.
 

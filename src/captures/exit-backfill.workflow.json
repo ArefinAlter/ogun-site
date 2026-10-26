@@ -1,0 +1,10 @@
+{
+  "ir_version": 0,
+  "workflow": "exit-backfill",
+  "version": 1,
+  "partitions": { "kind": "time", "granularity": "day", "start": "2024-01-01", "end": "2024-04-30" },
+  "nodes": [
+    { "id": "m", "op": "manifest@1" },
+    { "id": "h", "op": "hash@1", "inputs": ["m.manifest"] }
+  ]
+}

@@ -1,0 +1,6 @@
+$ ogun diff examples/bikeshare/rebalance-plan.workflow.json examples/bikeshare/rebalance-plan.v2.workflow.json
+v1 -> v2   087b…6cd0 -> b90b…2a18
+  ~ estimate  (config, code)
+  needs approval:
+    {"reason":"code_changed","node":"estimate"}
+[exit status 1]

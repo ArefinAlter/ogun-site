@@ -1,0 +1,6 @@
+artifacts/store.json  {"format":"zeus-artifact-store","format_version":1,"object_algorithm":"blake3","fanout":[2,2],"index":"redb"}
+objects/blake3/00/f4/00f4e791631167aabc7c951e4df7b4fe88bc5c253efef2ef37d1bc32825e33a2
+objects/blake3/04/74/0474f23641f77e2f6054af901e6005485fd1e2480b1bd27f476a4e833c452711
+objects/blake3/05/e9/05e9911c8ce2e14519b49569c9f6010b65738e9530b4c9eb125f084e660084e1
+objects/blake3/07/06/0706905f576ea69a5ee852e1adebfa82fe99281d0684eca708e60ed6fc42c51b
+... 121 objects in all, one per distinct content

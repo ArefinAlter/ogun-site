@@ -96,6 +96,21 @@ export function codeTabs(id, tabs) {
   return `<div class="tabs" data-tabs data-reveal><div class="tablist" role="tablist" aria-label="Code samples">${tabs
     .map((t, i) => `<button type="button" role="tab" id="${id}-t${i}" aria-controls="${id}-p${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${t.icon ? icon(t.icon) : ''}${t.label}</button>`)
     .join('')}<span class="tab-ink" aria-hidden="true"></span></div>${tabs
-    .map((t, i) => `<div class="tabpanel" role="tabpanel" id="${id}-p${i}" aria-labelledby="${id}-t${i}"${i ? ' hidden' : ''} tabindex="0"><button class="copy-btn" type="button" data-copy="${id}-c${i}">${icon('copy')}<span class="copy-label">copy</span></button><pre id="${id}-c${i}">${hl(t.lang, t.code)}</pre></div>`)
+    .map((t, i) => `<div class="tabpanel" role="tabpanel" id="${id}-p${i}" aria-labelledby="${id}-t${i}"${i ? ' hidden' : ''} tabindex="0"><button class="copy-btn" type="button" data-copy="${id}-c${i}">${icon('copy')}<span class="copy-label">copy</span></button><pre id="${id}-c${i}">${t.html ?? hl(t.lang, t.code)}</pre></div>`)
     .join('')}</div>`
+}
+
+/** A terminal transcript captured from the real binaries (see tools/capture.mjs): prompts, commands and comments are marked, output is left alone. */
+export function term(transcript) {
+  const NL = String.fromCharCode(10)
+  return transcript
+    .split(NL)
+    .map((l) => {
+      const e = esc(l)
+      if (l.startsWith('$ ')) return `<span class="tok-p">$</span> <span class="t-cmd">${e.slice(2)}</span>`
+      if (l.startsWith('# ')) return `<span class="tok-c">${e}</span>`
+      if (l.startsWith('[exit status')) return `<span class="t-exit">${e}</span>`
+      return e
+    })
+    .join(NL)
 }
