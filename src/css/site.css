@@ -621,3 +621,10 @@ code.sha { font-size: .74rem; word-break: break-all; }
 .brand svg { overflow: hidden; }
 
 .lede, p, li, dd { overflow-wrap: anywhere; }
+
+@media (max-width: 420px) {
+  .made-by { flex-wrap: wrap; white-space: normal; margin-left: 0; gap: .4rem .65rem; }
+  .endorse { justify-content: flex-start; }
+}
+.arch-wrap { transform: none; }
+@media (max-width: 420px) { .plate-wrap { transform: none; } }
