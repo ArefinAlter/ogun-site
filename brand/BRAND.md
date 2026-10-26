@@ -1,6 +1,6 @@
 # Ogun brand guidelines
 
-Version 1.1, 2026-10-26 (the forge: pixel paintings, a pixel wordmark, ember and sparks). Owner: Verne Ltd. Applies to the Ogun website, the Ogun runtime surfaces (CLI, MCP descriptions, Ogun Studio), documentation, social and press material.
+Version 1.2, 2026-10-26 (the forge: large pixel paintings without captions, a pixel wordmark, ember and sparks). Owner: Verne Ltd. Applies to the Ogun website, the Ogun runtime surfaces (CLI, MCP descriptions, Ogun Studio), documentation, social and press material.
 
 Ogun is the developer product in a two-product family. Its sibling, Zeus, has its own guidelines in the `zeus-site` repository. Section 1 is shared by both documents.
 
@@ -12,7 +12,7 @@ Ogun is the developer product in a two-product family. Its sibling, Zeus, has it
 |---|---|---|---|
 | Parent | **Verne** (Verne Ltd., Dhaka) | Maker, publisher, legal entity | Dark teal, aurora gradient, Kanit; see vernesystems.com |
 | Product | **Zeus** | Agentic download and file manager for AI tinkerers and enthusiasts | Sky, marble, gold leaf, ultramarine: the Olympian temple |
-| Product | **Ogun** | Developer platform for data mining, data engineering and agent benchmarks | The forge: iron black, ember and bone, painted by Wright of Derby and Menzel and translated into pixels; plates captioned in the manner of a workshop treatise |
+| Product | **Ogun** | Developer platform for data mining, data engineering and agent benchmarks | The forge: iron black, ember and bone, painted by Wright of Derby, Turner, Menzel and others and translated into pixels; plates captioned in the manner of a workshop treatise |
 | Engine | `zeus-core` | Shared library; not a consumer brand | Never marketed on its own; written in code style |
 
 **Endorsement.** Each product is *endorsed* by Verne, not merged into it. The footer of every product surface ends with the credit **"DESIGNED AND BUILT BY"**, then Verne's mark (the loop V, in Verne's teal-to-blue gradient #00F5C8 → #005BFF), then **"Verne Ltd."**, all linking to https://vernesystems.com and set on the right of the footer's bottom row, with the copyright line on the left. The label uses the product's label style (small caps, wide tracking); "Verne Ltd." uses the product's display serif. The mark keeps its gradient on every background; it is the only place Verne's colours appear on a product surface. At footer size (about 22 px) the mark's stroke is drawn heavier than in Verne's master artwork so it stays visible.
@@ -144,8 +144,8 @@ Two themes from one token set; plates (figures) are always vellum. Ratios verifi
 | Display | EB Garamond 500, italic for emphasis | Leading 0.98–1.15, tracking −0.01em |
 | Body and UI | IBM Plex Sans (variable) | 16–17 px, leading 1.6 |
 | Code, data, labels, keys | IBM Plex Mono 400/500 | Labels uppercase with 0.12–0.14em tracking |
-| Pixel labels and the wordmark | Departure Mono 400 (SIL OFL 1.1) | 11 px or 22 px only, so its 1-pixel grid stays crisp; status pill, FIG. keys, table headings, strip labels, credits |
-| Figure captions | EB Garamond italic | "FIG. II" key in Departure Mono |
+| Pixel labels and the wordmark | Departure Mono 400 (SIL OFL 1.1) | 11 px or 22 px only, so its 1-pixel grid stays crisp; status pill, table headings, strip labels, credits page |
+| Captions (terminals and diagrams only) | EB Garamond italic | plain, no figure numbers |
 
 Headings are plain sentences: no kicker labels above them, no italic punchline split off the end, no § or numeral ornaments. Italic display type is kept for the home-page headline. Garamond is a Renaissance roman (1540s), contemporary with Agricola; Plex comes from engineering documentation. Fonts are self-hosted under the SIL Open Font License; the four licences are on the art credits page.
 
@@ -153,9 +153,11 @@ Headings are plain sentences: no kicker labels above them, no italic punchline s
 
 ## 8. Art direction
 
-**The signature device: forge paintings turned into pixels.** The site is one place, not a set of diagrams. Its art is public-domain oil paintings of forges and ironworks, translated into ember pixel art: Joseph Wright of Derby's *An Iron Forge* (1772, Tate), *The Blacksmith's Shop* (1771, Yale Center for British Art) and *An Iron Forge Viewed from Without* (1773, Hermitage), and Adolph Menzel's *The Iron Rolling Mill (Modern Cyclops)* (1872 to 1875, Alte Nationalgalerie). The chiaroscuro of Wright of Derby is the product's glow: the iron is the light, and everything else is the dark it works in. Every painting is credited on `/credits/` and in a museum-label line near the artwork.
+**The signature device: forge paintings turned into pixels.** The site is one place, not a set of diagrams. Its art is a library of 17 public-domain paintings of forges, ironworks, furnaces and fire, translated into ember pixel art (`art/library.json`): six by Joseph Wright of Derby (*An Iron Forge*, *The Blacksmith's Shop*, *An Iron Forge Viewed from Without*, *Vesuvius in Eruption*, *The Alchemist Discovering Phosphorus*, *An Experiment on a Bird in the Air Pump*), Adolph Menzel's *The Iron Rolling Mill*, Loutherbourg's *Coalbrookdale by Night*, Turner's *Burning of the Houses of Lords and Commons* and *Rain, Steam and Speed*, Monet's *Gare Saint-Lazare*, Luce's *Factories near Charleroi*, Meunier's *Mining Region*, Courbet's *The Stonebreakers*, Velázquez's *The Forge of Vulcan*, Louis Le Nain's *The Forge* and Jan Brueghel's *Fire*. The chiaroscuro of Wright of Derby is the product's glow: the iron is the light, and everything else is the dark it works in.
 
-**Treatment** (`art/build.py`, reproducible): crop; reduce to a fixed grid of art pixels; stretch tones with the image's own black and white points, half-strength local contrast and a gamma that keeps the dark parts dark; map luminance onto a ten-colour ramp with an 8 by 8 Bayer ordered dither. One art pixel is 2 CSS pixels on a phone, 3 on a laptop, 4 on a large screen, always an integer, drawn with `image-rendering: pixelated`. The same tones get a second ramp, **sepia**, for the light theme.
+**Paintings are large, and never captioned.** The art is shown big: full-width bands, not thumbnails. `src/art/library.mjs` maps every main page to one wide band (480 by 96 art pixels, three CSS pixels to an art pixel on a laptop, so 1440 by 288 px), laid out above the breadcrumbs (`banner`) or under the lede (`strip`) in turn, so that the site does not repeat one rhythm; no two pages share a band. The long legal pages keep a quieter backdrop behind the title, faded on the left where the text is. The home page puts a band between its sections, alternately tall and slim, and the closing call to action has one of eight panoramas (shared by two to four related pages). The 404 page is a full-width banner of Vesuvius. **No caption, credit line or FIG. number is set on any painting, banner, panorama or screenshot.** Each picture has alt text that says what it is and what it shows (generated from `art/library.json`); the credit for every painting (artist, title, date, owner, licence, a link to the museum or catalogue page for the work and the Wikimedia Commons file) is on `/credits/`, with a thumbnail of each, and the footer carries a plain "Art credits" link. Add a painting by adding it to `art/library.json`, a crop to `PLATES` in `art/build.py` and a place to `src/art/library.mjs`; `node tools/sources-md.mjs` rewrites `art/SOURCES.md`.
+
+**Treatment** (`art/build.py`, reproducible): crop; reduce to a fixed grid of art pixels; stretch tones with the image's own black and white points, half-strength local contrast and a gamma that keeps the dark parts dark; map luminance onto a ten-colour ramp with an 8 by 8 Bayer ordered dither. One art pixel is 2 CSS pixels on a phone, 3 on a laptop, 4 on a large screen, always an integer, drawn with `image-rendering: pixelated`. Paintings of pale, misty scenes (Turner's locomotive, Monet's station) are inverted first, so that the engine and the rails become the hot iron. The hero is mirrored, so that the glow of the forge sits under the Studio slab. The same tones get a second ramp, **sepia**, for the light theme.
 
 | Ramp (ember) | Hex |
 |---|---|
@@ -172,7 +174,7 @@ Headings are plain sentences: no kicker labels above them, no italic punchline s
 
 **The pixel wordmark.** OGUN set in Departure Mono at its native grid (5 by 8 pixels a letter), read from the font's glyph outlines by `art/wordmark.py` and drawn as SVG rectangles: a heat gradient from hot at the top row to ember at the bottom, a glow that flickers on value noise, and an occasional bright pixel. It is the hero and the footer mark. The printer's device (gear ring and anvil) stays the logo.
 
-**Plates.** The FIG. captions are the site's caption language: a double-ruled frame with corner ticks, the number in a cartouche on the top edge, an italic Garamond caption below and a museum-label credit in the pixel face. They frame pixel paintings, real terminal captures and Studio screenshots alike. Engraved vellum plates remain only as diagrams (architecture, lineage, lifecycle).
+**Plates.** Terminal captures and drawings sit in a double-ruled frame with corner ticks and a short plain caption in italic Garamond that says what the reader is looking at ("Real output of ogun validate"; a drawing says that it is drawn). Paintings and Studio screenshots have no plate and no caption. Engraved vellum plates remain only as diagrams (architecture, lineage, lifecycle).
 
 **Products shown as products.** Ogun Studio's own screenshots (from the hosted hub's sample data) float on the forge as a glowing slab, and terminals show only output captured from the released binaries (`tools/capture.mjs`). Nothing is invented: if a figure is drawn rather than recorded, its caption says so.
 
@@ -180,7 +182,7 @@ Headings are plain sentences: no kicker labels above them, no italic punchline s
 
 **Light theme.** Bone paper with the sepia grade. The painting bleeds in from the right under a paper gradient; the wordmark takes the deep-ember rows.
 
-**Never draw.** The orisha Ògún or any sacred or ritual imagery; weapons; fire played for drama; any person we draw or generate ourselves. People appear only as they are in the credited public-domain paintings, and no image is produced by a generator. Reference websites' artwork is never used.
+**Never draw.** The orisha Ògún or any sacred or ritual imagery; weapons; fire played for drama; any person we draw or generate ourselves. People appear only as they are in the public-domain paintings credited on `/credits/`, and no image is produced by a generator. Reference websites' artwork is never used.
 
 **Roads.** Ògún is also the namesake of roads: the bike-share sample project (stations, routes, monthly and daily partitions) supplies the road and rail motif for lineage and partitions, kept to plain geometry.
 
@@ -246,7 +248,7 @@ WCAG 2.2 AA: contrast as tabled, visible 2 px ember focus outlines, skip link, o
 
 **Privacy and security.** No cookies, no storage, no analytics, no third-party requests; strict CSP; the footer says so.
 
-**Performance budget.** CSS under 75 kB and JavaScript under 40 kB (both uncompressed, in two files each), no framework; the hero painting at most 300 kB (it is about 35 kB); first load of the home page about 0.5 MB; every image carries `width` and `height`; paintings below the fold are lazy; the hidden grade of a painting is never fetched.
+**Performance budget.** CSS under 75 kB and JavaScript under 40 kB (both uncompressed, in two files each), no framework; the hero painting at most 300 kB (it is about 35 kB) and no crop above 35 kB (44 crops, about 1.5 MB in all, of which a page loads two to four); first load of the home page about 0.5 MB; every image carries `width` and `height`; paintings below the fold are lazy; the hidden grade of a painting is never fetched.
 
 ---
 
@@ -261,8 +263,8 @@ Status first ("Contracts phase"). No results before methods: the benchmark matri
 | Path | What |
 |---|---|
 | `brand/assets/` | Generated SVG logos and plates (`node build.mjs --brand`) |
-| `src/art/` | Generators: `kit.mjs` (shared with Zeus), `motifs.mjs`, `index.mjs` (diagrams, icons, logos), `pixel.mjs` and `pixel-wordmark.mjs` (the wordmark, the painting helpers) |
-| `art/` | `build.py` (paintings to pixels), `wordmark.py` (wordmark pixels from Departure Mono), `SOURCES.md` (originals, licences, credits) |
+| `src/art/` | Generators: `kit.mjs` (shared with Zeus), `motifs.mjs`, `index.mjs` (diagrams, icons, logos), `pixel.mjs` and `pixel-wordmark.mjs` (the wordmark, the painting helpers), `library.mjs` (the painting library and the page map) |
+| `art/` | `library.json` (the 17 paintings and their facts), `build.py` (paintings to pixels, 44 crops), `wordmark.py` (wordmark pixels from Departure Mono), `SOURCES.md` (generated: originals, licences, credits, where each crop is used) |
 | `public/art/` | The processed paintings, ember and sepia, as indexed PNGs, and `manifest.json` |
 | `src/js/forge.js`, `src/css/forge.css` | The forge: hero, strike, strip, plates |
 | `src/css/site.css` | Tokens and components, both themes |

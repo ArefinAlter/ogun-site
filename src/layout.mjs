@@ -44,7 +44,7 @@ ${body}
       ${cols}
     </div>
     <div class="endorse">
-      <p class="legal-line">© ${year} ${esc(cfg.org.legalName)}, ${esc(cfg.org.address.city)}, ${esc(cfg.org.address.countryName)}. ${esc(cfg.name)} and the ${esc(cfg.name)} logo are trademarks of ${esc(cfg.org.legalName)} Software licensed under Apache-2.0.</p>
+      <p class="legal-line">© ${year} ${esc(cfg.org.legalName)}, ${esc(cfg.org.address.city)}, ${esc(cfg.org.address.countryName)}. ${esc(cfg.name)} and the ${esc(cfg.name)} logo are trademarks of ${esc(cfg.org.legalName)} Software licensed under Apache-2.0. <a href="/credits/">Art credits</a>.</p>
       <a class="made-by" href="${cfg.org.url}" aria-label="Designed and built by Verne Ltd. (vernesystems.com)"><span class="made-by-label">Designed and built by</span>${verneLogo('vl')}<span class="made-by-name">Verne Ltd.</span></a>
     </div>
   </div>

@@ -49,7 +49,7 @@ img.art-sepia { display: none !important; }
 
 /* ------------------------------------------------------------------ the hero */
 .forge-hero { --heat: .42; --flicker: 1; position: relative; isolation: isolate; overflow: clip; margin-top: -66px; padding-block: calc(66px + var(--space-5)) var(--space-8); min-height: min(100svh, 900px); background: var(--hero-floor); }
-.fh-art { position: absolute; top: 0; right: calc(-34px * var(--px)); z-index: -3; width: calc(480px * var(--px)); height: calc(300px * var(--px)); will-change: transform; -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%); mask-image: linear-gradient(180deg, #000 70%, transparent 100%); }
+.fh-art { position: absolute; top: 0; right: calc(-10px * var(--px)); z-index: -3; width: calc(480px * var(--px)); height: calc(300px * var(--px)); will-change: transform; -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%); mask-image: linear-gradient(180deg, #000 70%, transparent 100%); }
 .fh-art img { display: block; width: 100%; height: 100%; }
 .fh-shade { position: absolute; inset: 0; z-index: -2; pointer-events: none;
   background:
@@ -82,7 +82,7 @@ img.art-sepia { display: none !important; }
 @media (max-width: 1000px) {
   .fh-grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-7); }
   .forge-hero { min-height: 0; }
-  .fh-shade { background: linear-gradient(180deg, color-mix(in srgb, var(--hero-floor) 62%, transparent) 0, var(--hero-floor) 62%), linear-gradient(0deg, var(--bg) 0, transparent 14%); }
+  .fh-shade { background: linear-gradient(180deg, color-mix(in srgb, var(--hero-floor) 78%, transparent) 0, var(--hero-floor) 62%), linear-gradient(0deg, var(--bg) 0, transparent 14%); }
   .forge-hero h1 { max-width: 18ch; }
 }
 @media (max-width: 520px) {
@@ -96,7 +96,6 @@ img.art-sepia { display: none !important; }
 .plate-frame { position: relative; margin: 6px; padding: 14px; background: var(--surface); border: 1px solid color-mix(in srgb, var(--brass) 70%, transparent); outline: 1px solid color-mix(in srgb, var(--brass) 36%, transparent); outline-offset: 4px;
   background-image: linear-gradient(var(--brass), var(--brass)), linear-gradient(var(--brass), var(--brass)), linear-gradient(var(--brass), var(--brass)), linear-gradient(var(--brass), var(--brass));
   background-size: 7px 7px; background-repeat: no-repeat; background-position: -4px -4px, calc(100% + 4px) -4px, -4px calc(100% + 4px), calc(100% + 4px) calc(100% + 4px); background-origin: border-box; background-clip: border-box; }
-.plate-no { position: absolute; top: -.8em; left: 50%; transform: translateX(-50%); padding: 0 .8em; background: var(--cut); color: var(--brass-text); font: 400 11px/1.4 var(--font-pixel); letter-spacing: .14em; white-space: nowrap; }
 .plate-body > * { margin: 0; }
 .plate + .plate { margin-top: var(--space-7); }
 .plate figcaption { margin-top: var(--space-5); font: italic 1.02rem/1.45 var(--font-display); color: var(--text-2); max-width: 70ch; }
@@ -145,17 +144,11 @@ img.art-sepia { display: none !important; }
   .strip-meter { margin-left: 0; flex-basis: 100%; }
 }
 
-/* ------------------------------------------------------------------ paintings at the edges of sections and pages */
-.has-art { overflow: clip; }
-.has-art > .wrap { position: relative; z-index: 1; }
-.section-art { position: absolute; inset: 0 0 0 auto; width: min(54%, 820px); z-index: 0; pointer-events: none; opacity: .5;
-  -webkit-mask-image: radial-gradient(ellipse 85% 85% at 100% 50%, #000 10%, transparent 72%); mask-image: radial-gradient(ellipse 85% 85% at 100% 50%, #000 10%, transparent 72%); }
-.section-art img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }
+/* ------------------------------------------------------------------ paintings in the page: see the end of this file */
 .page-head { position: relative; overflow: clip; isolation: isolate; }
 .page-art { position: absolute; inset: 0 0 0 auto; width: min(48%, 680px); z-index: -1; pointer-events: none; opacity: .52;
   -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 78%), linear-gradient(180deg, #000 46%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 78%), linear-gradient(180deg, #000 46%, transparent 100%); -webkit-mask-composite: source-in; mask-composite: intersect; }
 .page-art img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; }
-@media (max-width: 720px) { .section-art { opacity: .24; width: 90%; } .page-art { opacity: .3; width: 100%; } }
 
 /* ------------------------------------------------------------------ the closing call to action over the rolling mill, and the footer wordmark */
 .cta { position: relative; isolation: isolate; overflow: hidden; text-align: center; padding-block: var(--space-10); border-top: 1px solid var(--line); background: var(--bg-2); }
@@ -194,7 +187,7 @@ img.art-sepia { display: none !important; }
   .pixel-wordmark rect { transition: none; }
 }
 @media print {
-  .fh-art, .fh-shade, .fh-sparks, .section-art, .page-art, .cta-art, .foot-forge { display: none !important; }
+  .fh-art, .fh-shade, .fh-sparks, .band-art, .page-art, .cta-art, .foot-forge { display: none !important; }
   .forge-hero { margin-top: 0; min-height: 0; background: none; padding-block: 1rem; }
 }
 
@@ -202,10 +195,8 @@ img.art-sepia { display: none !important; }
 
 .type-specimen .pix { font: 400 22px/1.3 var(--font-pixel); letter-spacing: .04em; color: var(--text); margin: 0 0 var(--space-4); }
 
-.lost-forge { width: min(100%, 520px); margin: 0 auto var(--space-6); border: 1px solid var(--line-2); }
-.lost-forge img { width: 100%; height: auto; }
-:root[data-theme='light'] .page-art, :root[data-theme='light'] .section-art { opacity: .38; }
-@media (prefers-color-scheme: light) { :root:not([data-theme='dark']) .page-art, :root:not([data-theme='dark']) .section-art { opacity: .38; } }
+:root[data-theme='light'] .page-art { opacity: .38; }
+@media (prefers-color-scheme: light) { :root:not([data-theme='dark']) .page-art { opacity: .38; } }
 
 @media (max-width: 420px) {
   .made-by { flex-wrap: wrap; white-space: normal; margin-left: 0; gap: .4rem .65rem; }
@@ -227,3 +218,42 @@ img.art-sepia { display: none !important; }
 @media (max-width: 560px) { .tablist button { padding: .85rem .6rem; font-size: .74rem; } .tablist button .icon { display: none; } }
 @media (max-width: 1100px) { .tablist button { padding: .85rem .65rem; } .tablist button .icon { display: none; } }
 @media (max-width: 440px) { .tablist button { padding: .8rem .5rem; font-size: .7rem; } }
+
+/* ------------------------------------------------------------------ painting in the page
+   The art carries no caption: it has alt text, and every painting is credited on /credits/. Bands are pictures of their own and no copy sits on them.
+   Where a painting does sit behind copy (the head of a long legal page, the closing call to action, the hero) it is held to roughly a fifth of its strength, and
+   tools/textbg.cjs measures every text run against the pixels behind it. */
+.band-art { position: relative; margin: 0; overflow: hidden; line-height: 0; background: var(--ash); border-block: 1px solid var(--line-2); }
+.band-art img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+.page-banner { height: clamp(150px, 20vw, 300px); }
+.page-banner--tall { height: clamp(190px, 28vw, 430px); }
+.page-strip { height: clamp(120px, 16vw, 250px); margin-top: var(--space-7); }
+.art-band { height: clamp(130px, 18vw, 280px); }
+.art-band--slim { height: clamp(100px, 12vw, 190px); }
+.page-head--banner { padding-top: 0; }
+.page-head--banner > .wrap { padding-top: var(--space-7); }
+.page-head--strip { padding-bottom: 0; }
+.page-head--strip + * { margin-top: 0; }
+.plate--wide { max-width: 860px; margin-inline: auto; }
+.plate-credit i { font-style: normal; color: var(--text-2); }
+.credit-uses { list-style: none; margin: 0; padding: 0; display: grid; gap: .1rem; }
+.credit-uses li { font-size: .82rem; }
+.credit-card .pixel-frame img { aspect-ratio: 3 / 2; object-fit: cover; }
+
+/* a painting behind the head of a legal page: faint on the left, where the text is */
+.page-art img { object-fit: cover; }
+.page-art { -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .34) 56%, #000 100%), linear-gradient(180deg, #000 46%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .34) 56%, #000 100%), linear-gradient(180deg, #000 46%, transparent 100%); }
+.page-art--bleed { inset: 0; width: 100%; opacity: .42; -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .2) 46%, rgba(0, 0, 0, .34) 72%, #000 100%), linear-gradient(180deg, #000 60%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .2) 46%, rgba(0, 0, 0, .34) 72%, #000 100%), linear-gradient(180deg, #000 60%, transparent 100%); }
+.cta-art { z-index: -2; }
+.cta::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse 58% 80% at 50% 46%, color-mix(in srgb, var(--bg-2) 94%, transparent) 28%, transparent 80%); }
+.fh-shade { background:
+    linear-gradient(90deg, var(--hero-floor) 0, color-mix(in srgb, var(--hero-floor) 97%, transparent) 38%, color-mix(in srgb, var(--hero-floor) 66%, transparent) 50%, color-mix(in srgb, var(--hero-floor) 20%, transparent) 63%, transparent 75%),
+    linear-gradient(0deg, var(--bg) 0, transparent 20%),
+    radial-gradient(46% 42% at 44% 66%, rgba(232, 102, 46, calc(.2 * var(--flicker))), transparent 72%); }
+@media (max-width: 1000px) {
+  .fh-shade { background: linear-gradient(180deg, color-mix(in srgb, var(--hero-floor) 78%, transparent) 0, var(--hero-floor) 62%), linear-gradient(0deg, var(--bg) 0, transparent 14%); }
+}
+@media (max-width: 720px) {
+  .page-art, .page-art--bleed, :root[data-theme='light'] .page-art, :root:not([data-theme='dark']) .page-art { inset: 5.4rem 0 0 0; width: 100%; opacity: .2; }
+  .page-strip { margin-top: var(--space-6); }
+}

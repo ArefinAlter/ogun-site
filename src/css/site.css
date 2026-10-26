@@ -163,7 +163,7 @@ code, kbd, pre, samp { font-family: var(--font-mono); font-size: .88em; }
 
 /* ------------------------------------------------------------------ hero */
 .cmd { display: flex; align-items: center; gap: .8rem; width: fit-content; max-width: 100%; margin-top: var(--space-5); padding: .6rem .6rem .6rem 1rem; border: 1px solid var(--line-2); border-radius: 4px; background: var(--code-bg); color: #E9E1D0; font: 400 .9rem/1.3 var(--font-mono); overflow-x: auto; }
-.cmd .prompt { color: var(--accent); user-select: none; }
+.cmd .prompt { color: #F4894A; user-select: none; }
 .cmd code { background: none; border: 0; padding: 0; color: inherit; white-space: nowrap; min-width: 0; overflow-x: auto; scrollbar-width: none; }
 .cmd .copy-btn { position: static; flex: none; }
 .plate-wrap { position: relative; box-shadow: var(--shadow); border-radius: 2px; transform: rotate(-.6deg); transition: transform var(--dur-4) var(--ease-out); }
@@ -523,7 +523,7 @@ code.sha { font-size: .74rem; word-break: break-all; }
 .dl-card-title { flex: 1; min-width: 0; }
 .dl-card-title h3 { margin: 0; font-family: var(--dl-font-head); font-size: 1.3rem; line-height: 1.2; color: var(--dl-text); }
 .dl-req { margin: .15rem 0 0; font-size: .88rem; line-height: 1.4; color: var(--dl-text-2); }
-.dl-badge { flex: none; align-self: flex-start; padding: .2rem .55rem; border-radius: 999px; font: 600 .72rem/1.3 var(--dl-font-body); letter-spacing: .02em; color: var(--dl-accent-text); background: color-mix(in srgb, var(--dl-accent) 14%, transparent); border: 1px solid color-mix(in srgb, var(--dl-accent) 40%, transparent); }
+.dl-badge { flex: none; align-self: flex-start; padding: .2rem .55rem; border-radius: 999px; font: 600 .72rem/1.3 var(--dl-font-body); letter-spacing: .02em; color: var(--dl-accent-text); background: color-mix(in srgb, var(--dl-accent) 8%, transparent); border: 1px solid color-mix(in srgb, var(--dl-accent) 40%, transparent); }
 .dl-badge[hidden] { display: none; }
 
 .dl-icon { flex: none; width: 20px; height: 20px; }
@@ -535,7 +535,7 @@ code.sha { font-size: .74rem; word-break: break-all; }
 .dl-btn--primary:active { background: var(--dl-accent-active); }
 .dl-btn-text { display: grid; min-width: 0; text-align: left; }
 .dl-btn-label { overflow-wrap: anywhere; }
-.dl-btn-sub { font-weight: 400; font-size: .82rem; opacity: .88; overflow-wrap: anywhere; }
+.dl-btn-sub { font-weight: 400; font-size: .82rem; opacity: .96; overflow-wrap: anywhere; }
 .dl-btn--secondary { display: inline-flex; background: transparent; color: var(--dl-text); border-color: var(--dl-line-strong); }
 .dl-btn--secondary:hover { background: var(--dl-hover); border-color: var(--dl-text-2); color: var(--dl-text); }
 

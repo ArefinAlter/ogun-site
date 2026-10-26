@@ -1,59 +1,25 @@
+import { altOf, CROPS, PAINTINGS, usesOf } from '../art/library.mjs'
 import { artImg } from '../art/pixel.mjs'
 import { ctaForge, note, pageHead, section, table } from '../parts.mjs'
 
-const c = (url, text) => `<a href="${url}" rel="noopener">${text}</a>`
+const link = (url, text) => `<a href="${url}" rel="noopener">${text}</a>`
+const commonsUrl = (title) => 'https://commons.wikimedia.org/wiki/' + encodeURI(title.replace(/ /g, '_'))
 
-// One entry per painting. The treated crops are in public/art; the originals are not redistributed.
-const WORKS = [
-  {
-    art: 'forge-hero',
-    title: 'An Iron Forge',
-    dl: [
-      ['Artist', 'Joseph Wright of Derby (1734 to 1797)'],
-      ['Date', '1772'],
-      ['Owner', 'Tate (T06670)'],
-      ['Licence', 'Public domain: the artist died in 1797, and a photograph of a flat work adds no new right (Commons: PD-Art, PD-old-100)'],
-      ['Source', c('https://commons.wikimedia.org/wiki/File:Joseph_Wright_-_An_Iron_Forge_-_Google_Art_Project.jpg', 'Wikimedia Commons, from Google Arts &amp; Culture 8QFaV4btMWcjBA')],
-      ['Used for', 'The home page backdrop (480 by 300 art pixels, wide crop of the lower two thirds)'],
-    ],
-  },
-  {
-    art: 'forge-smithy',
-    title: 'The Blacksmith’s Shop',
-    dl: [
-      ['Artist', 'Joseph Wright of Derby (1734 to 1797)'],
-      ['Date', '1771'],
-      ['Owner', 'Yale Center for British Art, Paul Mellon Collection'],
-      ['Licence', 'Public domain (Commons: PD-Art, PD-old-100)'],
-      ['Source', c('https://commons.wikimedia.org/wiki/File:Joseph_Wright_of_Derby_-_The_Blacksmith%27s_Shop_-_Google_Art_Project.jpg', 'Wikimedia Commons, from Google Arts &amp; Culture YQG7cp1C1rHxag')],
-      ['Used for', 'The acquisition plate (a detail of the smith and the anvil)'],
-    ],
-  },
-  {
-    art: 'forge-mill-wide',
-    title: 'The Iron Rolling Mill (Modern Cyclops)',
-    dl: [
-      ['Artist', 'Adolph Menzel (1815 to 1905)'],
-      ['Date', '1872 to 1875'],
-      ['Owner', 'Alte Nationalgalerie, Staatliche Museen zu Berlin'],
-      ['Licence', 'Public domain: the artist died in 1905 (Commons: PD-art-two-auto)'],
-      ['Source', c('https://commons.wikimedia.org/wiki/File:Adolph_Menzel_-_Eisenwalzwerk_-_Google_Art_Project.jpg', 'Wikimedia Commons, from Google Arts &amp; Culture pgFVPI1J1YGXZA')],
-      ['Used for', 'The panorama behind every closing call to action, and a detail of the slab at the edge of some sections'],
-    ],
-  },
-  {
-    art: 'forge-night',
-    title: 'An Iron Forge Viewed from Without',
-    dl: [
-      ['Artist', 'Joseph Wright of Derby (1734 to 1797)'],
-      ['Date', '1773'],
-      ['Owner', 'Hermitage Museum, Saint Petersburg'],
-      ['Licence', 'Public domain (Commons: PD-Art, PD-old-auto-expired)'],
-      ['Source', c('https://commons.wikimedia.org/wiki/File:The_Iron_Forge_Viewed_from_Without.jpg', 'Wikimedia Commons, from the Web Gallery of Art')],
-      ['Used for', 'The banner behind page titles, and the page-not-found page'],
-    ],
-  },
-]
+// A representative crop for each painting's card: of the crops cut from it, the one whose shape is closest to the card's.
+const thumb = (id) => Object.entries(CROPS).filter(([k, m]) => m.painting === id && !k.endsWith('-sepia')).sort((x, y) => Math.abs(x[1].size[0] / x[1].size[1] - 1.6) - Math.abs(y[1].size[0] / y[1].size[1] - 1.6))[0][0]
+
+const card = ([id, p]) => {
+  const places = usesOf(id)
+  const where = places.length ? `<ul class="credit-uses">${[...new Set(places.map(([, w]) => w))].map((w) => `<li>${w}</li>`).join('')}</ul>` : 'Not used yet'
+  return `<article class="credit-card" data-reveal><div class="pixel-frame">${artImg(thumb(id), { alt: altOf(thumb(id)) })}</div><div class="credit-body"><h3>${p.title}</h3><dl>
+<dt>Artist</dt><dd>${p.artist} (${p.years})</dd>
+<dt>Date</dt><dd>${p.date}</dd>
+<dt>Owner</dt><dd>${p.owner}</dd>
+<dt>Licence</dt><dd>Public domain (${p.licence})</dd>
+<dt>Object</dt><dd>${link(p.object.url, p.object.label)}</dd>
+<dt>Source</dt><dd>${link(commonsUrl(p.commons), `Wikimedia Commons file`)}${p.origin ? `; ${p.origin}` : ''}</dd>
+<dt>Used for</dt><dd>${where}</dd></dl></div></article>`
+}
 
 const FONTS = [
   ['EB Garamond', 'Copyright 2017 The EB Garamond Project Authors', 'SIL OFL 1.1', '/fonts/LICENSE-eb-garamond.txt'],
@@ -70,21 +36,23 @@ export default {
   priority: 0.4,
   updated: '2026-10-26',
   title: 'Art credits: forge paintings, fonts and tools',
-  description: 'The paintings on the Ogun site are public-domain works from museum collections, translated to pixels by a script in the repository. Sources, licences and fonts.',
+  description: 'Seventeen public-domain paintings of forges, fire and iron, translated to pixels by a script: owners, licences, sources, where each is used, and the fonts.',
   crumbs: [{ name: 'Art credits', path: '/credits/' }],
-  body: () => `
-${pageHead({ crumbs: [{ name: 'Art credits', path: '/credits/' }], title: 'Art credits', lede: 'The paintings on this site are public-domain works from museum collections, translated into pixels by a script in the site’s repository. No image was generated, and none was taken from another website’s artwork.', art: 'forge-smithy' })}
+  body: () => {
+    const entries = Object.entries(PAINTINGS)
+    return `
+${pageHead({ crumbs: [{ name: 'Art credits', path: '/credits/' }], title: 'Art credits', lede: `The paintings on this site are ${entries.length} public-domain works from museum collections, translated into pixels by a script in the site’s repository. They carry no captions on the pages; this is where each is credited. No image was generated, and none was taken from another website’s artwork.` })}
 ${section({
   id: 'paintings',
   title: 'Paintings',
-  lede: 'Each is shown here as the site uses it: a crop, reduced to a fixed grid of art pixels and dithered into ten ember colours. The originals are not redistributed; follow the source links for them.',
-  body: `<div class="credit-grid">${WORKS.map((w) => `<article class="credit-card" data-reveal><div class="pixel-frame">${artImg(w.art, { alt: `A pixel translation of ${w.title}.` })}</div><div class="credit-body"><h3>${w.title}</h3><dl>${w.dl.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl></div></article>`).join('')}</div>`,
+  lede: `Each is shown here by one of its crops, the way the site uses it: reduced to a fixed grid of art pixels and dithered into the same ten ember colours, so that works from 1568 to 1897 read as one family. The originals are not redistributed; follow the source links for them. ${Object.keys(CROPS).filter((k) => !k.endsWith('-sepia')).length} crops are in use, each in an ember and a sepia grade.`,
+  body: `<div class="credit-grid">${entries.map(card).join('')}</div>`,
 })}
 ${section({
   id: 'treatment',
   cls: 'section--band',
   title: 'How a painting becomes pixels',
-  body: `<div class="wrap--narrow" data-reveal><p class="lede">The treatment is a script, <code>art/build.py</code> in the <a href="https://github.com/ArefinAlter/ogun-site" rel="noopener">ogun-site repository</a>, and it gives the same output every time.</p><ol class="steps-list"><li>Crop the original to a chosen box and reduce it to a fixed grid: 480 by 300 art pixels for the hero, 560 by 200 for the panorama.</li><li>Stretch the tones: a black point and a white point from the image’s own quantiles, half-strength local contrast, a gamma that keeps the dark parts dark.</li><li>Map the luminance onto a ten-colour ramp from iron black through rust, ember and amber to bone, using an 8 by 8 Bayer ordered dither. A second ramp, sepia, keeps the same tones on bone paper for the light theme.</li><li>Store the result as an indexed PNG at the grid size (30 to 40 kilobytes for the hero) and draw it at 2 to 4 CSS pixels per art pixel with <code>image-rendering: pixelated</code>.</li></ol>${note('<p>Ògún is the Yoruba orisha of iron. The site shows European and Russian forges from the eighteenth and nineteenth centuries, painted by their own contemporaries, and nothing that depicts the orisha or any sacred object. See <a href="/about/#name">About</a>.</p>', 'compass')}</div>`,
+  body: `<div class="wrap--narrow" data-reveal><p class="lede">The treatment is a script, <code>art/build.py</code> in the <a href="https://github.com/ArefinAlter/ogun-site" rel="noopener">ogun-site repository</a>, and it gives the same output every time.</p><ol class="steps-list"><li>Crop the original to a chosen box with the target aspect and reduce it to a fixed grid: 480 by 300 art pixels for the hero, 480 by 96 for the wide bands on pages and between sections, 560 by 200 for a panorama behind a closing call to action, 300 by 170 for the backdrop of a legal page.</li><li>Stretch the tones: a black point and a white point from the image’s own quantiles, half-strength local contrast, and a gamma chosen per painting so that the dark parts stay dark. Pale, misty paintings (Turner’s locomotive, Monet’s station) are inverted first, so that the engine and the rails become the hot iron.</li><li>Map the luminance onto a ten-colour ramp from iron black through rust, ember and amber to bone, using an 8 by 8 Bayer ordered dither. A second ramp, sepia, keeps the same tones on bone paper for the light theme.</li><li>Store the result as an indexed PNG at the grid size (8 to 33 kilobytes) and draw it at 2 to 4 CSS pixels per art pixel with <code>image-rendering: pixelated</code>.</li></ol>${note('<p>Ògún is the Yoruba orisha of iron. The site shows European forges, foundries and fires from the sixteenth to the nineteenth century, painted by their own contemporaries, and nothing that depicts the orisha or any sacred object. See <a href="/about/#name">About</a>.</p>', 'compass')}</div>`,
 })}
 ${section({
   id: 'fonts',
@@ -94,5 +62,6 @@ ${section({
     rows: FONTS.map(([n, cp, l, f]) => [n, cp, l, `<a href="${f}">${f.split('/').pop()}</a>`]),
   })}<p class="small muted" data-reveal>All four are self-hosted under the <a href="https://openfontlicense.org" rel="noopener">SIL Open Font License 1.1</a>. Departure Mono draws the wordmark and the small labels; the wordmark’s pixels are read from its glyph outlines by <code>art/wordmark.py</code>. The operating-system logos on the download cards are from Simple Icons (CC0).</p>`,
 })}
-${ctaForge(undefined)}`,
+${ctaForge(undefined)}`
+  },
 }

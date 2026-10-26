@@ -24,7 +24,7 @@ const architecture = {
   body: (ctx) => `
 ${head('/architecture/', 'Architecture', 'How Ogun is built', 'Ogun is a separate process with its own state, built directly on the zeus-core engine. Browser sessions stay with Zeus; code runs out of process; everything is journaled.')}
 <div class="wrap wrap--narrow">${answer({ title: 'The shape, in one paragraph', text: 'ogund is a local daemon that validates and runs workflow IR, schedules runs, executes operators in sandboxed child processes, and records artifacts and lineage in a content-addressed store. It embeds the zeus-core engine for transfers, with a session provider that always answers no. Clients (the ogun CLI, the MCP server, Studio) talk to ogund over one local endpoint; an A2A bridge is planned. Sources behind a browser login are acquired by the Zeus daemon on Ogun’s behalf, over a service-client bridge.' })}</div>
-${section({ id: 'diagram', title: 'Components', body: figure(architecturePlate(), 'V', 'Ogun on your machine, and the optional Zeus app beside it. Only zeusd ever holds browser sessions.') })}
+${section({ id: 'diagram', title: 'Components', body: figure(architecturePlate(), 'Ogun on your machine, and the optional Zeus app beside it. Only zeusd ever holds browser sessions.') })}
 ${section({
   id: 'components',
   cls: 'section--band',
@@ -198,7 +198,7 @@ const lineage = {
   article: { type: 'TechArticle', level: 'Expert', about: 'Artifacts, content-addressed storage and lineage' },
   body: (ctx) => `
 ${head('/lineage/', 'Lineage', 'Artifacts and lineage', 'The primary object in Ogun is neither the URL nor the file. It is the run and the artifact graph.')}
-${section({ id: 'graph', title: 'The artifact graph', body: figure(lineagePlate(), 'IV', 'A schematic of artifacts and the operators between them. Each artifact is a node; each edge names the operator that made it.') })}
+${section({ id: 'graph', title: 'The artifact graph', body: figure(lineagePlate(), 'A schematic of artifacts and the operators between them. Each artifact is a node; each edge names the operator that made it.') })}
 ${section({
   id: 'model',
   cls: 'section--band',

@@ -18,6 +18,7 @@ const imp = (p) => import(pathToFileURL(join(ROOT, p)).href)
 const cfg = (await imp('site.config.mjs')).default
 const { layout } = await imp('src/layout.mjs')
 const art = await imp('src/art/index.mjs')
+const { begin } = await imp('src/parts.mjs')
 
 const walk = (dir) =>
   readdirSync(dir).flatMap((n) => {
@@ -52,6 +53,7 @@ pages.sort((a, b) => (a.order ?? 50) - (b.order ?? 50) || a.path.localeCompare(b
 const ctx = { cfg, art, assets, pages, abs: (p) => abs(cfg, p) }
 const rendered = []
 for (const page of pages) {
+  begin(page)
   const body = typeof page.body === 'function' ? page.body(ctx) : page.body
   const html = layout(page, body, { ...ctx, head: headTags(page, cfg, assets) })
   const out = page.path === '/404/' ? join(DIST, '404.html') : join(DIST, ...page.path.split('/').filter(Boolean), 'index.html')

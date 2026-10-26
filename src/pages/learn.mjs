@@ -1,4 +1,5 @@
 import { icon, mark } from '../art/index.mjs'
+import { altOf, PAGE_ART } from '../art/library.mjs'
 import { artImg } from '../art/pixel.mjs'
 import { COMPARE, FAQ, GLOSSARY, NOT_BUILT, ROADMAP } from '../content.mjs'
 import { answer, cards, checklist, ctaForge, faqList, note, pageHead, section, statusNote, table } from '../parts.mjs'
@@ -172,7 +173,7 @@ const notFound = {
   product: false,
   title: 'Not found: Ogun',
   description: 'This page could not be found. The link may be mistyped or the page has moved. Try the Ogun home page, the architecture or the glossary.',
-  body: () => `<section class="lost wrap" aria-labelledby="lost-title"><div class="lost-forge pixel-frame">${artImg('forge-night', { alt: 'A pixel translation of a painting: a forge at night, its doorway lit from inside.' })}</div><h1 id="lost-title">Page not found</h1><p class="lede center">The page may have moved, or the link may be mistyped.</p><div class="btn-row"><a class="btn btn--ember" href="/">Home</a><a class="btn btn--ghost" href="/architecture/">Architecture</a><a class="btn btn--ghost" href="/glossary/">Glossary</a></div></section>`,
+  body: () => `<figure class="band-art page-banner page-banner--tall">${artImg(PAGE_ART['/404/'].banner, { alt: altOf(PAGE_ART['/404/'].banner) })}</figure><section class="lost wrap" aria-labelledby="lost-title"><h1 id="lost-title">Page not found</h1><p class="lede center">The page may have moved, or the link may be mistyped.</p><div class="btn-row"><a class="btn btn--ember" href="/">Home</a><a class="btn btn--ghost" href="/architecture/">Architecture</a><a class="btn btn--ghost" href="/glossary/">Glossary</a></div></section>`,
 }
 
 export default [faq, glossary, compare, roadmap, getStarted, about, brand, notFound]
