@@ -36,10 +36,10 @@ export default {
     'Ogun is a local-first developer platform for data acquisition, data engineering and AI-agent benchmarks, built on the Zeus engine. Workflows are data; every artifact has a lineage.',
   ogAlt: 'Ogun: the pixel wordmark OGUN over a pixel-art forge painting, titled "Forge raw sources into reproducible datasets".',
   status: 'Pre-alpha release',
-  statusNote: 'Release 0.0.1a is a pre-alpha: Ogun Studio for Windows and Linux, the ogun command line and the ogund daemon, and a hosted hub on sample data that anyone can try. The runtime passed its first exit test on Linux in October 2026 (a partitioned backfill and a stream window survive kill -9 of the daemon and resume only the unfinished work). Code operators, remote approvals, mobile builds and most connectors are not ready yet.',
+  statusNote: 'Release 0.0.1b is a pre-alpha: Ogun Studio is a standalone desktop app for Windows and Linux with its own engine (no daemon to start, no account), the ogun command line, the ogund daemon and the ogun-server hub, and a hosted hub on sample data that anyone can try. The runtime passed its first exit test on Linux in October 2026 (a partitioned backfill and a stream window survive kill -9 of the daemon and resume only the unfinished work). Remote approvals, mobile builds, macOS and most connectors are not ready yet; the Windows acceptance run and its limits are published with the release.',
   sourcePublic: true,
   repo: 'https://github.com/ArefinAlter/ogun',
-  release: { page: 'https://github.com/ArefinAlter/ogun/releases/tag/v0.0.1a' },
+  release: { page: 'https://github.com/ArefinAlter/ogun/releases/tag/v0.0.1b' },
   sibling: { name: 'Zeus', url: 'https://zeus-site-bay.vercel.app', line: 'Need everyday downloads for your AI assistant, not pipelines? Zeus is the consumer app built on the same engine.' },
   org: verne,
   contacts: { general: verne.email, privacy: verne.email, security: verne.email, legal: verne.email, press: verne.email },
@@ -83,7 +83,7 @@ export default {
   ],
   llms: {
     summary:
-      'Ogun is a local-first developer platform for data acquisition, data engineering and AI-agent benchmarks, made by Verne Ltd. (Dhaka, Bangladesh) and built on the Zeus download engine (zeus-core, Rust). Workflows are data (a hashed JSON IR), runs are durable and resumable, operators such as DuckDB, dbt and OCR run out of process, every artifact is content-addressed with lineage, and a benchmark profile has adapters for Spider 2.0-DBT, ADE-bench and Harbor-format tasks. Apache-2.0, no telemetry. Status: pre-alpha release 0.0.1a for Windows x64 and Linux x64 (October 2026), with a hosted hub on sample data.',
+      'Ogun is a local-first developer platform for data acquisition, data engineering and AI-agent benchmarks, made by Verne Ltd. (Dhaka, Bangladesh) and built on the Zeus download engine (zeus-core, Rust). Workflows are data (a hashed JSON IR), runs are durable and resumable, operators such as DuckDB, dbt and OCR run out of process, every artifact is content-addressed with lineage, and a benchmark profile has adapters for Spider 2.0-DBT, ADE-bench and Harbor-format tasks. Apache-2.0, no telemetry. Status: pre-alpha release 0.0.1b for Windows x64 and Linux x64 (October 2026), with a standalone desktop app and a hosted hub on sample data.',
     facts: [
       'Maker: Verne Ltd., https://vernesystems.com',
       'License: Apache-2.0; no telemetry; local-first',
@@ -91,8 +91,8 @@ export default {
       'Workflow IR: JSON, no floating point, JCS + BLAKE3 workflow hash (64 lowercase hex characters), closed template and predicate sets; never prompt-to-shell',
       'Run states: pending, ready, running, waiting, waiting_for_user, waiting_for_session, retry_scheduled, succeeded, failed, cancelled, skipped',
       'Benchmarks: adapters for Spider 2.0-DBT (68 tasks), ADE-bench (dbt Labs) and Terminal-Bench 2.0 in the Harbor task format; the task formats are not yet verified against the official releases; official evaluators run unmodified',
-      'Status: pre-alpha, release 0.0.1a (Windows x64, Linux x64; unsigned). Specs O-00 to O-17 are drafts. The runtime passed its phase O1 exit test on Linux in October 2026 (a 121-partition backfill and a stream window survive kill -9 and resume only unfinished work).',
-      'Try it: https://ogun.103.191.50.32.sslip.io (hosted hub, sample data, reset nightly) or the downloads at https://github.com/ArefinAlter/ogun/releases/tag/v0.0.1a',
+      'Status: pre-alpha, release 0.0.1b (Windows x64, Linux x64; unsigned; Studio desktop owns its engine). Specs O-00 to O-17 are drafts. The runtime passed its phase O1 exit test on Linux in October 2026 (a 121-partition backfill and a stream window survive kill -9 and resume only unfinished work).',
+      'Try it: https://ogun.103.191.50.32.sslip.io (hosted hub, sample data, reset nightly) or the downloads at https://github.com/ArefinAlter/ogun/releases/tag/v0.0.1b',
       'Sibling product: Zeus, the session-aware download and file layer for AI agents (https://zeus-site-bay.vercel.app)',
     ],
     groups: ['Platform', 'Learn', 'Company', 'Legal'],
