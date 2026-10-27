@@ -5,7 +5,7 @@
 //
 //   node tools/capture.mjs --bin <dir with ogun and ogund> --repo <path to the ogun repository>
 //
-// The binaries come from the GitHub release (ogun-0.0.1a-windows-x64.zip or ogun-0.0.1a-linux-x64.tar.gz) or from
+// The binaries come from the GitHub release (ogun-0.0.1b-windows-x64.zip or ogun-0.0.1b-linux-x64.tar.gz) or from
 // `cargo build -p ogun-cli -p ogun-daemon`. Everything runs against a throw-away profile: nothing touches the
 // network, no workflow names a real host, and the profile directory is deleted at the end.
 import { spawn, spawnSync } from 'node:child_process'

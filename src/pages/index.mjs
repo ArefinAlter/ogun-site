@@ -54,7 +54,7 @@ export default {
       <p class="lede">Ogun is a local-first runtime for acquiring and transforming data on a schedule, built on the Zeus download engine. Workflows are versioned JSON documents. A run that crashes resumes with only the unfinished partitions.</p>
       <div class="btn-row"><a class="btn btn--ember" href="/get-started/">Try the pre-alpha ${icon('arrow', 'icon icon--arrow')}</a><a class="btn btn--ghost" href="/architecture/">Read the architecture</a></div>
       <div class="cmd" aria-label="Example command"><span class="prompt" aria-hidden="true">$</span><code id="hero-cmd">ogun validate examples/bikeshare/trips-backfill.workflow.json</code><button class="copy-btn" type="button" data-copy="hero-cmd">${icon('copy')}<span class="copy-label">copy</span></button></div>
-      <p class="small muted">Runs with ogun 0.0.1a, a pre-alpha for Windows and Linux, on the sample workflows in the <a href="${cfg.repo}/tree/main/examples/bikeshare">ogun repository</a>. <a href="/get-started/">Download it or try the hosted hub</a>.</p>
+      <p class="small muted">Runs with ogun 0.0.1b, a pre-alpha for Windows and Linux, on the sample workflows in the <a href="${cfg.repo}/tree/main/examples/bikeshare">ogun repository</a>. <a href="/get-started/">Download it or try the hosted hub</a>.</p>
     </div>
     <figure class="fh-slab">
       <div class="slab">${studioImg('studio-overview', 'Ogun Studio, Overview page: six workflows, two approvals pending, and the latest run of each workflow, with the daemon version 0.0.1-alpha.')}</div>
@@ -157,7 +157,7 @@ ${section({
   title: 'Benchmark runs',
   art: HOME_ART.bands.bench,
   lede: 'A benchmark is a controlled set of runs, each with a workflow, environment, agent, policy, inputs and evaluator. Ogun reads existing task formats and records cost, efficiency and recovery alongside the official score.',
-  body: `<p class="wrap--narrow" data-reveal>Adapters for Spider 2.0-DBT, ADE-bench and Terminal-Bench 2.0 tasks in the Harbor format are written. Their task formats come from public descriptions and are not yet verified against the official releases, so there are no results. The benchmark binary is not part of release 0.0.1a.</p>
+  body: `<p class="wrap--narrow" data-reveal>Adapters for Spider 2.0-DBT, ADE-bench and Terminal-Bench 2.0 tasks in the Harbor format are written. Their task formats come from public descriptions and are not yet verified against the official releases, so there are no results. The <code>ogun-bench</code> binary ships in the 0.0.1b archives, and Studio runs a built-in sample suite with it (scripted agents, not models).</p>
 <div class="metrics" data-reveal>${METRICS.slice(0, 3)
     .concat(METRICS.slice(5, 6))
     .map(([n, f, d]) => `<div class="metric"><h3>${n}</h3><p class="formula">${f}</p><p>${d}</p></div>`)
