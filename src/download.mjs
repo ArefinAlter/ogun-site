@@ -47,11 +47,13 @@ export function downloadCards(o) {
   const ext = (f) => (f.match(/(\.tar\.gz|\.[A-Za-z0-9]+)$/) || [''])[0]
   const card = (p) => {
     const name = OS_NAME[p.os]
+    const url = (file) => esc((p.base || o.base) + file)
     const id = `dl-${p.os}-title`
     return `<article class="dl-card" data-os="${p.os}" aria-labelledby="${id}">
 <header class="dl-card-head"><span class="dl-logo-tile">${logo(p.os)}</span><div class="dl-card-title"><h3 id="${id}">${name}</h3><p class="dl-req">${p.req}</p></div><span class="dl-badge" hidden>Your system</span></header>
 <a class="dl-btn dl-btn--primary" href="${url(p.primary.file)}" title="${esc(p.primary.file)}">${uiIcon('download')}<span class="dl-btn-text"><span class="dl-btn-label">Download for ${name}</span><span class="dl-btn-sub">${p.primary.kind} · ${ext(p.primary.file)} · ${mb(p.primary.size)}</span></span></a>
 ${p.more.length ? `<ul class="dl-more" aria-label="Other ${name} downloads">${p.more.map((m) => `<li><a href="${url(m.file)}" title="${esc(m.file)}">${uiIcon('download', 'dl-icon dl-icon--sm')}<span class="dl-more-text"><span class="dl-more-kind">${m.kind}</span><span class="dl-more-file">${esc(m.file)}</span></span><span class="dl-more-size">${mb(m.size)}</span></a></li>`).join('')}</ul>` : ''}
+<p class="dl-note"><a href="${esc(p.page || o.page)}">${name} release notes</a> · <a href="${url(o.checksums)}">${name} SHA-256 checksums</a></p>
 </article>`
   }
   const mac = `<article class="dl-card dl-card--planned" data-os="mac" aria-labelledby="dl-mac-title"><header class="dl-card-head"><span class="dl-logo-tile">${logo('mac')}</span><div class="dl-card-title"><h3 id="dl-mac-title">macOS: planned</h3><p class="dl-req">${o.macNote || 'No macOS build yet.'}${o.hosted ? ' Use it in the browser meanwhile.' : ''}</p></div><span class="dl-badge" hidden>Your system</span></header></article>`
@@ -61,7 +63,7 @@ ${p.more.length ? `<ul class="dl-more" aria-label="Other ${name} downloads">${p.
 ${mac}
 <div class="dl-foot">
 <div class="dl-actions">${o.hosted ? `<a class="dl-btn dl-btn--secondary" href="${esc(o.hosted)}" rel="noopener">${uiIcon('globe')}<span class="dl-btn-label">${o.hostedLabel || 'Open in the browser'}</span></a>` : ''}<a class="dl-link" href="${esc(o.page)}" rel="noopener">${uiIcon('external', 'dl-icon dl-icon--sm')}All files and release notes on GitHub</a><a class="dl-link" href="${sumsUrl}">${uiIcon('shield', 'dl-icon dl-icon--sm')}Verify downloads (SHA-256)</a></div>
-<p class="dl-note">To verify a file, compare its hash with the line in <a href="${sumsUrl}">${esc(o.checksums)}</a>: <code>certutil -hashfile &lt;file&gt; SHA256</code> on Windows, <code>sha256sum &lt;file&gt;</code> on Linux.</p>
+<p class="dl-note">To verify a file, compare its hash with the matching platform’s SHA-256 checksums above: <code>certutil -hashfile &lt;file&gt; SHA256</code> on Windows, <code>sha256sum &lt;file&gt;</code> on Linux.</p>
 <p class="dl-note">The builds are not signed yet, so Windows SmartScreen may warn before the first run: choose More info, then Run anyway.</p>
 </div>
 </div>`
@@ -72,6 +74,6 @@ ${mac}
  * "Download for Windows" or "Download for Linux" with the primary file of that platform.
  */
 export function heroDownload(o, { cls = '', anchor = '#download' } = {}) {
-  const href = Object.fromEntries(o.platforms.map((p) => [p.os, o.base + p.primary.file]))
+  const href = Object.fromEntries(o.platforms.map((p) => [p.os, (p.base || o.base) + p.primary.file]))
   return `<a class="${cls}" href="${anchor}" data-dl-hero${href.windows ? ` data-href-windows="${esc(href.windows)}"` : ''}${href.linux ? ` data-href-linux="${esc(href.linux)}"` : ''}>${uiIcon('download')}<span data-dl-hero-label>Download</span></a>`
 }
