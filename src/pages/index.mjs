@@ -54,7 +54,7 @@ export default {
       <p class="lede">Ogun is a local-first runtime for acquiring and transforming data on a schedule, built on the Zeus download engine. Workflows are versioned JSON documents. A run that crashes resumes with only the unfinished partitions.</p>
       <div class="btn-row"><a class="btn btn--ember" href="/get-started/">Try the pre-alpha ${icon('arrow', 'icon icon--arrow')}</a><a class="btn btn--ghost" href="/architecture/">Read the architecture</a></div>
       <div class="cmd" aria-label="Example command"><span class="prompt" aria-hidden="true">$</span><code id="hero-cmd">ogun validate examples/bikeshare/trips-backfill.workflow.json</code><button class="copy-btn" type="button" data-copy="hero-cmd">${icon('copy')}<span class="copy-label">copy</span></button></div>
-      <p class="small muted">Runs with ogun 0.0.1c, a pre-alpha for Windows and Linux, on the sample workflows in the <a href="${cfg.repo}/tree/main/examples/bikeshare">ogun repository</a>. <a href="/get-started/">Download it or try the hosted hub</a>.</p>
+      <p class="small muted">Runs with Ogun: Windows 0.1.0-alpha.1 and the previous Linux 0.0.1c desktop, on the sample workflows in the <a href="${cfg.repo}/tree/main/examples/bikeshare">ogun repository</a>. <a href="/get-started/">Download it or try the hosted hub</a>.</p>
     </div>
     <figure class="fh-slab">
       <div class="slab">${studioImg('studio-overview', 'Ogun Studio, Overview page: six workflows, two approvals pending, and the latest run of each workflow, with the daemon version 0.0.1-alpha.')}</div>
