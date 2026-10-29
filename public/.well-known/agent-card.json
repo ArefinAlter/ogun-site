@@ -1,0 +1,59 @@
+{
+  "$schema": "https://agentclientprotocol.com/schemas/v1/agent-card.json",
+  "name": "Ogun Data Engineering & Lineage Agent",
+  "description": "Local-first data engineering platform agent for lineage tracking, reproducible pipeline orchestration, and sandboxed operator benchmarking.",
+  "version": "0.1.0-alpha.1",
+  "supportedInterfaces": [
+    {
+      "url": "http://127.0.0.1:18443/api/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "Verne Systems Ltd",
+    "url": "https://ogun-site.vercel.app"
+  },
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "extendedAgentCard": false
+  },
+  "defaultInputModes": [
+    "application/json",
+    "text/plain"
+  ],
+  "defaultOutputModes": [
+    "application/json"
+  ],
+  "skills": [
+    {
+      "id": "validate_workflow",
+      "name": "Validate Workflow",
+      "description": "Validate workflow JSON documents against canonical schemas and compute deterministic execution plans.",
+      "tags": ["workflow", "schema", "validation"],
+      "examples": ["Validate workflow definition for bikeshare ingestion"]
+    },
+    {
+      "id": "inspect_lineage",
+      "name": "Inspect Lineage Graph",
+      "description": "Query OpenLineage DAGs, content-addressed artifact hashes, and dataset provenance records.",
+      "tags": ["lineage", "openlineage", "artifacts", "provenance"],
+      "examples": ["Trace origin workflow for dataset-20261029.parquet"]
+    },
+    {
+      "id": "execute_operator_benchmark",
+      "name": "Execute Operator Benchmark",
+      "description": "Execute data processing operators inside a Windows AppContainer or Linux sandbox with pinned code hashes.",
+      "tags": ["benchmark", "sandbox", "appcontainer", "security"],
+      "examples": ["Run benchmark on dedupe operator in AppContainer"]
+    },
+    {
+      "id": "trigger_backfill",
+      "name": "Trigger Backfill Partitions",
+      "description": "Orchestrate and resume partition backfills after crash or kill -9, processing only unfinished work.",
+      "tags": ["backfill", "partitions", "resume", "resilience"],
+      "examples": ["Resume unfinished partition window 2026-10-01 to 2026-10-15"]
+    }
+  ]
+}
